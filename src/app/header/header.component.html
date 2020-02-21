@@ -1,0 +1,29 @@
+<mat-toolbar color="primary">
+  <!-- <span>Airline App</span> -->
+  <mat-toolbar-row>
+    <!-- <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button> -->
+    <h1>mTravell</h1>
+    <span class="menu-spacer"></span>
+    <div>
+      <!-- <mat-menu #flightsMenu="matMenu">
+        <button mat-menu-item [routerLink]="['flights/profile']">
+          Profile
+        </button>
+        <button mat-menu-item [routerLink]="['flights/aircraft']">
+          Aircraft
+        </button>
+        <button mat-menu-item [routerLink]="['flights/msm']">
+          Master Seat Map
+        </button>
+      </mat-menu> -->
+      <button mat-button [routerLink]="['travelplan']">
+        Travel Plan
+      </button>
+      <button mat-button [routerLink]="['expense']">
+        Expense
+      </button>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>

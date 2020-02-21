@@ -1,0 +1,170 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" style="background-color: cornflowerblue;">
+      <div class="container">
+        <form
+          [formGroup]="searchFlightForm"
+          (ngSubmit)="onSubmit()"
+          style="padding: 10px;"
+        >
+          <div class="row">
+            <div class="col-md-12 col-lg-11">
+              <div class="row">
+                <div class="col-md-12 col-lg-6">
+                  <div class="row">
+                    <div class="col-md-5">
+                      <mat-form-field>
+                        <mat-label>From</mat-label>
+                        <input
+                          matInput
+                          formControlName="from"
+                          #from
+                          (input)="
+                            from.value = $event.target.value.toUpperCase()
+                          "
+                        />
+                      </mat-form-field>
+                    </div>
+                    <div
+                      class="col-md-2"
+                      style="width: 60px; text-align: center"
+                    >
+                      <button mat-icon-button>
+                        <mat-icon style="margin-top: 5px;"
+                          >compare_arrows</mat-icon
+                        >
+                      </button>
+                    </div>
+                    <div class="col-md-5">
+                      <mat-form-field>
+                        <mat-label>To</mat-label>
+                        <input
+                          matInput
+                          formControlName="to"
+                          #to
+                          (input)="to.value = $event.target.value.toUpperCase()"
+                        />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <mat-form-field style="width: 180px;">
+                        <mat-label>Departure Date</mat-label>
+                        <input
+                          matInput
+                          [min]="minDepDate"
+                          [matDatepicker]="ddpicker"
+                          formControlName="depDate"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="ddpicker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #ddpicker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field style="width: 180px;">
+                        <mat-label>Return Date</mat-label>
+                        <input
+                          matInput
+                          [min]="minRetDate"
+                          [matDatepicker]="rdpicker"
+                          formControlName="returnDate"
+                        />
+                        <mat-datepicker-toggle
+                          matSuffix
+                          [for]="rdpicker"
+                        ></mat-datepicker-toggle>
+                        <mat-datepicker #rdpicker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-md-6 col-lg-6">
+                  <div class="row">
+                    <div class="col-md-6 col-lg-7">
+                      <mat-form-field>
+                        <mat-label>Adults(12y+)</mat-label>
+                        <input matInput formControlName="adults" />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6 col-lg-5">
+                      <mat-form-field>
+                        <mat-label>Cheldern(2y-12y)</mat-label>
+                        <input matInput formControlName="children" />
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-12 col-lg-6">
+                  <div class="row">
+                    <div class="col-md-6 ">
+                      <mat-form-field>
+                        <mat-label>Infants(below 2y)</mat-label>
+                        <input matInput formControlName="infants" />
+                      </mat-form-field>
+                    </div>
+                    <div class="col-md-6">
+                      <mat-form-field>
+                        <mat-label>Select Class</mat-label>
+                        <mat-select formControlName="class_">
+                          <mat-option value="E">
+                            Economy
+                          </mat-option>
+                          <mat-option value="P">
+                            Premium Economy
+                          </mat-option>
+                          <mat-option value="B">
+                            Business
+                          </mat-option>
+                          <mat-option value="F">
+                            First Class
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12 col-lg-1">
+              <button
+                mat-raised-button
+                type="submit"
+                color="accent"
+                style="margin-top: 10px; background-color:rgb(107, 146, 218);"
+                [disabled]="!searchFlightForm.valid"
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 col-lg-3">
+          <div class="filter">
+            <div>
+              <h3 style="float: left;">Filters</h3>
+              <a mat-flat-button style="float: right;">Reset All</a>
+            </div>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>Stops</mat-expansion-panel-header>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+        <div class="col-md-3 col-lg-9"></div>
+      </div>
+    </div>
+  </div>
+</div>
