@@ -1,0 +1,74 @@
+[{
+	"airlineCodes": [
+		"AI"
+	],
+	"airlineNames":["Air India"],
+	"originPoint": "LHR",
+	"originCountry": "United Kingdom",
+	"originCity": "London",
+	"departureTime": "0900",
+	"departureOffser": 0,
+	"destinationPoint": "CCU",
+	"destinationCountry": "India",
+	"arrivalTime": "0700",
+	"ariivalOffset": 1,
+	"journeyDuration": 740,
+	"destinationCity": "Kolkata",
+	"layoverPorts": [
+		"DXB"
+	],
+	"layoverDurations": [
+		140
+	],
+	"layoverCities": [
+		"Dubai"
+	],
+	"layoverAirportNames": [
+		"Dubai International Airport"
+	],
+	"fare": {
+		"baseFare": 40000,
+		"taxes": 27000,
+		"total" : 670000
+	},
+	"flightInfos": [
+		{
+			"airlineCode": "AI",
+			"aircraft" : "Airbus A380",
+			"airlineName":"Air India",
+			"flightNo": "1234A",
+			"originPoint": "LHR",
+			"originCountry": "United Kingdom",
+			"originAirportName": "London Heathrow Airport",
+			"departureTime": "0900",
+			"departureDate":"Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"departureOffser": 0,
+			"destinationPoint": "DXB",
+			"destinationCountry": "United Arab Emirates",
+			"arrivalTime": "0300",
+			"arrivalDate" : "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"ariivalOffset": 1,
+			"flightDuration": 430,
+			"destinationAirportName": "Dubai International Airport"
+		},
+		{
+			"airlineCode": "AI",
+			"airlineName":"Air India",
+			"flightNo": "4234A",
+			"originPoint": "DXB",
+			"originCountry": "United Arab Emirates",
+			"originAirportName": "Dubai International Airport",
+			"departureTime": "0500",
+			"departureOffser": 1,
+			"destinationPoint": "CCU",
+			"destinationCountry": "India",
+			"arrivalTime": "0700",
+			"ariivalOffset": 1,
+			"flightDuration": 170,
+			"arrivalDate" : "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"departureDate":"Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"aircraft" : "Airbus A380",
+			"destinationAirportName": "Netaji Subhash Chandra Bose International Airport"
+		}
+	]
+}]

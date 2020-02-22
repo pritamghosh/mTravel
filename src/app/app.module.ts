@@ -24,8 +24,13 @@ import { MatGridListModule } from "@angular/material/grid-list";
 import { MatDividerModule } from "@angular/material/divider";
 import { MatRadioModule } from "@angular/material/radio";
 import { MatSelectModule } from "@angular/material/select";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatSliderModule } from "@angular/material/slider";
+import { MatChipsModule } from "@angular/material/chips";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
+import { Ng5SliderModule } from "ng5-slider";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -37,6 +42,11 @@ import { HotelComponent } from "./travel-plan/hotel/hotel.component";
 import { CarComponent } from "./travel-plan/car/car.component";
 import { InsuranceComponent } from "./travel-plan/insurance/insurance.component";
 import { ExpenseComponent } from "./expense/expense.component";
+import { FlightItineraryComponent } from "./travel-plan/flight/flight-itinerary/flight-itinerary.component";
+import { FlightService } from "./services/flight.service";
+import { TrailingDotPipe } from "./pipes/trailing-dot.pipe";
+import { TimePipe } from "./pipes/time.pipe";
+import { DurationPipe } from "./pipes/duration.pipe";
 
 @NgModule({
   declarations: [
@@ -48,7 +58,11 @@ import { ExpenseComponent } from "./expense/expense.component";
     HotelComponent,
     CarComponent,
     InsuranceComponent,
-    ExpenseComponent
+    ExpenseComponent,
+    FlightItineraryComponent,
+    TrailingDotPipe,
+    TimePipe,
+    DurationPipe
   ],
   imports: [
     BrowserModule,
@@ -76,9 +90,14 @@ import { ExpenseComponent } from "./expense/expense.component";
     MatDividerModule,
     MatRadioModule,
     MatSelectModule,
-    NgxMaterialTimepickerModule
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    MatChipsModule,
+    NgxMaterialTimepickerModule,
+    Ng5SliderModule
   ],
-  providers: [],
+  providers: [FlightService],
   bootstrap: [AppComponent],
   exports: [
     MatToolbarModule,
@@ -100,7 +119,11 @@ import { ExpenseComponent } from "./expense/expense.component";
     MatGridListModule,
     MatDividerModule,
     MatRadioModule,
-    MatSelectModule
+    MatSelectModule,
+    MatButtonToggleModule,
+    MatCheckboxModule,
+    MatSliderModule,
+    MatChipsModule
   ]
 })
 export class AppModule {}
