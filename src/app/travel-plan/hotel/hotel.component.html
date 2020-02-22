@@ -1,1 +1,125 @@
-<p>hotel works!</p>
+<div class="container-fluid">
+  <div class=" seacrh">
+    <div class="container">
+      <form
+        [formGroup]="searchHotelForm"
+        (ngSubmit)="onSubmit()"
+        style="padding: 10px;"
+      >
+        <div class="row">
+          <div class="col-md-12 col-lg-11">
+            <div class="row">
+              <div class="col-md-12 col-lg-6">
+                <mat-form-field style="width: 90%;">
+                  <mat-label>Name</mat-label>
+                  <input
+                    matInput
+                    formControlName="key"
+                    placeholder="Enter City name or Hotel name"
+                    #key
+                    (input)="key.value = $event.target.value.toUpperCase()"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field style="width: 180px;">
+                      <mat-label>Checked In Date</mat-label>
+                      <input
+                        matInput
+                        [min]="minCheckInDate"
+                        [matDatepicker]="cipicker"
+                        formControlName="checkInDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="cipicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #cipicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field style="width: 180px;">
+                      <mat-label>Checked Out Date</mat-label>
+                      <input
+                        matInput
+                        [min]="minCheckOutDate"
+                        [max]="maxCheckOutDate"
+                        [matDatepicker]="copicker"
+                        formControlName="checkOutDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="copicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #copicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6 col-lg-6">
+                    <mat-form-field>
+                      <mat-label>Adults(12y+)</mat-label>
+                      <input matInput formControlName="adults" />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-lg-6">
+                    <mat-form-field>
+                      <mat-label>Cheldern(Below 12y)</mat-label>
+                      <input matInput formControlName="children" />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <mat-form-field>
+                      <mat-label>No of Rooms</mat-label>
+                      <input matInput formControlName="rooms" />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <mat-label>Select Hotel Type</mat-label>
+                      <mat-select formControlName="type">
+                        <mat-option value="">
+                          All
+                        </mat-option>
+                        <mat-option value="H">
+                          Hotel
+                        </mat-option>
+                        <mat-option value="SA">
+                          Service Araprtment
+                        </mat-option>
+                        <mat-option value="GH">
+                          Guest House
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-1">
+            <button
+              mat-raised-button
+              type="submit"
+              color="accent"
+              style="margin-top: 10px; "
+              [disabled]="!searchHotelForm.valid"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <hr />
+  </div>
+</div>

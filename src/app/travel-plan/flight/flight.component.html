@@ -1,347 +1,332 @@
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12" style="background-color: cornflowerblue;">
-      <div class="container">
-        <form
-          [formGroup]="searchFlightForm"
-          (ngSubmit)="onSubmit()"
-          style="padding: 10px;"
-        >
-          <div class="row">
-            <div class="col-md-12 col-lg-11">
-              <div class="row">
-                <div class="col-md-12 col-lg-6">
-                  <div class="row">
-                    <div class="col-md-5">
-                      <mat-form-field>
-                        <mat-label>From</mat-label>
-                        <input
-                          matInput
-                          formControlName="from"
-                          #from
-                          (input)="
-                            from.value = $event.target.value.toUpperCase()
-                          "
-                        />
-                      </mat-form-field>
-                    </div>
-                    <div
-                      class="col-md-2"
-                      style="width: 60px; text-align: center"
-                    >
-                      <button mat-icon-button>
-                        <mat-icon style="margin-top: 5px;"
-                          >compare_arrows</mat-icon
-                        >
-                      </button>
-                    </div>
-                    <div class="col-md-5">
-                      <mat-form-field>
-                        <mat-label>To</mat-label>
-                        <input
-                          matInput
-                          formControlName="to"
-                          #to
-                          (input)="to.value = $event.target.value.toUpperCase()"
-                        />
-                      </mat-form-field>
-                    </div>
+  <div class="seacrh">
+    <div class="container">
+      <form
+        [formGroup]="searchFlightForm"
+        (ngSubmit)="onSubmit()"
+        style="padding: 10px;"
+      >
+        <div class="row">
+          <div class="col-md-12 col-lg-11">
+            <div class="row">
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-md-5">
+                    <mat-form-field>
+                      <mat-label>From</mat-label>
+                      <input
+                        matInput
+                        formControlName="from"
+                        #from
+                        (input)="from.value = $event.target.value.toUpperCase()"
+                      />
+                    </mat-form-field>
                   </div>
-                </div>
-                <div class="col-md-12 col-lg-6">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <mat-form-field style="width: 180px;">
-                        <mat-label>Departure Date</mat-label>
-                        <input
-                          matInput
-                          [min]="minDepDate"
-                          [matDatepicker]="ddpicker"
-                          formControlName="depDate"
-                        />
-                        <mat-datepicker-toggle
-                          matSuffix
-                          [for]="ddpicker"
-                        ></mat-datepicker-toggle>
-                        <mat-datepicker #ddpicker></mat-datepicker>
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field style="width: 180px;">
-                        <mat-label>Return Date</mat-label>
-                        <input
-                          matInput
-                          [min]="minRetDate"
-                          [matDatepicker]="rdpicker"
-                          formControlName="returnDate"
-                        />
-                        <mat-datepicker-toggle
-                          matSuffix
-                          [for]="rdpicker"
-                        ></mat-datepicker-toggle>
-                        <mat-datepicker #rdpicker></mat-datepicker>
-                      </mat-form-field>
-                    </div>
+                  <div class="col-md-2" style="width: 60px; text-align: center">
+                    <button mat-icon-button>
+                      <mat-icon style="margin-top: 5px;"
+                        >compare_arrows</mat-icon
+                      >
+                    </button>
                   </div>
-                </div>
-
-                <div class="col-md-6 col-lg-6">
-                  <div class="row">
-                    <div class="col-md-6 col-lg-7">
-                      <mat-form-field>
-                        <mat-label>Adults(12y+)</mat-label>
-                        <input matInput formControlName="adults" />
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6 col-lg-5">
-                      <mat-form-field>
-                        <mat-label>Cheldern(2y-12y)</mat-label>
-                        <input matInput formControlName="children" />
-                      </mat-form-field>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-md-12 col-lg-6">
-                  <div class="row">
-                    <div class="col-md-6 ">
-                      <mat-form-field>
-                        <mat-label>Infants(below 2y)</mat-label>
-                        <input matInput formControlName="infants" />
-                      </mat-form-field>
-                    </div>
-                    <div class="col-md-6">
-                      <mat-form-field>
-                        <mat-label>Select Class</mat-label>
-                        <mat-select formControlName="class_">
-                          <mat-option value="E">
-                            Economy
-                          </mat-option>
-                          <mat-option value="P">
-                            Premium Economy
-                          </mat-option>
-                          <mat-option value="B">
-                            Business
-                          </mat-option>
-                          <mat-option value="F">
-                            First Class
-                          </mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                    </div>
+                  <div class="col-md-5">
+                    <mat-form-field>
+                      <mat-label>To</mat-label>
+                      <input
+                        matInput
+                        formControlName="to"
+                        #to
+                        (input)="to.value = $event.target.value.toUpperCase()"
+                      />
+                    </mat-form-field>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="col-md-12 col-lg-1">
-              <button
-                mat-raised-button
-                type="submit"
-                color="accent"
-                style="margin-top: 10px; background-color:rgb(107, 146, 218);"
-                [disabled]="!searchFlightForm.valid"
-              >
-                Search
-              </button>
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6">
+                    <mat-form-field style="width: 180px;">
+                      <mat-label>Departure Date</mat-label>
+                      <input
+                        matInput
+                        [min]="minDepDate"
+                        [matDatepicker]="ddpicker"
+                        formControlName="depDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="ddpicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #ddpicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field style="width: 180px;">
+                      <mat-label>Return Date</mat-label>
+                      <input
+                        matInput
+                        [min]="minRetDate"
+                        [matDatepicker]="rdpicker"
+                        formControlName="returnDate"
+                      />
+                      <mat-datepicker-toggle
+                        matSuffix
+                        [for]="rdpicker"
+                      ></mat-datepicker-toggle>
+                      <mat-datepicker #rdpicker></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6 col-lg-7">
+                    <mat-form-field>
+                      <mat-label>Adults(12y+)</mat-label>
+                      <input matInput formControlName="adults" />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6 col-lg-5">
+                    <mat-form-field>
+                      <mat-label>Cheldern(2y-12y)</mat-label>
+                      <input matInput formControlName="children" />
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-12 col-lg-6">
+                <div class="row">
+                  <div class="col-md-6 ">
+                    <mat-form-field>
+                      <mat-label>Infants(below 2y)</mat-label>
+                      <input matInput formControlName="infants" />
+                    </mat-form-field>
+                  </div>
+                  <div class="col-md-6">
+                    <mat-form-field>
+                      <mat-label>Select Class</mat-label>
+                      <mat-select formControlName="class_">
+                        <mat-option value="E">
+                          Economy
+                        </mat-option>
+                        <mat-option value="P">
+                          Premium Economy
+                        </mat-option>
+                        <mat-option value="B">
+                          Business
+                        </mat-option>
+                        <mat-option value="F">
+                          First Class
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
-        </form>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row" style="padding: 10px;">
-        <div class="col-md-3 col-lg-3">
-          <div class="filter">
-            <div>
-              <div>
-                <a style="float: right;" mat-flat-button (click)="resetFilter()"
-                  >Reset All</a
-                >
-                <h3>Filters</h3>
-              </div>
-            </div>
-            <div>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>Stops</mat-expansion-panel-header>
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetStops()">Reset</a>
-                  </div>
-                  <section>
-                    <mat-list>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="stop0"
-                          (change)="filterStops()"
-                          >No Stops</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="stop1"
-                          (change)="filterStops()"
-                        >
-                          1 Stop</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="stop2"
-                          (change)="filterStops()"
-                          >2 Stops</mat-checkbox
-                        > </mat-list-item
-                      ><mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="stop3"
-                          (change)="filterStops()"
-                          >3+ Stops</mat-checkbox
-                        >
-                      </mat-list-item>
-                    </mat-list>
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header
-                    >Departure</mat-expansion-panel-header
-                  >
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetDep()">Reset</a>
-                  </div>
-                  <section>
-                    <mat-list>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="dep1"
-                          (change)="filterDeperture()"
-                          >Before 6.00 AM</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="dep2"
-                          (change)="filterDeperture()"
-                          >6.00 AM - 12.00 PM</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="dep3"
-                          (change)="filterDeperture()"
-                          >12.00 PM - 6.00 PM</mat-checkbox
-                        > </mat-list-item
-                      ><mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="dep4"
-                          (change)="filterDeperture()"
-                          >After 6.00 PM</mat-checkbox
-                        >
-                      </mat-list-item>
-                    </mat-list>
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header
-                    >Arrival</mat-expansion-panel-header
-                  >
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetArr()">Reset</a>
-                  </div>
-                  <section>
-                    <mat-list>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="arr1"
-                          (change)="filterArrival()"
-                          >Before 6.00 AM</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="arr2"
-                          (change)="filterArrival()"
-                          >6.00 AM - 12.00 PM</mat-checkbox
-                        >
-                      </mat-list-item>
-                      <mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="arr3"
-                          (change)="filterArrival()"
-                          >12.00 PM - 6.00 PM</mat-checkbox
-                        > </mat-list-item
-                      ><mat-list-item>
-                        <mat-checkbox
-                          [(ngModel)]="arr4"
-                          (change)="filterArrival()"
-                          >After 6.00 PM</mat-checkbox
-                        >
-                      </mat-list-item>
-                    </mat-list>
-                  </section>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header>Price</mat-expansion-panel-header>
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetPrice()">Reset</a>
-                  </div>
-                  <div class="custom-slider">
-                    <ng5-slider
-                      [(value)]="minPrice"
-                      [(highValue)]="maxPrice"
-                      [options]="priceOptions"
-                    ></ng5-slider>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header
-                    >Duration</mat-expansion-panel-header
-                  >
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetDuartion()">Reset</a>
-                  </div>
-                  <div class="custom-slider">
-                    <ng5-slider
-                      [(value)]="minDuration"
-                      [(highValue)]="maxDuration"
-                      [options]="durationOptions"
-                    ></ng5-slider>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header
-                    >Preferred Airlines</mat-expansion-panel-header
-                  >
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetAirlines()">Reset</a>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-              <mat-accordion>
-                <mat-expansion-panel>
-                  <mat-expansion-panel-header
-                    >Preferred Airports</mat-expansion-panel-header
-                  >
-                  <div style="text-align: right;">
-                    <a mat-flat-button (click)="resetAirports()">Reset</a>
-                  </div>
-                </mat-expansion-panel>
-              </mat-accordion>
-            </div>
+          <div class="col-md-12 col-lg-1">
+            <button
+              mat-raised-button
+              type="submit"
+              color="accent"
+              style="margin-top: 10px;"
+              [disabled]="!searchFlightForm.valid"
+            >
+              Search
+            </button>
           </div>
         </div>
-        <div class="col-md-9 col-lg-9">
-          <div *ngFor="let flight of flightSearchResp" class="filter">
-            <app-flight-itinerary [flight]="flight"></app-flight-itinerary>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div class="container">
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-3 col-lg-3">
+        <div class="filter">
+          <div>
+            <div>
+              <a style="float: right;" mat-flat-button (click)="resetFilter()"
+                >Reset All</a
+              >
+              <h3>Filters</h3>
+            </div>
           </div>
+          <div>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>Stops</mat-expansion-panel-header>
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetStops()">Reset</a>
+                </div>
+                <section>
+                  <mat-list>
+                    <mat-list-item>
+                      <mat-checkbox [(ngModel)]="stop0" (change)="filterStops()"
+                        >No Stops</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="stop1"
+                        (change)="filterStops()"
+                      >
+                        1 Stop</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox [(ngModel)]="stop2" (change)="filterStops()"
+                        >2 Stops</mat-checkbox
+                      > </mat-list-item
+                    ><mat-list-item>
+                      <mat-checkbox [(ngModel)]="stop3" (change)="filterStops()"
+                        >3+ Stops</mat-checkbox
+                      >
+                    </mat-list-item>
+                  </mat-list>
+                </section>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header
+                  >Departure</mat-expansion-panel-header
+                >
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetDep()">Reset</a>
+                </div>
+                <section>
+                  <mat-list>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="dep1"
+                        (change)="filterDeperture()"
+                        >Before 6.00 AM</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="dep2"
+                        (change)="filterDeperture()"
+                        >6.00 AM - 12.00 PM</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="dep3"
+                        (change)="filterDeperture()"
+                        >12.00 PM - 6.00 PM</mat-checkbox
+                      > </mat-list-item
+                    ><mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="dep4"
+                        (change)="filterDeperture()"
+                        >After 6.00 PM</mat-checkbox
+                      >
+                    </mat-list-item>
+                  </mat-list>
+                </section>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>Arrival</mat-expansion-panel-header>
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetArr()">Reset</a>
+                </div>
+                <section>
+                  <mat-list>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="arr1"
+                        (change)="filterArrival()"
+                        >Before 6.00 AM</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="arr2"
+                        (change)="filterArrival()"
+                        >6.00 AM - 12.00 PM</mat-checkbox
+                      >
+                    </mat-list-item>
+                    <mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="arr3"
+                        (change)="filterArrival()"
+                        >12.00 PM - 6.00 PM</mat-checkbox
+                      > </mat-list-item
+                    ><mat-list-item>
+                      <mat-checkbox
+                        [(ngModel)]="arr4"
+                        (change)="filterArrival()"
+                        >After 6.00 PM</mat-checkbox
+                      >
+                    </mat-list-item>
+                  </mat-list>
+                </section>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>Price</mat-expansion-panel-header>
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetPrice()">Reset</a>
+                </div>
+                <div class="custom-slider">
+                  <ng5-slider
+                    [(value)]="minPrice"
+                    [(highValue)]="maxPrice"
+                    [options]="priceOptions"
+                  ></ng5-slider>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header
+                  >Duration</mat-expansion-panel-header
+                >
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetDuartion()">Reset</a>
+                </div>
+                <div class="custom-slider">
+                  <ng5-slider
+                    [(value)]="minDuration"
+                    [(highValue)]="maxDuration"
+                    [options]="durationOptions"
+                  ></ng5-slider>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header
+                  >Preferred Airlines</mat-expansion-panel-header
+                >
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetAirlines()">Reset</a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+            <mat-accordion>
+              <mat-expansion-panel>
+                <mat-expansion-panel-header
+                  >Preferred Airports</mat-expansion-panel-header
+                >
+                <div style="text-align: right;">
+                  <a mat-flat-button (click)="resetAirports()">Reset</a>
+                </div>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-9 col-lg-9">
+        <div *ngFor="let flight of flightSearchResp" class="filter">
+          <app-flight-itinerary [flight]="flight"></app-flight-itinerary>
         </div>
       </div>
     </div>
