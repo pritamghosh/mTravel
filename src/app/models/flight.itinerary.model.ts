@@ -8,12 +8,12 @@ export class FlightItinerary {
   originCountry: string;
   originCity: string;
   departureTime: string;
-  departureOffser: number = 0;
+  departureOffset: number = 0;
   destinationPoint: string;
   destinationCountry: string;
   destinationCity: string;
   arrivalTime: string;
-  ariivalOffset: number = 0;
+  arrivalOffset: number = 0;
   journeyDuration: number;
   layoverPorts: string[];
   layoverDurations: number[];

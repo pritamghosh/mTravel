@@ -8,12 +8,12 @@ export class FlightInfo {
   originAirportName: string;
   departureDate: Date;
   departureTime: string;
-  departureOffser: number = 0;
+  departureOffset: number = 0;
   destinationPoint: string;
   destinationCountry: string;
   destinationAirportName: string;
   arrivalDate: Date;
   arrivalTime: string;
-  ariivalOffset: number = 0;
+  arrivalOffset: number = 0;
   flightDuration: number;
 }

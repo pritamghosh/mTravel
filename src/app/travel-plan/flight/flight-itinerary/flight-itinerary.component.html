@@ -15,6 +15,11 @@
       <span style="font-weight: bold; font-size: 20px;">{{
         flightItinerary.departureTime | time
       }}</span>
+      <sup
+        ><span style="color: red;font-weight: bold;">
+          {{ flightItinerary.departureOffset | offset }}</span
+        ></sup
+      >
     </div>
   </div>
   <div class="col sm-6 col-md-3 col-lg-3">
@@ -34,6 +39,11 @@
     <span style="font-weight: bold; font-size: 20px;">{{
       flightItinerary.arrivalTime | time
     }}</span>
+    <sup
+      ><span style="color: red;font-weight: bold;">
+        {{ flightItinerary.arrivalOffset | offset }}</span
+      ></sup
+    >
   </div>
   <div class=" col sm-6  col-md-3 col-lg-3">
     <br />
@@ -84,6 +94,11 @@
             <span style="font-size: 20px">
               {{ info.departureTime | time }}</span
             >
+            <sup
+              ><span style="color: red;font-weight: bold;">
+                {{ info.departureOffset | offset }}</span
+              ></sup
+            >
 
             <br />
             <span style="font-size: 10px">
@@ -110,6 +125,11 @@
               info.destinationPoint
             }}</span>
             <span style="font-size: 20px"> {{ info.arrivalTime | time }}</span>
+            <sup
+              ><span style="color: red;font-weight: bold;">
+                {{ info.arrivalOffset | offset }}</span
+              ></sup
+            >
             <br />
             <span style="font-size: 10px">
               {{ info.arrivalDate | date: "fullDate" }}</span
@@ -124,7 +144,7 @@
           <div *ngIf="index < layovers" class="col-md-12 col-sm-12 col-lg-12">
             <hr />
             <div style="text-align: center;display: block">
-              <mat-chip-list style="display: block;text-align: center;">
+              <mat-chip-list>
                 <mat-chip color="primary" selected
                   >{{
                     flightItinerary.layoverDurations[index] | duration

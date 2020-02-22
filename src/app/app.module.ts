@@ -47,6 +47,7 @@ import { FlightService } from "./services/flight.service";
 import { TrailingDotPipe } from "./pipes/trailing-dot.pipe";
 import { TimePipe } from "./pipes/time.pipe";
 import { DurationPipe } from "./pipes/duration.pipe";
+import { OffsetPipe } from './pipes/offset.pipe';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { DurationPipe } from "./pipes/duration.pipe";
     FlightItineraryComponent,
     TrailingDotPipe,
     TimePipe,
-    DurationPipe
+    DurationPipe,
+    OffsetPipe
   ],
   imports: [
     BrowserModule,
