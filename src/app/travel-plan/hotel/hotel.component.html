@@ -121,5 +121,77 @@
       </form>
     </div>
     <hr />
+    <div class="container">
+      <div class="row" style="padding: 10px;">
+        <div class="col-md-3 col-lg-3">
+          <div class="filter">
+            <div>
+              <div>
+                <a style="float: right;" mat-flat-button (click)="resetFilter()"
+                  >Reset All</a
+                >
+                <h3>Filters</h3>
+              </div>
+            </div>
+            <div>
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>Price</mat-expansion-panel-header>
+                  <div style="text-align: right;">
+                    <a mat-flat-button (click)="resetPrice()">Reset</a>
+                  </div>
+                  <div class="custom-slider">
+                    <ng5-slider
+                      [(value)]="minPrice"
+                      [(highValue)]="maxPrice"
+                      [options]="priceOptions"
+                    ></ng5-slider>
+                  </div>
+                </mat-expansion-panel>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header
+                    >Select Type</mat-expansion-panel-header
+                  >
+                  <div style="text-align: right;">
+                    <a mat-flat-button (click)="resetType()">Reset</a>
+                  </div>
+                  <section>
+                    <mat-list>
+                      <mat-list-item>
+                        <mat-checkbox
+                          [(ngModel)]="hotelType"
+                          (change)="filterType()"
+                          >Hotel</mat-checkbox
+                        >
+                      </mat-list-item>
+                      <mat-list-item>
+                        <mat-checkbox
+                          [(ngModel)]="serviceApartmentType"
+                          (change)="filterType()"
+                        >
+                          Service Apartment</mat-checkbox
+                        >
+                      </mat-list-item>
+                      <mat-list-item>
+                        <mat-checkbox
+                          [(ngModel)]="guestHouseType"
+                          (change)="filterType()"
+                          >Guest House</mat-checkbox
+                        >
+                      </mat-list-item>
+                    </mat-list>
+                  </section>
+                </mat-expansion-panel>
+              </mat-accordion>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9 col-lg-9">
+          <div *ngFor="let hotel of filteredResponse" class="filter">
+            <app-hotel-details [hotel]="hotel" [request]="request"></app-hotel-details>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

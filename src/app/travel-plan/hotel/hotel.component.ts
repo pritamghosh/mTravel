@@ -1,6 +1,10 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Hotel } from "src/app/models/hotel.model";
+import { Options } from "ng5-slider";
+import { HotelService } from "src/app/services/hotel.service";
+import { Subscription } from "rxjs";
+import { HotelRequet } from "src/app/models/hotel.request.model";
 
 @Component({
   selector: "app-hotel",
@@ -12,7 +16,21 @@ export class HotelComponent implements OnInit, OnDestroy {
   searchHotelForm: FormGroup;
   hotelSearchResp: Hotel[];
   filteredResponse: Hotel[];
-  constructor() {}
+  subscription: Subscription;
+
+  request: HotelRequet;
+
+  hotelType = true;
+  serviceApartmentType = true;
+  guestHouseType = true;
+
+  minPrice = 0;
+  minDuration = 0;
+  maxPrice = 0;
+
+  currency = "₹";
+  priceOptions: Options;
+  constructor(private service: HotelService) {}
 
   ngOnInit(): void {
     this.searchHotelForm = new FormGroup({
@@ -24,11 +42,30 @@ export class HotelComponent implements OnInit, OnDestroy {
       rooms: new FormControl(1, Validators.required),
       type: new FormControl()
     });
+
+    this.maxPrice = 3000;
+    this.priceOptions = {
+      floor: 0,
+      ceil: this.maxPrice,
+      translate: (value: number, label: any): string => {
+        return this.currency + value;
+      }
+    };
+    this.subscription = this.service.getResponse().subscribe(resp => {
+      this.hotelSearchResp = resp;
+      this.filteredResponse = resp;
+      console.log(JSON.stringify(this.hotelSearchResp));
+    });
+    this.onSubmit();
   }
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   onSubmit() {
     console.log(JSON.stringify(this.searchHotelForm.value));
+    this.service.search(this.searchHotelForm.value);
+    this.request = this.searchHotelForm.value;
   }
 
   get maxCheckOutDate() {
@@ -38,5 +75,16 @@ export class HotelComponent implements OnInit, OnDestroy {
     return this.minCheckInDate;
   }
 
-  resetFilter() {}
+  resetFilter() {
+    this.resetPrice();
+    this.resetType();
+  }
+  resetPrice() {}
+  resetType() {
+    this.hotelType = true;
+    this.serviceApartmentType = true;
+    this.guestHouseType = true;
+  }
+
+  filterType() {}
 }

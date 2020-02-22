@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Options, LabelType } from "ng5-slider";
 import { FlightItinerary } from "src/app/models/flight.itinerary.model";
 import { FlightService } from "src/app/services/flight.service";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-flight",
@@ -15,6 +16,7 @@ export class FlightComponent implements OnInit {
   searchFlightForm: FormGroup;
   flightSearchResp: FlightItinerary[];
   filteredResponse: FlightItinerary[];
+  subscription: Subscription;
 
   stop0 = true;
   stop1 = true;
@@ -67,16 +69,21 @@ export class FlightComponent implements OnInit {
       infants: new FormControl(0, Validators.pattern("[0-9]{1}")),
       class_: new FormControl("E", Validators.required)
     });
-    this.flightService.getFlightResponse().subscribe(resp => {
+    this.subscription = this.flightService.getResponse().subscribe(resp => {
       this.flightSearchResp = resp;
+      this.filteredResponse = resp;
       console.log(JSON.stringify(this.flightSearchResp));
     });
     this.onSubmit();
   }
 
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
   onSubmit() {
     console.log(JSON.stringify(this.searchFlightForm.value));
-    this.flightService.searchFlight();
+    this.flightService.search();
   }
 
   filterStops() {}

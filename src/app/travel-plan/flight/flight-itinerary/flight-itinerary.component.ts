@@ -58,5 +58,5 @@ export class FlightItineraryComponent implements OnInit {
   get getIcon() {
     return this.showFlightInfo ? "keyboard_arrow_up" : "keyboard_arrow_down";
   }
-  bookFlight() {}
+  addToTravelPlan() {}
 }

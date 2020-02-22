@@ -11,7 +11,7 @@ export class FlightService {
   localUrl = "assets/fresp.json";
   constructor(private http: HttpClient) {}
 
-  searchFlight() {
+  search() {
     return this.http
       .get<FlightItinerary[]>(this.localUrl)
       .subscribe((resp: FlightItinerary[]) =>
@@ -19,7 +19,7 @@ export class FlightService {
       );
   }
 
-  getFlightResponse(): Observable<FlightItinerary[]> {
+  getResponse(): Observable<FlightItinerary[]> {
     return this.searchResponseSubject.asObservable();
   }
 }

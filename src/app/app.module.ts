@@ -48,6 +48,8 @@ import { TrailingDotPipe } from "./pipes/trailing-dot.pipe";
 import { TimePipe } from "./pipes/time.pipe";
 import { DurationPipe } from "./pipes/duration.pipe";
 import { OffsetPipe } from './pipes/offset.pipe';
+import { HotelDetailsComponent } from './hotel/hotel-details/hotel-details.component';
+import { AddressPipe } from './pipes/address.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import { OffsetPipe } from './pipes/offset.pipe';
     TrailingDotPipe,
     TimePipe,
     DurationPipe,
-    OffsetPipe
+    OffsetPipe,
+    HotelDetailsComponent,
+    AddressPipe
   ],
   imports: [
     BrowserModule,

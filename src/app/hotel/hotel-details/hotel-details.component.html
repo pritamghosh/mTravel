@@ -1,0 +1,104 @@
+<div class="row">
+  <div class="clo-md-5 col-lg-5 com-sm-12">
+    <span style="width: 300px;">
+      <img
+        *ngIf="hotel.img != null && hotel.img[0] != null; else titleBlock"
+        [src]="hotel.img[0]"
+        [alt]="hotel.name"
+        style="border-radius: 10px;"
+      />
+      <ng-template #titleBlock
+        ><span
+          style="font-size: 20px; font-weight: bolder;height: 250px;width: 300px;"
+          >{{ hotel.name }}</span
+        ></ng-template
+      ></span
+    >
+  </div>
+  <div class="clo-md-7 col-lg-7 com-sm-12">
+    <div class="row">
+      <div class="col-md-6 col-lg-6 col-sm-6">
+        <span style="font-size: 20px;"
+          ><strong>{{ hotel.name }}</strong></span
+        >
+        <br /><br />
+        <span>{{ hotel.city }}</span>
+        <br /><br />
+        <!-- <span 
+      ><i class="material-icons">
+        location_on
+      </i></span -->
+        <span style="white-space: pre-line">
+          {{ hotel.address | address: 25 }}</span
+        ><br /><br />
+        <span>Raiting : {{ hotel.raiting }}</span>
+      </div>
+      <div
+        class="col-md-6 col-lg-6 col-sm-6"
+        style="text-align: right;padding-right: 20px;line-height: 1.6;"
+      >
+        <span><strong>Price: </strong></span><br />
+        <span style="font-size: 30px; font-weight: bold;"
+          >{{ currency }}{{ hotel.price }}</span
+        >
+        <br />
+        <span>{{ requestDetails }}</span>
+      </div>
+    </div>
+    <div class="com-md-12 col-lg-12" style="margin-top:20px;text-align: right;">
+      <button
+        mat-button
+        color="primary"
+        style="float: left;margin-left: -20px;"
+        (click)="showHotelDetails = !showHotelDetails"
+      >
+        Hotel Details
+        <i class="material-icons">
+          {{ getIcon }}
+        </i>
+      </button>
+      <button mat-raised-button color="primary" (click)="addToTravelPlan()">
+        Add To Plan
+      </button>
+    </div>
+  </div>
+  <div
+    class="col-lg-12 col-md-12 col-sm-12"
+    [hidden]="!showHotelDetails"
+    style="white-space: pre-wrap; text-align: justify"
+  >
+    <hr />
+    <div class="row">
+      <div class="col-lg-6 col-sm-6">
+        <span><strong>Check in from:</strong></span>
+        <br />
+        <span style="font-weight: bold;font-size: large;">{{
+          hotel.checkInFrom | time
+        }}</span>
+      </div>
+      <div class="col-lg-6 col-sm-6">
+        <span><strong>Check out before:</strong></span>
+        <br />
+        <span style="font-weight: bold;font-size: large;">{{
+          hotel.checkOutBefore | time
+        }}</span>
+      </div>
+      <div class="col-md-12">
+        <span><strong>Hotel description:</strong></span>
+        <br /><span>{{ hotel.description }}</span>
+      </div>
+      <div class="col-md-12">
+        <span><strong>Breakfast:</strong></span>
+        <br /><span>{{ hotel.brekfast }}</span>
+      </div>
+      <div class="col-md-12">
+        <span><strong>Children:</strong></span>
+        <br /><span>{{ hotel.children }}</span>
+      </div>
+      <div class="col-md-12">
+        <span><strong>Using Exiting Beds:</strong></span>
+        <br /><span>{{ hotel.extraBed }}</span>
+      </div>
+    </div>
+  </div>
+</div>
