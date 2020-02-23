@@ -1,1 +1,95 @@
-<p>car works!</p>
+<div class="container-fluid">
+  <div class="search">
+    <div class="container">
+      <form
+        [formGroup]="searchCarForm"
+        (ngSubmit)="onSubmit()"
+        style="padding: 10px;"
+      >
+        <div class="row">
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field>
+              <mat-label>Pick-up Location</mat-label>
+              <input
+                matInput
+                formControlName="pickUpLocation"
+                #pl
+                (input)="pl.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field>
+              <mat-label>Drop-off Location</mat-label>
+              <input
+                matInput
+                formControlName="dropOffLocation"
+                #dropOffLocation
+                (input)="
+                  dropOffLocation.value = $event.target.value.toUpperCase()
+                "
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field style="width: 180px%;">
+              <mat-label>Pick-up Date</mat-label>
+              <input
+                matInput
+                [min]="minCheckInDate"
+                [matDatepicker]="pickUpDate"
+                formControlName="pickUpDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="pickUpDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #pickUpDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6" style="text-align: right;">
+            <mat-form-field>
+              <mat-label>Pick-up Time</mat-label>
+              <input
+                matInput
+                [ngxTimepicker]="defaultValue"
+                aria-label="default time"
+                formControlName="pickUpTime"
+              />
+            </mat-form-field>
+            <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field>
+              <mat-label>No of Passenegr</mat-label>
+              <input matInput formControlName="numberOfPassengers" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field>
+              <mat-label>No of Luggages</mat-label>
+              <input matInput formControlName="numberOfLuggages" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6">
+            <mat-form-field>
+              <mat-label>Select Car Type</mat-label>
+              <input matInput formControlName="carType" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-3 col-lg-3 col-sm-6" style="text-align: right;">
+            <button
+              mat-raised-button
+              type="submit"
+              color="accent"
+              style="margin-top: 10px; "
+              [disabled]="!searchCarForm.valid"
+            >
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
