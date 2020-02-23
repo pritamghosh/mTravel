@@ -1,0 +1,117 @@
+<form [formGroup]="paxForm">
+  <div class="row">
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          formControlName="firstName"
+          #firstName
+          (input)="firstName.value = $event.target.value.toUpperCase()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          formControlName="lastName"
+          #lastName
+          (input)="lastName.value = $event.target.value.toUpperCase()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Date Of Birth</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          [max]="maxDob"
+          [matDatepicker]="dateOfBirth"
+          formControlName="dateOfBirth"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="dateOfBirth"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #dateOfBirth></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Select Gender</mat-label>
+        <mat-select formControlName="gender" [disabled]="isdisabled">
+          <mat-option value="Male">
+            Male
+          </mat-option>
+          <mat-option value="Female">
+            Female
+          </mat-option>
+          <mat-option value="Other">
+            Other
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Passport No</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          formControlName="passportNo"
+          #passportNo
+          (input)="passportNo.value = $event.target.value.toUpperCase()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Issuing Country</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          formControlName="issuingCountry"
+          #issuingCountry
+          (input)="issuingCountry.value = $event.target.value.toUpperCase()"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Date Of Expiary</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          [matDatepicker]="expiaryDate"
+          formControlName="expiaryDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="expiaryDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #expiaryDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <div class="col-md-3 col-lg-3 col-sm-6">
+      <mat-form-field>
+        <mat-label>Date of Issue</mat-label>
+        <input
+          [disabled]="isdisabled"
+          matInput
+          [matDatepicker]="issuingDate"
+          formControlName="issuingDate"
+        />
+        <mat-datepicker-toggle
+          matSuffix
+          [for]="issuingDate"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #issuingDate></mat-datepicker>
+      </mat-form-field>
+    </div>
+  </div>
+</form>

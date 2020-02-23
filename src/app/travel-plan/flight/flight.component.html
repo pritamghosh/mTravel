@@ -326,7 +326,10 @@
       </div>
       <div class="col-md-9 col-lg-9">
         <div *ngFor="let flight of filteredResponse" class="filter">
-          <app-flight-itinerary [flight]="flight"></app-flight-itinerary>
+          <app-flight-itinerary
+            [flight]="flight"
+            [request]="request"
+          ></app-flight-itinerary>
         </div>
       </div>
     </div>

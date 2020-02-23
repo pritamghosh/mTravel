@@ -50,7 +50,6 @@ export class HotelComponent implements OnInit, OnDestroy {
       this.updateFilter();
       this.isSearched = true;
     });
-    this.onSubmit();
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

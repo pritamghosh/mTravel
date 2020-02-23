@@ -28,10 +28,16 @@
     <span style="font-size: 30px; font-weight: bold;"
       >{{ currency }}{{ car.price }}</span
     >
-    <div>
+    <div *ngIf="!isView; else view">
       <button mat-raised-button color="primary" (click)="addToTravelPlan()">
         Add To Plan
       </button>
     </div>
+    <ng-template #view
+      ><div>
+        <span>Pick up loc: {{ request.pickUpLocation }}</span
+        ><br /><span>Drop Off Location : {{ request.dropOffLocation }}</span>
+      </div>
+    </ng-template>
   </div>
 </div>

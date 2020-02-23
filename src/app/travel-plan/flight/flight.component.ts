@@ -4,6 +4,8 @@ import { Options, LabelType } from "ng5-slider";
 import { FlightItinerary } from "src/app/models/flight.itinerary.model";
 import { FlightService } from "src/app/services/flight.service";
 import { Subscription } from "rxjs";
+import { FlightRequest } from "src/app/models/flight.request.model";
+import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
 
 @Component({
   selector: "app-flight",
@@ -18,7 +20,7 @@ export class FlightComponent implements OnInit {
   filteredResponse: FlightItinerary[];
   subscription: Subscription;
   isSearched = false;
-
+  request: FlightRequest;
   stop0 = true;
   stop1 = true;
   stop2 = true;
@@ -60,7 +62,6 @@ export class FlightComponent implements OnInit {
       this.updateFilter();
       this.isSearched = true;
     });
-    this.onSubmit();
   }
 
   updateFilter() {
@@ -87,7 +88,8 @@ export class FlightComponent implements OnInit {
   }
 
   onSubmit() {
-    this.flightService.search(this.searchFlightForm.value);
+    this.request = this.searchFlightForm.value;
+    this.flightService.search(this.request);
   }
 
   swtchSourceDest() {

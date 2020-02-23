@@ -1,0 +1,44 @@
+<form [formGroup]="travellersForm">
+  <div class="row">
+    <div class="col-md-12">
+      <div formArrayName="travellers">
+        <div
+          *ngFor="let pax of travellers?.controls; let index = index"
+          class="filter"
+        >
+          <app-passenger [paxForm]="pax"></app-passenger>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="filter">
+        <div class="row ">
+          <div class="com-sm-12 col-md-6">
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input
+                [readonly]="isReadOnly"
+                matInput
+                formControlName="email"
+                #email
+                (input)="email.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="com-sm-12 col-md-6">
+            <mat-form-field style="width:100%">
+              <mat-label>Contact No:</mat-label>
+              <input
+                [readonly]="isReadOnly"
+                matInput
+                formControlName="contact"
+                #contact
+                (input)="contact.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

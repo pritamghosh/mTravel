@@ -3,6 +3,8 @@ import { FlightItinerary } from "src/app/models/flight.itinerary.model";
 import { TravelService } from "src/app/services/travel.service";
 import { FlightRequest } from "src/app/models/flight.request.model";
 import { FlightPlan } from "src/app/models/flight.plan.model";
+import { Travellers } from "src/app/models/travellers.model";
+import { Traveller } from "src/app/models/traveller.model";
 
 @Component({
   selector: "app-flight-itinerary",
@@ -66,6 +68,15 @@ export class FlightItineraryComponent implements OnInit {
     let fp = new FlightPlan();
     fp.flight = this.flightItinerary;
     fp.req = this.request;
+    let tvs = new Travellers();
+    tvs.email = "gh@hg.com";
+    tvs.contact = "9078766565";
+    tvs.travellers = [];
+    let tv1 = new Traveller();
+    tv1.firstName = "PGHOSH";
+    fp.travellers = tvs;
+    tvs.travellers.push(tv1);
+    tvs.travellers.push(tv1);
     this.service.pushFlight(fp);
   }
 }

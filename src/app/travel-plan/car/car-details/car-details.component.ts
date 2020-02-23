@@ -14,6 +14,7 @@ import { faUser, faSuitcase } from "@fortawesome/free-solid-svg-icons";
 export class CarDetailsComponent implements OnInit {
   @Input("car") car: Car;
   @Input("request") request: CarHire;
+  @Input("view") isView = false;
   showDetails = false;
   currency = "₹";
   luggage = faSuitcase;

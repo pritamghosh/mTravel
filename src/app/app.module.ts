@@ -28,6 +28,7 @@ import { MatButtonToggleModule } from "@angular/material/button-toggle";
 import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatChipsModule } from "@angular/material/chips";
+import { MatStepperModule } from "@angular/material/stepper";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { Ng5SliderModule } from "ng5-slider";
@@ -54,6 +55,8 @@ import { AddressPipe } from "./pipes/address.pipe";
 import { HotelDetailsComponent } from "./travel-plan/hotel/hotel-details/hotel-details.component";
 import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.component";
 import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan.component";
+import { PassengerComponent } from './travell-plan/passenger/passenger.component';
+import { PassenegersComponent } from './travell-plan/passenegers/passenegers.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +77,9 @@ import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan
     HotelDetailsComponent,
     AddressPipe,
     CarDetailsComponent,
-    OverviewPlanComponent
+    OverviewPlanComponent,
+    PassengerComponent,
+    PassenegersComponent
   ],
   imports: [
     BrowserModule,
@@ -105,6 +110,7 @@ import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan
     MatButtonToggleModule,
     MatCheckboxModule,
     MatSliderModule,
+    MatStepperModule,
     MatChipsModule,
     NgxMaterialTimepickerModule,
     Ng5SliderModule,
@@ -136,7 +142,8 @@ import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan
     MatButtonToggleModule,
     MatCheckboxModule,
     MatSliderModule,
-    MatChipsModule
+    MatChipsModule,
+    MatStepperModule
   ]
 })
 export class AppModule {}

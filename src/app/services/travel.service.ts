@@ -11,6 +11,7 @@ import { InsurancePlan } from "../models/insurance.plan.model";
 })
 export class TravelService {
   constructor(private http: HttpClient) {}
+  tabIndex = new Subject<number>();
   flightSubject = new Subject<FlightPlan>();
   carSubject = new Subject<CarPlan>();
   hotelSubject = new Subject<HotelPlan>();

@@ -60,8 +60,6 @@ export class CarComponent implements OnInit, OnDestroy {
       this.updateFilters();
       this.isSearched = true;
     });
-
-    this.onSubmit();
   }
 
   updateFilters() {
@@ -122,9 +120,7 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   filterPrice() {}
-  filterPassenger() {
-    console.log(this.minLuggage);
-  }
+  filterPassenger() {}
   filterLuggage() {}
   filterType() {}
   filterClass() {}

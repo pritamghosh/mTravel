@@ -12,6 +12,7 @@ import { HotelPlan } from "src/app/models/hotel.plan.model";
 export class HotelDetailsComponent implements OnInit {
   @Input("hotel") hotel: Hotel;
   @Input("request") request: HotelRequet;
+  @Input("view") isView = false;
   showHotelDetails = false;
   currency = "₹";
   constructor(private service: TravelService) {}
@@ -20,6 +21,8 @@ export class HotelDetailsComponent implements OnInit {
     let hp = new HotelPlan();
     hp.hotel = this.hotel;
     hp.req = this.request;
+    console.log(hp.req);
+
     this.service.pushHotel(hp);
   }
   get getIcon() {
