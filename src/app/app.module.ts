@@ -50,8 +50,8 @@ import { DurationPipe } from "./pipes/duration.pipe";
 import { OffsetPipe } from "./pipes/offset.pipe";
 
 import { AddressPipe } from "./pipes/address.pipe";
-import { CarDetailsComponent } from "./car/car-details/car-details.component";
 import { HotelDetailsComponent } from "./travel-plan/hotel/hotel-details/hotel-details.component";
+import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.component";
 
 @NgModule({
   declarations: [

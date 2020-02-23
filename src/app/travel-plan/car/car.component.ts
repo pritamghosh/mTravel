@@ -57,7 +57,6 @@ export class CarComponent implements OnInit, OnDestroy {
     this.subscription = this.service.getResponse().subscribe(resp => {
       this.carSearchResp = resp;
       this.filteredResponse = resp;
-      console.log(JSON.stringify(this.carSearchResp));
       this.updateFilters();
       this.isSearched = true;
     });
@@ -94,7 +93,6 @@ export class CarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
   onSubmit() {
-    console.log(JSON.stringify(this.searchCarForm.value));
     this.service.search(this.searchCarForm.value);
     this.request = this.searchCarForm.value;
   }

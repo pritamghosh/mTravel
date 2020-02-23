@@ -197,7 +197,7 @@
                 >Select Car Class</mat-expansion-panel-header
               >
               <div style="text-align: right;">
-                <a mat-flat-button (click)="resetType()">Reset</a>
+                <a mat-flat-button (click)="resetClass()">Reset</a>
               </div>
               <section>
                 <mat-list>
@@ -276,6 +276,11 @@
               </section>
             </mat-expansion-panel>
           </mat-accordion>
+        </div>
+      </div>
+      <div class="col-md-9 col-lg-9">
+        <div *ngFor="let car of filteredResponse" class="filter">
+          <app-car-details [car]="car" [request]="request"></app-car-details>
         </div>
       </div>
     </div>

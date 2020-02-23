@@ -90,6 +90,17 @@ export class FlightComponent implements OnInit {
     this.flightService.search();
   }
 
+  swtchSourceDest() {
+    const from: string = this.searchFlightForm.get("from").value;
+    const to: string = this.searchFlightForm.get("to").value;
+    this.searchFlightForm
+      .get("from")
+      .setValue(to != null ? to.toUpperCase() : null);
+    this.searchFlightForm
+      .get("to")
+      .setValue(from != null ? from.toUpperCase() : null);
+  }
+
   filterStops() {}
   filterDeperture() {}
   filterArrival() {}

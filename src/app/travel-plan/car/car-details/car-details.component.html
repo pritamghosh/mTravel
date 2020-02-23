@@ -1,0 +1,37 @@
+<div class="row">
+  <div
+    class="col-md-4"
+    style="text-align: left;padding-left: 20px;line-height: 1.6"
+  >
+    <span style="font-size: 20px;">{{ car.class }}</span>
+    <br />
+    <span>{{ car.type }}</span>
+    <br />
+    <i class="fa fa-users" style="font-size: 20px;"> </i
+    ><span style="font-size: 20px;">
+      &nbsp;&nbsp;{{ car.passengerCapacity }}</span
+    >
+    <br />
+    <i class="fa fa-suitcase" style="font-size: 20px;"> </i
+    ><span style="font-size: 20px;">
+      &nbsp;&nbsp;{{ car.baggageCapacity }}</span
+    >
+  </div>
+  <div class="col-md-4" style="text-align: center;">
+    <img [src]="car.img" [alt]="car.type" style="width: 200px;" />
+  </div>
+  <div
+    class="col-md-4"
+    style="text-align: right;padding-right: 20px;line-height: 1.6; "
+  >
+    <span><strong>Price: </strong></span><br />
+    <span style="font-size: 30px; font-weight: bold;"
+      >{{ currency }}{{ car.price }}</span
+    >
+    <div>
+      <button mat-raised-button color="primary" (click)="addToTravelPlan()">
+        Add To Plan
+      </button>
+    </div>
+  </div>
+</div>
