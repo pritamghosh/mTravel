@@ -1,0 +1,170 @@
+<div class="container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Registration Form</mat-card-title>
+    </mat-card-header>
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+      <mat-card-content>
+        <div class="row">
+          <div class="col-md-6 col-sm-6 col-lg-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>First Name</mat-label>
+              <input
+                matInput
+                formControlName="firstName"
+                #firstName
+                (input)="firstName.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-sm-6 col-lg-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Last Name</mat-label>
+              <input
+                matInput
+                formControlName="lastName"
+                #lastName
+                (input)="lastName.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Date Of Birth</mat-label>
+              <input
+                matInput
+                [max]="maxDob"
+                [matDatepicker]="dateOfBirth"
+                formControlName="dateOfBirth"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="dateOfBirth"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #dateOfBirth></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Select Gender</mat-label>
+              <mat-select formControlName="gender">
+                <mat-option value="Male">
+                  Male
+                </mat-option>
+                <mat-option value="Female">
+                  Female
+                </mat-option>
+                <mat-option value="Other">
+                  Other
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                #email
+                (input)="email.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Contact</mat-label>
+              <input
+                matInput
+                formControlName="contact"
+                #contact
+                (input)="contact.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password" />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Confirm Password</mat-label>
+              <input type="password" matInput formControlName="cpassword" />
+            </mat-form-field>
+          </div>
+
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Passport No</mat-label>
+              <input
+                matInput
+                formControlName="passportNo"
+                #passportNo
+                (input)="passportNo.value = $event.target.value.toUpperCase()"
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Issuing Country</mat-label>
+              <input
+                matInput
+                formControlName="issuingCountry"
+                #issuingCountry
+                (input)="
+                  issuingCountry.value = $event.target.value.toUpperCase()
+                "
+              />
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Date Of Expiary</mat-label>
+              <input
+                matInput
+                [matDatepicker]="expiaryDate"
+                formControlName="expiaryDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="expiaryDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #expiaryDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+          <div class="col-md-6 col-lg-6 col-sm-6">
+            <mat-form-field style="width: 100%;">
+              <mat-label>Date of Issue</mat-label>
+              <input
+                matInput
+                [matDatepicker]="issuingDate"
+                formControlName="issuingDate"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="issuingDate"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #issuingDate></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <div>
+        <button mat-raised-button color="accent">
+          Reset
+        </button>
+        <div style="float: right ;">
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="!registrationForm.valid"
+          >
+            Register
+          </button>
+        </div>
+      </div>
+    </form>
+  </mat-card>
+</div>

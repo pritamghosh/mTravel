@@ -57,6 +57,7 @@ import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.c
 import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan.component";
 import { PassengerComponent } from './travell-plan/passenger/passenger.component';
 import { PassenegersComponent } from './travell-plan/passenegers/passenegers.component';
+import { RegistrationComponent } from './registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -79,7 +80,8 @@ import { PassenegersComponent } from './travell-plan/passenegers/passenegers.com
     CarDetailsComponent,
     OverviewPlanComponent,
     PassengerComponent,
-    PassenegersComponent
+    PassenegersComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,

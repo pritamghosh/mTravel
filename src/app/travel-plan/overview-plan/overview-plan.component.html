@@ -1,6 +1,7 @@
 <div class="container">
   <mat-card>
     <mat-accordion>
+      <!-- flight details -->
       <mat-expansion-panel [expanded]="step === 1" (opened)="(step == 1)">
         <mat-expansion-panel-header>
           <mat-panel-title> Flight PLan </mat-panel-title>
@@ -47,7 +48,7 @@
           </button>
         </mat-action-row>
       </mat-expansion-panel>
-<!-- hotel details -->
+      <!-- hotel details -->
       <mat-expansion-panel [expanded]="step === 2" (opened)="(step == 2)">
         <mat-expansion-panel-header>
           <mat-panel-title> Hotel PLan </mat-panel-title>
@@ -170,16 +171,10 @@
         <mat-expansion-panel-header>
           <mat-panel-title> Insurance PLan </mat-panel-title>
         </mat-expansion-panel-header>
-        <div *ngIf="cp != null; else noInsurancePlan">
+        <div *ngIf="ip != null; else noInsurancePlan">
           <mat-list>
             <mat-list-item>Insurance details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-car-details
-                [car]="ip.car"
-                [request]="ip.req"
-                [view]="true"
-              ></app-car-details>
-            </div>
+            <div style="padding: 20px;" class="filter"></div>
           </mat-list>
         </div>
         <ng-template #noInsurancePlan>

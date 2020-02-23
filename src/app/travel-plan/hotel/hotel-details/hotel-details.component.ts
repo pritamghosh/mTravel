@@ -21,8 +21,6 @@ export class HotelDetailsComponent implements OnInit {
     let hp = new HotelPlan();
     hp.hotel = this.hotel;
     hp.req = this.request;
-    console.log(hp.req);
-
     this.service.pushHotel(hp);
   }
   get getIcon() {

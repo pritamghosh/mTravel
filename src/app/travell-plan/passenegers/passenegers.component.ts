@@ -36,7 +36,7 @@ export class PassenegersComponent implements OnInit {
     } else {
       this.travellersForm = new FormGroup({
         email: new FormControl(Validators.email),
-        contact: new FormControl(Validators.pattern("[0-9+\b}{10-15}"))
+        contact: new FormControl(Validators.pattern("[0-9+\b]{10-15}"))
       });
     }
   }

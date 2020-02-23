@@ -15,7 +15,8 @@ import { Traveller } from "src/app/models/traveller.model";
 export class PassengerComponent implements OnInit {
   maxDob = new Date();
   @Input() paxForm: FormGroup;
+  isdisabled = true;
   constructor() {}
-  @Input("diabled") isdisabled = true;
+
   ngOnInit(): void {}
 }
