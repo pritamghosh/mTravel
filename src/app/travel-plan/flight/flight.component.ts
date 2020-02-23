@@ -17,6 +17,7 @@ export class FlightComponent implements OnInit {
   flightSearchResp: FlightItinerary[];
   filteredResponse: FlightItinerary[];
   subscription: Subscription;
+  isSearched = false;
 
   stop0 = true;
   stop1 = true;
@@ -43,6 +44,26 @@ export class FlightComponent implements OnInit {
   constructor(private flightService: FlightService) {}
 
   ngOnInit(): void {
+    this.searchFlightForm = new FormGroup({
+      from: new FormControl(null, Validators.required),
+      to: new FormControl(null, Validators.required),
+      depDate: new FormControl(new Date(), Validators.required),
+      returnDate: new FormControl(),
+      adults: new FormControl(1, Validators.pattern("[0-9]{1}")),
+      children: new FormControl(0, Validators.pattern("[0-9]{1}")),
+      infants: new FormControl(0, Validators.pattern("[0-9]{1}")),
+      class_: new FormControl("E", Validators.required)
+    });
+    this.subscription = this.flightService.getResponse().subscribe(resp => {
+      this.flightSearchResp = resp;
+      this.filteredResponse = resp;
+      this.updateFilter();
+      this.isSearched = true;
+    });
+    this.onSubmit();
+  }
+
+  updateFilter() {
     this.maxDuration = 72 * 60;
     this.maxPrice = 3000;
     this.priceOptions = {
@@ -59,22 +80,6 @@ export class FlightComponent implements OnInit {
         return Math.floor(value / 60) + "h " + (value % 60) + "m";
       }
     };
-    this.searchFlightForm = new FormGroup({
-      from: new FormControl(null, Validators.required),
-      to: new FormControl(null, Validators.required),
-      depDate: new FormControl(new Date(), Validators.required),
-      returnDate: new FormControl(),
-      adults: new FormControl(1, Validators.pattern("[0-9]{1}")),
-      children: new FormControl(0, Validators.pattern("[0-9]{1}")),
-      infants: new FormControl(0, Validators.pattern("[0-9]{1}")),
-      class_: new FormControl("E", Validators.required)
-    });
-    this.subscription = this.flightService.getResponse().subscribe(resp => {
-      this.flightSearchResp = resp;
-      this.filteredResponse = resp;
-      console.log(JSON.stringify(this.flightSearchResp));
-    });
-    this.onSubmit();
   }
 
   ngOnDestroy(): void {
@@ -82,7 +87,6 @@ export class FlightComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.searchFlightForm.value));
     this.flightService.search();
   }
 

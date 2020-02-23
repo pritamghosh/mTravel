@@ -1,0 +1,34 @@
+[{
+"type": "Hatchback",
+"price": 2000,
+"class": "Mini",
+"passengerCapacity": 4,
+"baggageCapacity": 2,
+"img": "assets/car/mini4.jpg"
+
+},{
+"type": "Sedan",
+"price": 4000,
+"class": "Premimun",
+"passengerCapacity": 4,
+"baggageCapacity": 2,
+"img": "assets/car/premmimum4.jpg"
+
+},{
+"type": "Truck",
+"price": 5000,
+"class": "Compact",
+"passengerCapacity": 2,
+"baggageCapacity": 6,
+"img": "assets/car/compact2+6.jpg"
+},
+{
+"type": "Van",
+"price": 5000,
+"class": "Compact",
+"passengerCapacity": 4,
+"baggageCapacity": 4,
+"img": "assets/car/compact4.jpg"
+}
+
+]

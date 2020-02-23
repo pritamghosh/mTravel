@@ -17,6 +17,28 @@ export class CarComponent implements OnInit, OnDestroy {
   carSearchResp: Car[];
   filteredResponse: Car[];
   subscription: Subscription;
+  isSearched = false;
+  minPrice = 0;
+  maxPrice = 0;
+  minPassenger = 0;
+  maxPassenger = 10;
+  minLuggage = 0;
+  maxLuggage = 10;
+  currency = "₹";
+  priceOptions: Options;
+  PassengerOptions: Options;
+  luggageOptions: Options;
+
+  miniClass = true;
+  economyClass = true;
+  premimumClass = true;
+  compactClass = true;
+
+  type2to3 = true;
+  type4to5 = true;
+  typeSuv = true;
+  typeVan = true;
+  typeTruck = true;
 
   request: CarHire;
   constructor(private service: CarService) {}
@@ -26,14 +48,86 @@ export class CarComponent implements OnInit, OnDestroy {
       pickUpLocation: new FormControl("", Validators.required),
       dropOffLocation: new FormControl("", Validators.required),
       pickUpDate: new FormControl(this.minCheckInDate, Validators.required),
-      pickUpTime: new FormControl("10:00 PM", Validators.required),
-      numberOfPassengers: new FormControl(),
-      numberOfLuggarge: new FormControl(),
-      carType: new FormControl()
+      pickUpTime: new FormControl("10:00 AM", Validators.required),
+      numberOfPassengers: new FormControl(1, Validators.pattern("[0-9]{1}")),
+      numberOfLuggages: new FormControl(0, Validators.pattern("[0-9]{0,1}")),
+      carType: new FormControl(""),
+      carClass: new FormControl("")
     });
+    this.subscription = this.service.getResponse().subscribe(resp => {
+      this.carSearchResp = resp;
+      this.filteredResponse = resp;
+      console.log(JSON.stringify(this.carSearchResp));
+      this.updateFilters();
+      this.isSearched = true;
+    });
+
+    this.onSubmit();
+  }
+
+  updateFilters() {
+    this.maxPrice = 6000;
+    this.priceOptions = {
+      floor: 0,
+      ceil: this.maxPrice,
+      translate: (value: number, label: any): string => {
+        return this.currency + value;
+      }
+    };
+
+    this.PassengerOptions = {
+      floor: 0,
+      ceil: 10,
+      step: 1,
+      translate: (value: number, label: any): any => {
+        return value;
+      }
+    };
+    this.maxLuggage =
+      this.request.numberOfLuggages > 0 ? this.request.numberOfLuggages : 10;
+    this.maxPassenger =
+      this.request.numberOfPassengers > 0
+        ? this.request.numberOfPassengers
+        : 10;
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-  onSubmit() {}
+  onSubmit() {
+    console.log(JSON.stringify(this.searchCarForm.value));
+    this.service.search(this.searchCarForm.value);
+    this.request = this.searchCarForm.value;
+  }
+
+  resetFilter() {
+    this.resetPrice();
+    this.resetType();
+    this.resetClass();
+    this.resetPassenger();
+    this.resetLuggage();
+  }
+  resetPrice() {}
+  resetPassenger() {}
+  resetLuggage() {}
+  resetType() {
+    this.type2to3 = true;
+    this.type4to5 = true;
+    this.typeSuv = true;
+    this.typeVan = true;
+    this.typeTruck = true;
+  }
+  resetClass() {
+    this.miniClass = true;
+    this.economyClass = true;
+    this.premimumClass = true;
+    this.compactClass = true;
+  }
+
+  filterPrice() {}
+  filterPassenger() {
+    console.log(this.minLuggage);
+  }
+  filterLuggage() {}
+  filterType() {}
+  filterClass() {}
 }

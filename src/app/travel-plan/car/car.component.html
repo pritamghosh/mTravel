@@ -7,77 +7,124 @@
         style="padding: 10px;"
       >
         <div class="row">
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field>
-              <mat-label>Pick-up Location</mat-label>
-              <input
-                matInput
-                formControlName="pickUpLocation"
-                #pl
-                (input)="pl.value = $event.target.value.toUpperCase()"
-              />
-            </mat-form-field>
+          <div class="col-md-12 col-lg-11">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Pick-up Location</mat-label>
+                  <input
+                    matInput
+                    formControlName="pickUpLocation"
+                    #pl
+                    (input)="pl.value = $event.target.value.toUpperCase()"
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Drop-off Location</mat-label>
+                  <input
+                    matInput
+                    formControlName="dropOffLocation"
+                    #dropOffLocation
+                    (input)="
+                      dropOffLocation.value = $event.target.value.toUpperCase()
+                    "
+                  />
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field style="width: 180px%;">
+                  <mat-label>Pick-up Date</mat-label>
+                  <input
+                    matInput
+                    [min]="minCheckInDate"
+                    [matDatepicker]="pickUpDate"
+                    formControlName="pickUpDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="pickUpDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #pickUpDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Pick-up Time</mat-label>
+                  <input
+                    matInput
+                    [ngxTimepicker]="defaultValue"
+                    aria-label="default time"
+                    formControlName="pickUpTime"
+                  />
+                </mat-form-field>
+                <ngx-material-timepicker
+                  #defaultValue
+                ></ngx-material-timepicker>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>No of Passenegr</mat-label>
+                  <input matInput formControlName="numberOfPassengers" />
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>No of Luggages</mat-label>
+                  <input matInput formControlName="numberOfLuggages" />
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Select Car Class</mat-label>
+                  <mat-select matInput formControlName="carClass">
+                    <mat-option value="">
+                      All
+                    </mat-option>
+                    <mat-option value="Mini">
+                      Mini
+                    </mat-option>
+                    <mat-option value="Economy">
+                      Economy
+                    </mat-option>
+                    <mat-option value="Premimum">
+                      Premimum
+                    </mat-option>
+                    <mat-option value="Compact">
+                      Compact
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Select Car Type</mat-label>
+                  <mat-select matInput formControlName="carType">
+                    <mat-option value="">
+                      All
+                    </mat-option>
+                    <mat-option value="type2to3">
+                      2-3 doors
+                    </mat-option>
+                    <mat-option value="type4to5">
+                      4-5 doors
+                    </mat-option>
+                    <mat-option value="typeSuv">
+                      SUV
+                    </mat-option>
+                    <mat-option value="typeVan">
+                      Passenger Van
+                    </mat-option>
+                    <mat-option value="typeTruck">
+                      Commercial Van
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
           </div>
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field>
-              <mat-label>Drop-off Location</mat-label>
-              <input
-                matInput
-                formControlName="dropOffLocation"
-                #dropOffLocation
-                (input)="
-                  dropOffLocation.value = $event.target.value.toUpperCase()
-                "
-              />
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field style="width: 180px%;">
-              <mat-label>Pick-up Date</mat-label>
-              <input
-                matInput
-                [min]="minCheckInDate"
-                [matDatepicker]="pickUpDate"
-                formControlName="pickUpDate"
-              />
-              <mat-datepicker-toggle
-                matSuffix
-                [for]="pickUpDate"
-              ></mat-datepicker-toggle>
-              <mat-datepicker #pickUpDate></mat-datepicker>
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6" style="text-align: right;">
-            <mat-form-field>
-              <mat-label>Pick-up Time</mat-label>
-              <input
-                matInput
-                [ngxTimepicker]="defaultValue"
-                aria-label="default time"
-                formControlName="pickUpTime"
-              />
-            </mat-form-field>
-            <ngx-material-timepicker #defaultValue></ngx-material-timepicker>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field>
-              <mat-label>No of Passenegr</mat-label>
-              <input matInput formControlName="numberOfPassengers" />
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field>
-              <mat-label>No of Luggages</mat-label>
-              <input matInput formControlName="numberOfLuggages" />
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6">
-            <mat-form-field>
-              <mat-label>Select Car Type</mat-label>
-              <input matInput formControlName="carType" />
-            </mat-form-field>
-          </div>
-          <div class="col-md-3 col-lg-3 col-sm-6" style="text-align: right;">
+          <div class="col-md-12 col-lg-1">
             <button
               mat-raised-button
               type="submit"
@@ -90,6 +137,147 @@
           </div>
         </div>
       </form>
+    </div>
+  </div>
+  <hr />
+  <div *ngIf="isSearched" class="container">
+    <div class="row" style="padding: 10px;">
+      <div class="col-md-3 col-lg-3">
+        <div class="filter">
+          <div>
+            <div>
+              <a style="float: right;" mat-flat-button (click)="resetFilter()"
+                >Reset All</a
+              >
+              <h3>Filters</h3>
+            </div>
+          </div>
+          <mat-accordion>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Passenegr</mat-expansion-panel-header>
+              <div style="text-align: right;">
+                <a mat-flat-button (click)="resetPassenger()">Reset</a>
+              </div>
+              <div class="custom-slider">
+                <ng5-slider
+                  [(value)]="minPassenger"
+                  [(highValue)]="maxPassenger"
+                  [options]="PassengerOptions"
+                ></ng5-slider>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Luggage</mat-expansion-panel-header>
+              <div style="text-align: right;">
+                <a mat-flat-button (click)="resetLuggage()">Reset</a>
+              </div>
+              <div class="custom-slider">
+                <ng5-slider
+                  [(value)]="minLuggage"
+                  [(highValue)]="maxLuggage"
+                  [options]="PassengerOptions"
+                ></ng5-slider>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>Price</mat-expansion-panel-header>
+              <div style="text-align: right;">
+                <a mat-flat-button (click)="resetPrice()">Reset</a>
+              </div>
+              <div class="custom-slider">
+                <ng5-slider
+                  [(value)]="minPrice"
+                  [(highValue)]="maxPrice"
+                  [options]="priceOptions"
+                ></ng5-slider>
+              </div>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header
+                >Select Car Class</mat-expansion-panel-header
+              >
+              <div style="text-align: right;">
+                <a mat-flat-button (click)="resetType()">Reset</a>
+              </div>
+              <section>
+                <mat-list>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="miniClass"
+                      (change)="filterType()"
+                      >Mini</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="economyClass"
+                      (change)="filterType()"
+                    >
+                      Economy</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="premimumClass"
+                      (change)="filterType()"
+                      >Premimum</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="compactClass"
+                      (change)="filterType()"
+                      >Compact</mat-checkbox
+                    >
+                  </mat-list-item>
+                </mat-list>
+              </section>
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header
+                >Select Car Type</mat-expansion-panel-header
+              >
+              <div style="text-align: right;">
+                <a mat-flat-button (click)="resetType()">Reset</a>
+              </div>
+              <section>
+                <mat-list>
+                  <mat-list-item>
+                    <mat-checkbox [(ngModel)]="type2to3" (change)="filterType()"
+                      >2-3 doors</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="type4to5"
+                      (change)="filterType()"
+                    >
+                      4-5 doors</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox [(ngModel)]="typeSuv" (change)="filterType()"
+                      >SUV</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox [(ngModel)]="typeVan" (change)="filterType()"
+                      >Passenger Van</mat-checkbox
+                    >
+                  </mat-list-item>
+                  <mat-list-item>
+                    <mat-checkbox
+                      [(ngModel)]="typeTruck"
+                      (change)="filterType()"
+                      >Commercial Van</mat-checkbox
+                    >
+                  </mat-list-item>
+                </mat-list>
+              </section>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </div>
+      </div>
     </div>
   </div>
 </div>

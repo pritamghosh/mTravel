@@ -2,9 +2,9 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Hotel } from "src/app/models/hotel.model";
 import { Options } from "ng5-slider";
-import { HotelService } from "src/app/services/hotel.service";
 import { Subscription } from "rxjs";
 import { HotelRequet } from "src/app/models/hotel.request.model";
+import { HotelService } from "src/app/services/hotel.service";
 
 @Component({
   selector: "app-hotel",
@@ -19,6 +19,7 @@ export class HotelComponent implements OnInit, OnDestroy {
   subscription: Subscription;
 
   request: HotelRequet;
+  isSearched = false;
 
   hotelType = true;
   serviceApartmentType = true;
@@ -40,9 +41,22 @@ export class HotelComponent implements OnInit, OnDestroy {
       adults: new FormControl(1, Validators.required),
       children: new FormControl(0),
       rooms: new FormControl(1, Validators.required),
-      type: new FormControl()
+      type: new FormControl("")
     });
 
+    this.subscription = this.service.getResponse().subscribe(resp => {
+      this.hotelSearchResp = resp;
+      this.filteredResponse = resp;
+      this.updateFilter();
+      this.isSearched = true;
+    });
+    this.onSubmit();
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+
+  updateFilter() {
     this.maxPrice = 3000;
     this.priceOptions = {
       floor: 0,
@@ -51,19 +65,9 @@ export class HotelComponent implements OnInit, OnDestroy {
         return this.currency + value;
       }
     };
-    this.subscription = this.service.getResponse().subscribe(resp => {
-      this.hotelSearchResp = resp;
-      this.filteredResponse = resp;
-      console.log(JSON.stringify(this.hotelSearchResp));
-    });
-    this.onSubmit();
-  }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
   }
 
   onSubmit() {
-    console.log(JSON.stringify(this.searchHotelForm.value));
     this.service.search(this.searchHotelForm.value);
     this.request = this.searchHotelForm.value;
   }

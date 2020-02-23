@@ -4,4 +4,5 @@ export class Car {
   class: string;
   passengerCapacity: number;
   baggageCapacity: number;
+  img: string;
 }
