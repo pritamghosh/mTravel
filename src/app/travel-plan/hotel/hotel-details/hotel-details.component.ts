@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Hotel } from "src/app/models/hotel.model";
 import { HotelRequet } from "src/app/models/hotel.request.model";
+import { TravelService } from "src/app/services/travel.service";
+import { HotelPlan } from "src/app/models/hotel.plan.model";
 
 @Component({
   selector: "app-hotel-details",
@@ -12,9 +14,14 @@ export class HotelDetailsComponent implements OnInit {
   @Input("request") request: HotelRequet;
   showHotelDetails = false;
   currency = "₹";
-  constructor() {}
+  constructor(private service: TravelService) {}
 
-  addToTravelPlan() {}
+  addToTravelPlan() {
+    let hp = new HotelPlan();
+    hp.hotel = this.hotel;
+    hp.req = this.request;
+    this.service.pushHotel(hp);
+  }
   get getIcon() {
     return this.showHotelDetails ? "keyboard_arrow_up" : "keyboard_arrow_down";
   }

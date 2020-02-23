@@ -1,6 +1,10 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { Car } from "src/app/models/car.model";
 import { CarHire } from "src/app/models/car.hire.model";
+import { TravelService } from "src/app/services/travel.service";
+import { CarPlan } from "src/app/models/car.plan.model";
+
+import { faUser, faSuitcase } from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: "app-car-details",
@@ -12,9 +16,16 @@ export class CarDetailsComponent implements OnInit {
   @Input("request") request: CarHire;
   showDetails = false;
   currency = "₹";
-  constructor() {}
+  luggage = faSuitcase;
+  passeneger = faUser;
+  constructor(private service: TravelService) {}
 
   ngOnInit(): void {}
 
-  addToTravelPlan() {}
+  addToTravelPlan() {
+    let cp = new CarPlan();
+    cp.car = this.car;
+    cp.req = this.request;
+    this.service.pushCar(cp);
+  }
 }

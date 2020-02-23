@@ -31,6 +31,7 @@ import { MatChipsModule } from "@angular/material/chips";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { Ng5SliderModule } from "ng5-slider";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -52,6 +53,7 @@ import { OffsetPipe } from "./pipes/offset.pipe";
 import { AddressPipe } from "./pipes/address.pipe";
 import { HotelDetailsComponent } from "./travel-plan/hotel/hotel-details/hotel-details.component";
 import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.component";
+import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan.component";
 
 @NgModule({
   declarations: [
@@ -71,7 +73,8 @@ import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.c
     OffsetPipe,
     HotelDetailsComponent,
     AddressPipe,
-    CarDetailsComponent
+    CarDetailsComponent,
+    OverviewPlanComponent
   ],
   imports: [
     BrowserModule,
@@ -104,7 +107,8 @@ import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.c
     MatSliderModule,
     MatChipsModule,
     NgxMaterialTimepickerModule,
-    Ng5SliderModule
+    Ng5SliderModule,
+    FontAwesomeModule
   ],
   providers: [FlightService],
   bootstrap: [AppComponent],

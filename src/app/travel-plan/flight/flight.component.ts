@@ -87,7 +87,7 @@ export class FlightComponent implements OnInit {
   }
 
   onSubmit() {
-    this.flightService.search();
+    this.flightService.search(this.searchFlightForm.value);
   }
 
   swtchSourceDest() {
