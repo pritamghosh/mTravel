@@ -10,7 +10,9 @@
           <mat-list>
             <mat-list-item>Flight details</mat-list-item>
             <div style="padding: 20px;" class="filter">
-              <app-flight-itinerary [flight]="fp.flight"></app-flight-itinerary>
+              <app-flight-itinerary
+                [offerPack]="fp.offerPack"
+              ></app-flight-itinerary>
             </div>
             <mat-list-item>Passenegr details</mat-list-item>
             <div style="padding: 20px;" class="filter">

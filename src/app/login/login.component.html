@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">
+      <div
+        style="margin-top: 40px; border-style: groove; padding: 10px; border-radius: 10px;"
+      >
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <h3>Login</h3>
+          <hr />
+          <div>
+            <mat-form-field style="width: 100%;">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" />
+            </mat-form-field>
+          </div>
+          <div>
+            <mat-form-field style="width: 100%;">
+              <mat-label>Password</mat-label>
+              <input matInput formControlName="password" type="password" />
+            </mat-form-field>
+          </div>
+          <div style="text-align: center;">
+            <button
+              type="submit"
+              mat-raised-button
+              color="primary"
+              [disabled]="!loginForm.valid"
+            >
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-4"></div>
+  </div>
+</div>

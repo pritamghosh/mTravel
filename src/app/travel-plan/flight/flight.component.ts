@@ -1,11 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { Options, LabelType } from "ng5-slider";
-import { FlightItinerary } from "src/app/models/flight.itinerary.model";
 import { FlightService } from "src/app/services/flight.service";
 import { Subscription } from "rxjs";
 import { FlightRequest } from "src/app/models/flight.request.model";
-import { THIS_EXPR } from "@angular/compiler/src/output/output_ast";
+import { OfferPack } from "src/app/models/offer.pack.model";
 
 @Component({
   selector: "app-flight",
@@ -16,8 +15,8 @@ export class FlightComponent implements OnInit {
   minDepDate = new Date();
   minRetDate = new Date();
   searchFlightForm: FormGroup;
-  flightSearchResp: FlightItinerary[];
-  filteredResponse: FlightItinerary[];
+  flightSearchResp: OfferPack[];
+  filteredResponse: OfferPack[];
   subscription: Subscription;
   isSearched = false;
   request: FlightRequest;

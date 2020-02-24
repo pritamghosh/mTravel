@@ -29,6 +29,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatStepperModule } from "@angular/material/stepper";
+import { MatDialogModule } from "@angular/material/dialog";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { Ng5SliderModule } from "ng5-slider";
@@ -55,9 +56,11 @@ import { AddressPipe } from "./pipes/address.pipe";
 import { HotelDetailsComponent } from "./travel-plan/hotel/hotel-details/hotel-details.component";
 import { CarDetailsComponent } from "./travel-plan/car/car-details/car-details.component";
 import { OverviewPlanComponent } from "./travel-plan/overview-plan/overview-plan.component";
-import { PassengerComponent } from './travell-plan/passenger/passenger.component';
-import { PassenegersComponent } from './travell-plan/passenegers/passenegers.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { PassengerComponent } from "./travell-plan/passenger/passenger.component";
+import { PassenegersComponent } from "./travell-plan/passenegers/passenegers.component";
+import { RegistrationComponent } from "./registration/registration.component";
+import { FaceComponent } from "./face/face.component";
+import { LoginComponent } from "./login/login.component";
 
 @NgModule({
   declarations: [
@@ -81,7 +84,9 @@ import { RegistrationComponent } from './registration/registration.component';
     OverviewPlanComponent,
     PassengerComponent,
     PassenegersComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    FaceComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -114,6 +119,7 @@ import { RegistrationComponent } from './registration/registration.component';
     MatSliderModule,
     MatStepperModule,
     MatChipsModule,
+    MatDialogModule,
     NgxMaterialTimepickerModule,
     Ng5SliderModule,
     FontAwesomeModule
@@ -145,7 +151,8 @@ import { RegistrationComponent } from './registration/registration.component';
     MatCheckboxModule,
     MatSliderModule,
     MatChipsModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDialogModule
   ]
 })
 export class AppModule {}

@@ -1,5 +1,4 @@
 import { FlightInfo } from "./flight.info.model";
-import { Fare } from "./fare.model";
 
 export class FlightItinerary {
   airlineCodes: string[];
@@ -20,5 +19,4 @@ export class FlightItinerary {
   layoverCities: string[];
   layoverAirportNames: string[];
   flightInfos: FlightInfo[];
-  fare: Fare;
 }

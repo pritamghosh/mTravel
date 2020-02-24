@@ -9,6 +9,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class RegistrationComponent implements OnInit {
   maxDob = new Date();
   registrationForm: FormGroup;
+
   constructor() {}
 
   ngOnInit(): void {
