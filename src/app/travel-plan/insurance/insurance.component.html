@@ -1,1 +1,110 @@
-<p>insurance works!</p>
+<div class="container-fluid">
+  <div class=" seacrh">
+    <div class="container">
+      <form
+        [formGroup]="searchInsuranceForm"
+        (ngSubmit)="getQuote()"
+        style="padding: 10px;"
+      >
+        <div class="row">
+          <div class="col-md-12 col-lg-11">
+            <div class="row">
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field style="width: 180px;">
+                  <mat-label>Form Date</mat-label>
+                  <input
+                    matInput
+                    [min]=""
+                    [matDatepicker]="startDate"
+                    formControlName="startDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="startDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field style="width: 180px;">
+                  <mat-label>To Date</mat-label>
+                  <input
+                    matInput
+                    [min]="minEndDate"
+                    [matDatepicker]="endDate"
+                    formControlName="endDate"
+                  />
+                  <mat-datepicker-toggle
+                    matSuffix
+                    [for]="endDate"
+                  ></mat-datepicker-toggle>
+                  <mat-datepicker #endDate></mat-datepicker>
+                </mat-form-field>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>No of Travellers</mat-label>
+                  <input matInput formControlName="number" type="number" />
+                </mat-form-field>
+              </div>
+
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-form-field>
+                  <mat-label>Select Type</mat-label
+                  ><mat-select formControlName="type">
+                    <mat-option value="">
+                      All
+                    </mat-option>
+                    <mat-option value="E">
+                      Economy
+                    </mat-option>
+                    <mat-option value="E">
+                      Premium
+                    </mat-option>
+                  </mat-select></mat-form-field
+                >
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-checkbox formControlName="flight"
+                  >Flight Travel</mat-checkbox
+                >
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-checkbox formControlName="medical">Medical</mat-checkbox>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-checkbox formControlName="family">Family</mat-checkbox>
+              </div>
+              <div class="col-md-3 col-lg-3 col-sm-6">
+                <mat-checkbox formControlName="personal">Pesonal</mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-1">
+            <button
+              mat-raised-button
+              type="submit"
+              color="accent"
+              style="margin-top: 10px; "
+              [disabled]="!searchInsuranceForm.valid"
+            >
+              Get Quote
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <hr />
+  <div *ngIf="isSearched" class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div *ngFor="let insurance of filteredResponse" class="box">
+          <app-insurance-details
+            [insurance]="insurance"
+          ></app-insurance-details>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

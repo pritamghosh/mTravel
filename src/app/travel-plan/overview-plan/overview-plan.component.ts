@@ -5,6 +5,10 @@ import { Subscription } from "rxjs";
 import { FlightPlan } from "src/app/models/flight.plan.model";
 import { CarPlan } from "src/app/models/car.plan.model";
 import { HotelPlan } from "src/app/models/hotel.plan.model";
+import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
+import { FaceComponent } from "src/app/face/face.component";
+import { TravelPlan } from "src/app/models/travel.plan.model";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-overview-plan",
@@ -22,7 +26,11 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   cp: CarPlan;
   hp: HotelPlan;
   ip: any;
-  constructor(private service: TravelService) {}
+  constructor(
+    private service: TravelService,
+    public dialog: MatDialog,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.carSubs = this.service.carSubject.asObservable().subscribe(resp => {
@@ -36,7 +44,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
       .subscribe(resp => (this.hp = resp));
     this.insuranceSubs = this.service.insuranceSubject
       .asObservable()
-      .subscribe(resp => console.log(resp));
+      .subscribe(resp => (this.ip = resp));
   }
 
   ngOnDestroy(): void {
@@ -45,8 +53,36 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
     this.flightSubs.unsubscribe();
     this.insuranceSubs.unsubscribe();
   }
+  openFaceIdDialog(): void {
+    const dialogConfig = new MatDialogConfig();
 
-  onSubmit() {}
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      faceId: "",
+      buttonName: "Pay & Flinish"
+    };
+
+    const dialogRef = this.dialog.open(FaceComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
+        let tp = new TravelPlan();
+        tp.faceId = dialogConfig.data.faceId;
+        tp.flight = this.fp;
+        tp.car = this.cp;
+        tp.hotel = this.hp;
+        if (this.loginService.getUser() != null) {
+          tp.email = this.loginService.getUser().email;
+        }
+        console.log(JSON.stringify(tp));
+      }
+    });
+  }
+  onSubmit() {
+    this.openFaceIdDialog();
+  }
 
   add(index: number) {
     this.service.tabIndex.next(index);

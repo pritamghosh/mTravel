@@ -96,10 +96,15 @@ export class FaceComponent implements OnInit {
 
       this.faceRecognitionService
         .scanImage(this.subscriptionKey, base64Image)
-        .subscribe(resp => {
-          this.data.faceId = resp[0].faceId;
-          this.dialogRef.close();
-        });
+        .subscribe(
+          resp => {
+            this.data.faceId = resp[0].faceId;
+            this.dialogRef.close();
+          },
+          err => {
+            this.imageString = null;
+          }
+        );
     });
 
     // this.faceApiResponse = this.cameraService.getPhoto().pipe(

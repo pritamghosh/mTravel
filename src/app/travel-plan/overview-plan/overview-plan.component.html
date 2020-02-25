@@ -176,7 +176,12 @@
         <div *ngIf="ip != null; else noInsurancePlan">
           <mat-list>
             <mat-list-item>Insurance details</mat-list-item>
-            <div style="padding: 20px;" class="filter"></div>
+            <div style="padding: 20px;" class="filter">
+              <app-insurance-details
+                [insurance]="ip.insurance"
+                [view]="true"
+              ></app-insurance-details>
+            </div>
           </mat-list>
         </div>
         <ng-template #noInsurancePlan>

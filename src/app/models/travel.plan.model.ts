@@ -6,4 +6,6 @@ export class TravelPlan {
   flight: FlightPlan;
   hotel: HotelPlan;
   car: CarPlan;
+  email: string;
+  faceId: string;
 }

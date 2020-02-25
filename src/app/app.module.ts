@@ -65,6 +65,7 @@ import { PassenegersComponent } from "./travell-plan/passenegers/passenegers.com
 import { RegistrationComponent } from "./registration/registration.component";
 import { FaceComponent } from "./face/face.component";
 import { LoginComponent } from "./login/login.component";
+import { InsuranceDetailsComponent } from './travel-plan/insurance/insurance-details/insurance-details.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { LoginComponent } from "./login/login.component";
     PassenegersComponent,
     RegistrationComponent,
     FaceComponent,
-    LoginComponent
+    LoginComponent,
+    InsuranceDetailsComponent
   ],
   imports: [
     BrowserModule,

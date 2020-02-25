@@ -1,0 +1,96 @@
+[
+	{
+		"name": "Travel Insurance Platinum",
+		"type": "Premium",
+		"person": 1,
+		"startDate": "Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"days": 12,
+		"price": 5000,
+		"coverage": [
+			"Flight Travel",
+			"Medical",
+			"Personal",
+			"Family"
+		],
+		"description": [
+			{
+				"title": "Flight Travel",
+				"details": "Included cancellation or delay of flight and loss-of baggage or delayed baggage deliver. Up to $1000 "
+			},
+			{
+				"title": "Medical",
+				"details": "Medical coverage up to $30000"
+			},
+			{
+				"title": "Personal",
+				"details": "Theft cover for valuables , money and other personal belongings included road accident. Up to $20000"
+			},
+			{
+				"title": "Family",
+				"details": "Family protection back to Home.Up to $20000"
+			}
+		]
+	},
+	{
+		"name": "Travel Insurance Silver",
+		"type": "Economy",
+		"person": 1,
+		"startDate": "Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"days": 12,
+		"price": 1000,
+		"coverage": [
+			"Flight Travel",
+			"Medical",
+			"Personal",
+			"Family"
+		],
+		"description": [
+			{
+				"title": "Flight Travel",
+				"details": "Included cancellation or delay of flight and loss-of baggage or delayed baggage deliver. Up to $7000 "
+			},
+			{
+				"title": "Medical",
+				"details": "Medical coverage up to $20000"
+			},
+			{
+				"title": "Personal",
+				"details": "Theft cover for valuables , money and other personal belongings included road accident. Up to $10000"
+			},
+			{
+				"title": "Family",
+				"details": "Family protection back to Home.Up to $10000"
+			}
+		]
+	},
+	{
+		"name": "Travel Insurance Economy",
+		"type": "Economy",
+		"person": 1,
+		"startDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+		"days": 2,
+		"price": 100,
+		"coverage": [
+			"Flight Travel",
+			"Medical",
+			"Personal"
+		],
+		"description": [
+			{
+				"title": "Flight Travel",
+				"details": "Included cancellation or delay of flight and loss-of baggage or delayed baggage deliver. Up to $1000 "
+			},
+			{
+				"title": "Medical",
+				"details": "Medical coverage up to $30000"
+			},
+			{
+				"title": "Personal",
+				"details": "Theft cover for valuables , money and other personal belongings included road accident. Up to $20000"
+			}
+		]
+	}
+]

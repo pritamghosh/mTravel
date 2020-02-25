@@ -156,96 +156,103 @@
     <div [hidden]="!showFlightInfo">
       <hr />
       <div class="box">
-        <div
-          *ngFor="
-            let info of offerPack.onwardFlightItinerary.flightInfos;
-            let index = index
-          "
-          style="margin-top: 10px;"
-        >
-          <div class="row">
-            <div class="col-md-3 col-sm-3 col-lg-3">
-              <span>{{ info.airlineName }}</span
-              ><br />
-              <span>{{ info.airlineCode }}-{{ info.flightNo }}</span>
-            </div>
-            <div class="col-md-3 col-sm-3 col-lg-3">
-              <span style="font-size: 20px;font-weight: bold;">{{
-                info.originPoint
-              }}</span>
-              <span style="font-size: 20px">
-                {{ info.departureTime | time }}</span
-              >
-              <sup
-                ><span style="color: red;font-weight: bold;">
-                  {{ info.departureOffset | offset }}</span
-                ></sup
-              >
+        <fieldset>
+          <div
+            *ngFor="
+              let info of offerPack.onwardFlightItinerary.flightInfos;
+              let index = index
+            "
+            style="margin-top: 10px;"
+          >
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <span>{{ info.airlineName }}</span
+                ><br />
+                <span>{{ info.airlineCode }}-{{ info.flightNo }}</span>
+              </div>
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <span style="font-size: 20px;font-weight: bold;">{{
+                  info.originPoint
+                }}</span>
+                <span style="font-size: 20px">
+                  {{ info.departureTime | time }}</span
+                >
+                <sup
+                  ><span style="color: red;font-weight: bold;">
+                    {{ info.departureOffset | offset }}</span
+                  ></sup
+                >
 
-              <br />
-              <span style="font-size: 10px">
-                {{ info.departureDate | date: "fullDate" }}</span
-              ><br />
-              <span style="font-size: 10px; color: gray;">{{
-                info.originAirportName | trailingDot: 25
-              }}</span
-              ><br /><span style="font-size: 10px; color: gray;">{{
-                info.originCountry | trailingDot: 25
-              }}</span>
-            </div>
-            <div class="col-md-3 col-sm-3 col-lg-3">
-              <span><i class="material-icons"> flight_land</i></span
-              ><span style="font-size: 20px ;font-weight: bold;"
-                >... {{ info.flightDuration | duration }} ...</span
-              >
-              <span><i class="material-icons"> flight_takeoff</i></span>
-              <br />
-              <span style="font-size: 10px; color: gray;">Flight Duration</span>
-            </div>
-            <div class="col-md-3 col-sm-3 col-lg-3">
-              <span style="font-size: 20px;font-weight: bold;">{{
-                info.destinationPoint
-              }}</span>
-              <span style="font-size: 20px">
-                {{ info.arrivalTime | time }}</span
-              >
-              <sup
-                ><span style="color: red;font-weight: bold;">
-                  {{ info.arrivalOffset | offset }}</span
-                ></sup
-              >
-              <br />
-              <span style="font-size: 10px">
-                {{ info.arrivalDate | date: "fullDate" }}</span
-              ><br />
-              <span style="font-size: 10px; color: gray;">{{
-                info.destinationAirportName | trailingDot: 25
-              }}</span
-              ><br /><span style="font-size: 10px; color: gray;">{{
-                info.destinationCountry | trailingDot: 25
-              }}</span>
-            </div>
-            <div *ngIf="index < layovers" class="col-md-12 col-sm-12 col-lg-12">
-              <hr />
-              <div style="text-align: center;display: block">
-                <mat-chip-list>
-                  <mat-chip color="primary" selected
-                    >{{
-                      offerPack.onwardFlightItinerary.layoverDurations[index]
-                        | duration
-                    }}
-                    Layover in
-                    {{ offerPack.onwardFlightItinerary.layoverCities[index] }}
-                    ({{
-                      offerPack.onwardFlightItinerary.layoverPorts[index]
-                    }})</mat-chip
-                  ></mat-chip-list
+                <br />
+                <span style="font-size: 10px">
+                  {{ info.departureDate | date: "fullDate" }}</span
+                ><br />
+                <span style="font-size: 10px; color: gray;">{{
+                  info.originAirportName | trailingDot: 25
+                }}</span
+                ><br /><span style="font-size: 10px; color: gray;">{{
+                  info.originCountry | trailingDot: 25
+                }}</span>
+              </div>
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <span><i class="material-icons"> flight_land</i></span
+                ><span style="font-size: 20px ;font-weight: bold;"
+                  >... {{ info.flightDuration | duration }} ...</span
+                >
+                <span><i class="material-icons"> flight_takeoff</i></span>
+                <br />
+                <span style="font-size: 10px; color: gray;"
+                  >Flight Duration</span
                 >
               </div>
-              <hr />
+              <div class="col-md-3 col-sm-3 col-lg-3">
+                <span style="font-size: 20px;font-weight: bold;">{{
+                  info.destinationPoint
+                }}</span>
+                <span style="font-size: 20px">
+                  {{ info.arrivalTime | time }}</span
+                >
+                <sup
+                  ><span style="color: red;font-weight: bold;">
+                    {{ info.arrivalOffset | offset }}</span
+                  ></sup
+                >
+                <br />
+                <span style="font-size: 10px">
+                  {{ info.arrivalDate | date: "fullDate" }}</span
+                ><br />
+                <span style="font-size: 10px; color: gray;">{{
+                  info.destinationAirportName | trailingDot: 25
+                }}</span
+                ><br /><span style="font-size: 10px; color: gray;">{{
+                  info.destinationCountry | trailingDot: 25
+                }}</span>
+              </div>
+              <div
+                *ngIf="index < layovers"
+                class="col-md-12 col-sm-12 col-lg-12"
+              >
+                <hr />
+                <div style="text-align: center;display: block">
+                  <mat-chip-list>
+                    <mat-chip color="primary" selected
+                      >{{
+                        offerPack.onwardFlightItinerary.layoverDurations[index]
+                          | duration
+                      }}
+                      Layover in
+                      {{ offerPack.onwardFlightItinerary.layoverCities[index] }}
+                      ({{
+                        offerPack.onwardFlightItinerary.layoverPorts[index]
+                      }})</mat-chip
+                    ></mat-chip-list
+                  >
+                </div>
+                <hr />
+              </div>
             </div>
           </div>
-        </div>
+        </fieldset>
       </div>
       <div class="box" *ngIf="offerPack.returnFlightItinerary">
         <div
