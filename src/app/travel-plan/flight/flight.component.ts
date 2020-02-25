@@ -88,6 +88,8 @@ export class FlightComponent implements OnInit {
 
   onSubmit() {
     this.request = this.searchFlightForm.value;
+    console.log(JSON.stringify(this.request));
+
     this.flightService.search(this.request);
   }
 

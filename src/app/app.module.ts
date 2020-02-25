@@ -1,5 +1,9 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  NO_ERRORS_SCHEMA
+} from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
@@ -29,7 +33,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatStepperModule } from "@angular/material/stepper";
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { Ng5SliderModule } from "ng5-slider";
@@ -126,6 +130,7 @@ import { LoginComponent } from "./login/login.component";
   ],
   providers: [FlightService],
   bootstrap: [AppComponent],
+  entryComponents: [FaceComponent],
   exports: [
     MatToolbarModule,
     MatMenuModule,
@@ -153,6 +158,7 @@ import { LoginComponent } from "./login/login.component";
     MatChipsModule,
     MatStepperModule,
     MatDialogModule
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule {}

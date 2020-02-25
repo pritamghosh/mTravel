@@ -1,0 +1,40 @@
+<h1 mat-dialog-title>Face Recognition</h1>
+<div mat-dialog-content>
+  <div>
+    <video
+      class="facialImg"
+      autoplay="true"
+      id="videoElement"
+      *ngIf="!imageString"
+    ></video>
+    <img
+      class="facialImg"
+      *ngIf="imageString"
+      [src]="imageString"
+      alt="imageString"
+    />
+  </div>
+  <div style="margin-top:10px;text-align: right;">
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="onCancel()"
+      style="float: left;"
+    >
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      cdkFocusInitial
+      (click)="processImage()"
+    >
+      {{ this.data.buttonName }}
+    </button>
+    <!-- <button
+      *ngIf="faceApiResponse | async"
+      type="button"
+      [hidden]="true"
+    ></button> -->
+  </div>
+</div>

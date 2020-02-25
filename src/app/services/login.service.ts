@@ -23,6 +23,8 @@ export class LoginService {
       //     reject();
       //   }
       // );
+      console.log(JSON.stringify(login));
+
       this.savetoContext(login);
       resolve(true);
     });

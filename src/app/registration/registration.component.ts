@@ -1,5 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { FaceComponent } from "../face/face.component";
+import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 
 @Component({
   selector: "app-registration",
@@ -10,7 +12,7 @@ export class RegistrationComponent implements OnInit {
   maxDob = new Date();
   registrationForm: FormGroup;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -23,7 +25,7 @@ export class RegistrationComponent implements OnInit {
       gender: new FormControl(null, Validators.required),
       issuingCountry: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.email, Validators.required]),
-      contact: new FormControl(null, Validators.pattern("[0-9+\b]{10-15}")),
+      contact: new FormControl(null, Validators.pattern("[0-9+]{8,15}")),
       password: new FormControl(null, [
         Validators.required,
         this.password.bind(this)
@@ -31,7 +33,8 @@ export class RegistrationComponent implements OnInit {
       cpassword: new FormControl(null, [
         Validators.required,
         this.password.bind(this)
-      ])
+      ]),
+      faceId: new FormControl()
     });
   }
 
@@ -50,5 +53,34 @@ export class RegistrationComponent implements OnInit {
     }
     return null;
   }
-  onSubmit() {}
+  openFaceIdDialog(): void {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      faceId: "",
+      buttonName: "Registration"
+    };
+
+    const dialogRef = this.dialog.open(FaceComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
+        this.registrationForm.get("faceId").setValue(dialogConfig.data.faceId);
+        console.log(JSON.stringify(this.registrationForm.value));
+
+        //this.onSubmit();
+      }
+    });
+  }
+
+  onReset() {
+    this.registrationForm.reset();
+  }
+
+  onSubmit() {
+    this.openFaceIdDialog();
+  }
 }

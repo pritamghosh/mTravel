@@ -26,9 +26,25 @@
               mat-raised-button
               color="primary"
               [disabled]="!loginForm.valid"
+              style=" width: 200px;"
             >
-              Sign In
+              Sign In using Password
             </button>
+          </div>
+          <div style="text-align: center; margin-top: 10px;">
+            <button
+              mat-raised-button
+              type="button"
+              (click)="openDialog()"
+              color="primary"
+              [disabled]="!loginForm.controls.email.valid"
+              style=" width: 200px;"
+            >
+              Sign In using Face Id
+            </button>
+            <div style="text-align: center; margin-top: 10px;">
+              <a routerLink="/registration">Not a Member? Sign up</a>
+            </div>
           </div>
         </form>
       </div>

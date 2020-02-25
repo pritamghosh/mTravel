@@ -1,76 +1,118 @@
-import { Component, OnInit } from "@angular/core";
-import { Subject } from "rxjs/Subject";
+import {
+  Component,
+  OnInit,
+  Inject,
+  ViewChild,
+  ElementRef
+} from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import { WebcamImage, WebcamInitError, WebcamUtil } from "ngx-webcam";
+import { switchMap } from "rxjs/operators";
+import { FaceRecognitionService } from "../services/face-recognition.service";
+import { LoginService } from "../services/login.service";
+import { Router } from "@angular/router";
+import {
+  NgForm,
+  FormBuilder,
+  FormGroup,
+  Validators,
+  FormControl
+} from "@angular/forms";
+import { environment } from "../../environments/environment";
+import { DesktopCameraService } from "../services/desktop-camera.service";
+import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
 @Component({
   selector: "app-face",
   templateUrl: "./face.component.html",
   styleUrls: ["./face.component.scss"]
 })
 export class FaceComponent implements OnInit {
-  // toggle webcam on/off
-  public showWebcam = true;
-  public allowCameraSwitch = true;
-  public multipleWebcamsAvailable = false;
-  public deviceId: string;
-  public videoOptions: MediaTrackConstraints = {
-    // width: {ideal: 1024},
-    // height: {ideal: 576}
-  };
-  public errors: WebcamInitError[] = [];
+  message: string;
+  imageString = "";
+  faceApiResponse: Observable<any>;
+  //subscriptionKey: string = 'b36a4edbc372433ea78d2786acb63dbe';
+  //subscriptionKey: string = "f19864adc9dc421b999b28f03212170b";
+  subscriptionKey = environment.subscriptionKey;
+  isButtonVisible = true;
+  model: any = {};
+  errorMessage: string;
 
-  // latest snapshot
-  public webcamImage: WebcamImage = null;
+  @ViewChild("videoIn") videoIn: ElementRef;
+  userForm = new FormGroup({
+    email: new FormControl(),
+    password: new FormControl()
+  });
 
-  // webcam snapshot trigger
-  private trigger: Subject<void> = new Subject<void>();
-  // switch to next / previous / specific webcam; true/false: forward/backwards, string: deviceId
-  private nextWebcam: Subject<boolean | string> = new Subject<
-    boolean | string
-  >();
-
+  constructor(
+    private faceRecognitionService: FaceRecognitionService,
+    private cameraService: DesktopCameraService,
+    private loginService: LoginService,
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogRef: MatDialogRef<FaceComponent>
+  ) {}
   public ngOnInit(): void {
-    WebcamUtil.getAvailableVideoInputs().then(
-      (mediaDevices: MediaDeviceInfo[]) => {
-        this.multipleWebcamsAvailable = mediaDevices && mediaDevices.length > 1;
-      }
-    );
+    this.cameraService
+      .getMediaDevices()
+      .getUserMedia({ video: true, audio: false })
+      .then(function(stream) {
+        var video: any = document.querySelector("#videoElement");
+        video.srcObject = stream;
+      })
+      .catch(function(err0r) {
+        console.log("Something went wrong!");
+      });
   }
 
-  public triggerSnapshot(): void {
-    this.trigger.next();
+  get submitButtonName() {
+    return this.data.buttonName;
   }
-
-  public toggleWebcam(): void {
-    this.showWebcam = !this.showWebcam;
+  onCancel() {
+    this.stopCamera();
+    this.data.cancelled = true;
+    this.dialogRef.close();
   }
+  stopCamera() {
+    var video: any = document.querySelector("#videoElement");
+    var stream = video.srcObject;
+    var tracks = stream.getTracks();
 
-  public handleInitError(error: WebcamInitError): void {
-    this.errors.push(error);
+    for (var i = 0; i < tracks.length; i++) {
+      var track = tracks[i];
+      track.stop();
+    }
+
+    video.srcObject = null;
   }
+  processImage() {
+    if (!this.subscriptionKey) {
+      console.log("subscriptionKey Invalid");
+      return;
+    }
 
-  public showNextWebcam(directionOrDeviceId: boolean | string): void {
-    // true => move forward through devices
-    // false => move backwards through devices
-    // string => move to device with given deviceId
-    this.nextWebcam.next(directionOrDeviceId);
-  }
+    this.cameraService.getPhoto().subscribe(base64Image => {
+      this.stopCamera();
 
-  public handleImage(webcamImage: WebcamImage): void {
-    console.info("received webcam image", webcamImage);
-    this.webcamImage = webcamImage;
-  }
+      this.imageString = base64Image;
 
-  public cameraWasSwitched(deviceId: string): void {
-    console.log("active device: " + deviceId);
-    this.deviceId = deviceId;
-  }
+      this.faceRecognitionService
+        .scanImage(this.subscriptionKey, base64Image)
+        .subscribe(resp => {
+          this.data.faceId = resp[0].faceId;
+          this.dialogRef.close();
+        });
+    });
 
-  public get triggerObservable(): Observable<void> {
-    return this.trigger.asObservable();
-  }
+    // this.faceApiResponse = this.cameraService.getPhoto().pipe(
+    //   switchMap(base64Image => {
+    //     console.log("Inside getPhoto");
+    //     this.isButtonVisible = false;
+    //     this.imageString = base64Image;
 
-  public get nextWebcamObservable(): Observable<boolean | string> {
-    return this.nextWebcam.asObservable();
+    //     return this.faceRecognitionService.scanImage(
+    //       this.subscriptionKey,
+    //       base64Image
+    //     );
+    //   })
+    // );
   }
 }

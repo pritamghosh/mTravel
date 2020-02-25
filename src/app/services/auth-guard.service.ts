@@ -17,8 +17,6 @@ export class AuthGuardService implements CanActivate {
     this.loginService.isLoggedInSubject
       .asObservable()
       .subscribe(isLoggedinParam => {
-        console.log(isLoggedinParam);
-
         this.isLoggedIn = isLoggedinParam;
       });
   }
