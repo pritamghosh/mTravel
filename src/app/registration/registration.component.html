@@ -3,7 +3,7 @@
     <mat-card-header>
       <mat-card-title>Registration Form</mat-card-title>
     </mat-card-header>
-    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" #form1>
       <mat-card-content>
         <div class="row">
           <div class="col-md-6 col-sm-6 col-lg-6">

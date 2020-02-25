@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FaceComponent } from "../face/face.component";
 import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
@@ -11,7 +11,6 @@ import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 export class RegistrationComponent implements OnInit {
   maxDob = new Date();
   registrationForm: FormGroup;
-
   constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {
