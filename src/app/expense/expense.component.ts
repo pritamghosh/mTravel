@@ -1,15 +1,83 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { TravelPlan } from "../models/travel.plan.model";
+import { TravelPlanResponse } from "../models/travel.pla.response";
+import { ExpenseService } from "../services/expense.service";
+import { FormControl, FormGroup, Validators } from "@angular/forms";
+import { Expense } from "../models/expense.model";
+import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
+import { ViewPlanComponent } from "./view-plan/view-plan.component";
 
 @Component({
-  selector: 'app-expense',
-  templateUrl: './expense.component.html',
-  styleUrls: ['./expense.component.scss']
+  selector: "app-expense",
+  templateUrl: "./expense.component.html",
+  styleUrls: ["./expense.component.scss"]
 })
 export class ExpenseComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
+  @ViewChild("uploadFile") uploadElement: HTMLElement;
+  step = 1;
+  tid = "";
+  filename: string = "";
+  responseTP: TravelPlanResponse[];
+  expenses: Expense[] = [];
+  selcectedArray: [];
+  fg = new FormGroup({
+    document: new FormControl(null, Validators.required),
+    description: new FormControl(null, Validators.required)
+  });
+  constructor(private service: ExpenseService, public dialog: MatDialog) {}
+  addToExpense() {
+    this.expenses.push(this.fg.value);
+    this.fg.reset();
+    this.filename = "";
+    this.fg.get("description").setErrors(null);
   }
 
+  uploadFile(event: any) {
+    let files = event.target.files;
+
+    let str = this.fg.get("document");
+    this.filename = files[0].name;
+    const reader = new FileReader();
+    reader.readAsDataURL(files[0]);
+    reader.onload = function() {
+      str.setValue(reader.result);
+    };
+    reader.onerror = function(error) {
+      console.log("Error: ", error);
+    };
+  }
+
+  onSubmit() {
+    this.service.save(this.expenses);
+  }
+  addToCalim() {
+    let expense = new Expense();
+    console.log(this.tid);
+
+    expense.travelId = this.tid;
+    expense.description = "Travel Expense : " + this.responseTP[this.tid].id;
+    this.expenses.push(expense);
+  }
+  onRemove(index: number) {
+    this.expenses.slice(index, 1);
+  }
+  viewTravelPlan() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+
+    dialogConfig.data = {
+      tpr: this.responseTP[this.tid]
+    };
+    console.log(dialogConfig.data);
+
+    const dialogRef = this.dialog.open(ViewPlanComponent, dialogConfig);
+  }
+  ngOnInit(): void {
+    this.service.getTravelPlans();
+    this.service.travelSubject.asObservable().subscribe(resp => {
+      this.responseTP = resp;
+    });
+  }
 }

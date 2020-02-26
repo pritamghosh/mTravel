@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import { TravelService } from "src/app/services/travel.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
@@ -9,6 +9,7 @@ import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { FaceComponent } from "src/app/face/face.component";
 import { TravelPlan } from "src/app/models/travel.plan.model";
 import { LoginService } from "src/app/services/login.service";
+import { TravelPlanResponse } from "src/app/models/travel.pla.response";
 
 @Component({
   selector: "app-overview-plan",
@@ -22,6 +23,8 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   hotelSubs: Subscription;
   flightSubs: Subscription;
   insuranceSubs: Subscription;
+  readonly = false;
+  @Input() travelPlanResponse: TravelPlanResponse;
   fp: FlightPlan;
   cp: CarPlan;
   hp: HotelPlan;
@@ -33,6 +36,21 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    if (
+      this.travelPlanResponse != null &&
+      this.travelPlanResponse.planString != null
+    ) {
+      let tp = JSON.parse(this.travelPlanResponse.planString);
+
+      if (tp != null) {
+        this.fp = tp.flight;
+        this.hp = tp.hotel;
+        this.cp = tp.car;
+        this.ip = tp.insurance;
+        this.readonly = true;
+        this.step = 1;
+      }
+    }
     this.carSubs = this.service.carSubject.asObservable().subscribe(resp => {
       this.cp = resp;
     });
@@ -73,6 +91,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         tp.flight = this.fp;
         tp.car = this.cp;
         tp.hotel = this.hp;
+        tp.insurance = this.ip;
         if (this.loginService.getUser() != null) {
           tp.email = this.loginService.getUser().email;
         }

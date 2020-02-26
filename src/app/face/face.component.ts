@@ -1,22 +1,8 @@
-import {
-  Component,
-  OnInit,
-  Inject,
-  ViewChild,
-  ElementRef
-} from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { Observable } from "rxjs/Observable";
-import { switchMap } from "rxjs/operators";
 import { FaceRecognitionService } from "../services/face-recognition.service";
-import { LoginService } from "../services/login.service";
 import { Router } from "@angular/router";
-import {
-  NgForm,
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl
-} from "@angular/forms";
+import { FormGroup, FormControl } from "@angular/forms";
 import { environment } from "../../environments/environment";
 import { DesktopCameraService } from "../services/desktop-camera.service";
 import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material/dialog";
@@ -36,7 +22,6 @@ export class FaceComponent implements OnInit {
   model: any = {};
   errorMessage: string;
 
-  @ViewChild("videoIn") videoIn: ElementRef;
   userForm = new FormGroup({
     email: new FormControl(),
     password: new FormControl()
@@ -45,7 +30,6 @@ export class FaceComponent implements OnInit {
   constructor(
     private faceRecognitionService: FaceRecognitionService,
     private cameraService: DesktopCameraService,
-    private loginService: LoginService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<FaceComponent>
@@ -58,7 +42,9 @@ export class FaceComponent implements OnInit {
         var video: any = document.querySelector("#videoElement");
         video.srcObject = stream;
       })
-      .catch(function(err0r) {
+      .catch(function(error) {
+        console.log(error);
+
         console.log("Something went wrong!");
       });
   }
@@ -74,11 +60,13 @@ export class FaceComponent implements OnInit {
   stopCamera() {
     var video: any = document.querySelector("#videoElement");
     var stream = video.srcObject;
-    var tracks = stream.getTracks();
+    if (stream != null) {
+      var tracks = stream.getTracks();
 
-    for (var i = 0; i < tracks.length; i++) {
-      var track = tracks[i];
-      track.stop();
+      for (var i = 0; i < tracks.length; i++) {
+        var track = tracks[i];
+        track.stop();
+      }
     }
 
     video.srcObject = null;

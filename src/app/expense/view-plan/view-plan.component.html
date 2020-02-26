@@ -1,0 +1,11 @@
+<div>
+  <div mat-dialog-title style="text-align: right;">
+    <h1 style="float: left;">View Plan</h1>
+    <button mat-icon-button (click)="onCancel()">
+      <mat-icon>cancel</mat-icon>
+    </button>
+  </div>
+  <div mat-dialog-content style="margin-top: 15px;">
+    <app-overview-plan [travelPlanResponse]="tpr"></app-overview-plan>
+  </div>
+</div>

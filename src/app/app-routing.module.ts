@@ -5,6 +5,7 @@ import { ExpenseComponent } from "./expense/expense.component";
 import { RegistrationComponent } from "./registration/registration.component";
 import { LoginComponent } from "./login/login.component";
 import { AuthGuardService } from "./services/auth-guard.service";
+import { ProfileComponent } from "./profile/profile.component";
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
   },
   { path: "registration", component: RegistrationComponent },
   { path: "login", component: LoginComponent },
+  { path: "profile", component: ProfileComponent },
   { path: "", redirectTo: "travelplan", pathMatch: "full" }
 
   //{ path: "user", component: MsmComponent }

@@ -1,222 +1,233 @@
 <div class="container">
-  <mat-card>
-    <mat-accordion>
-      <!-- flight details -->
-      <mat-expansion-panel [expanded]="step === 1" (opened)="(step == 1)">
-        <mat-expansion-panel-header>
-          <mat-panel-title> Flight PLan </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngIf="fp != null; else noFlightPlan">
-          <mat-list>
-            <mat-list-item>Flight details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-flight-itinerary
-                [offerPack]="fp.offerPack"
-              ></app-flight-itinerary>
+  <div class="row">
+    <div class="col-md-12 col-lg-12">
+      <mat-card>
+        <mat-accordion>
+          <!-- flight details -->
+          <mat-expansion-panel [expanded]="step === 1" (opened)="(step == 1)">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Flight PLan </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngIf="fp != null; else noFlightPlan">
+              <mat-list>
+                <mat-list-item>Flight details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-flight-itinerary
+                    [offerPack]="fp.offerPack"
+                  ></app-flight-itinerary>
+                </div>
+                <mat-list-item>Passenegr details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-passenegers
+                    [travellers]="fp.travellers"
+                  ></app-passenegers>
+                </div>
+              </mat-list>
             </div>
-            <mat-list-item>Passenegr details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-passenegers [travellers]="fp.travellers"></app-passenegers>
+            <ng-template #noFlightPlan>
+              <div>
+                <hr />
+                No Flight Plan Found!
+              </div></ng-template
+            >
+            <mat-action-row>
+              <button
+                [hidden]="fp == null || this.readonly"
+                mat-button
+                color="warn"
+                (click)="remove(1)"
+              >
+                Remove
+              </button>
+
+              <button
+                [hidden]="fp != null || this.readonly"
+                mat-button
+                color="warn"
+                (click)="add(0)"
+              >
+                Add
+              </button>
+
+              <button mat-button color="primary" (click)="step = 2">
+                Next
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+          <!-- hotel details -->
+          <mat-expansion-panel [expanded]="step === 2" (opened)="(step == 2)">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Hotel PLan </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngIf="hp != null; else noHotelPlan">
+              <mat-list>
+                <mat-list-item>Hotel details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-hotel-details
+                    [hotel]="hp.hotel"
+                    [request]="hp.req"
+                    [view]="true"
+                  ></app-hotel-details>
+                </div>
+                <mat-list-item>Passenegr details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-passenegers
+                    [travellers]="hp.travellers"
+                    *ngIf="hp.travellers != null"
+                  ></app-passenegers>
+                </div>
+              </mat-list>
             </div>
-          </mat-list>
-        </div>
-        <ng-template #noFlightPlan>
-          <div>
-            <hr />
-            No Flight Plan Found!
-          </div></ng-template
-        >
-        <mat-action-row>
-          <button
-            [hidden]="fp == null"
-            mat-button
-            color="warn"
-            (click)="remove(1)"
-          >
-            Remove
-          </button>
+            <ng-template #noHotelPlan>
+              <div>
+                <hr />
+                No Hotel Plan Found!
+              </div></ng-template
+            >
+            <mat-action-row>
+              <button mat-button color="accent" (click)="step = 1">
+                Previous
+              </button>
 
-          <button
-            [hidden]="fp != null"
-            mat-button
-            color="warn"
-            (click)="add(0)"
-          >
-            Add
-          </button>
+              <button
+                mat-button
+                color="warn"
+                (click)="remove(2)"
+                [hidden]="hp == null || this.readonly"
+              >
+                Remove
+              </button>
 
-          <button mat-button color="primary" (click)="step = 2">
-            Next
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-      <!-- hotel details -->
-      <mat-expansion-panel [expanded]="step === 2" (opened)="(step == 2)">
-        <mat-expansion-panel-header>
-          <mat-panel-title> Hotel PLan </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngIf="hp != null; else noHotelPlan">
-          <mat-list>
-            <mat-list-item>Hotel details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-hotel-details
-                [hotel]="hp.hotel"
-                [request]="hp.req"
-                [view]="true"
-              ></app-hotel-details>
+              <button
+                [hidden]="hp != null || this.readonly"
+                mat-button
+                color="warn"
+                (click)="add(1)"
+              >
+                Add
+              </button>
+              <button mat-button color="primary" (click)="step = 3">
+                Next
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+          <!-- car-details -->
+
+          <mat-expansion-panel [expanded]="step === 3" (opened)="(step == 3)">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Car PLan </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngIf="cp != null; else noCarPlan">
+              <mat-list>
+                <mat-list-item>Car details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-car-details
+                    [car]="cp.car"
+                    [request]="cp.req"
+                    [view]="true"
+                  ></app-car-details>
+                </div>
+                <mat-list-item>Passenegr details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-passenegers
+                    [travellers]="cp.travellers"
+                    *ngIf="cp.travellers != null"
+                  ></app-passenegers>
+                </div>
+              </mat-list>
             </div>
-            <mat-list-item>Passenegr details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-passenegers
-                [travellers]="hp.travellers"
-                *ngIf="hp.travellers != null"
-              ></app-passenegers>
+            <ng-template #noCarPlan>
+              <div>
+                <hr />
+                No Car Plan Found!
+              </div></ng-template
+            >
+            <mat-action-row>
+              <button mat-button color="accent" (click)="step = 2">
+                Previous
+              </button>
+
+              <button
+                mat-button
+                color="warn"
+                (click)="remove(3)"
+                [hidden]="cp == null || this.readonly"
+              >
+                Remove
+              </button>
+
+              <button
+                [hidden]="cp != null || this.readonly"
+                mat-button
+                color="warn"
+                (click)="add(2)"
+              >
+                Add
+              </button>
+              <button mat-button color="primary" (click)="step = 4">
+                Next
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+
+          <!-- Insurance-details -->
+
+          <mat-expansion-panel [expanded]="step === 4" (opened)="(step == 4)">
+            <mat-expansion-panel-header>
+              <mat-panel-title> Insurance PLan </mat-panel-title>
+            </mat-expansion-panel-header>
+            <div *ngIf="ip != null; else noInsurancePlan">
+              <mat-list>
+                <mat-list-item>Insurance details</mat-list-item>
+                <div style="padding: 20px;" class="box">
+                  <app-insurance-details
+                    [insurance]="ip.insurance"
+                    [view]="true"
+                  ></app-insurance-details>
+                </div>
+              </mat-list>
             </div>
-          </mat-list>
-        </div>
-        <ng-template #noHotelPlan>
-          <div>
-            <hr />
-            No Hotel Plan Found!
-          </div></ng-template
-        >
-        <mat-action-row>
-          <button mat-button color="accent" (click)="step = 1">
-            Previous
-          </button>
+            <ng-template #noInsurancePlan>
+              <div>
+                <hr />
+                No Insurance Plan Found!
+              </div></ng-template
+            >
+            <mat-action-row>
+              <button mat-button color="accent" (click)="step = 3">
+                Previous
+              </button>
 
-          <button
-            mat-button
-            color="warn"
-            (click)="remove(2)"
-            [hidden]="hp == null"
-          >
-            Remove
-          </button>
+              <button
+                mat-button
+                color="warn"
+                (click)="remove(4)"
+                [hidden]="cp == null || this.readonly"
+              >
+                Remove
+              </button>
 
-          <button
-            [hidden]="hp != null"
-            mat-button
-            color="warn"
-            (click)="add(1)"
-          >
-            Add
-          </button>
-          <button mat-button color="primary" (click)="step = 3">
-            Next
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-
-      <!-- car-details -->
-
-      <mat-expansion-panel [expanded]="step === 3" (opened)="(step == 3)">
-        <mat-expansion-panel-header>
-          <mat-panel-title> Car PLan </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngIf="cp != null; else noCarPlan">
-          <mat-list>
-            <mat-list-item>Car details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-car-details
-                [car]="cp.car"
-                [request]="cp.req"
-                [view]="true"
-              ></app-car-details>
-            </div>
-            <mat-list-item>Passenegr details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-passenegers
-                [travellers]="cp.travellers"
-                *ngIf="cp.travellers != null"
-              ></app-passenegers>
-            </div>
-          </mat-list>
-        </div>
-        <ng-template #noCarPlan>
-          <div>
-            <hr />
-            No Car Plan Found!
-          </div></ng-template
-        >
-        <mat-action-row>
-          <button mat-button color="accent" (click)="step = 2">
-            Previous
-          </button>
-
-          <button
-            mat-button
-            color="warn"
-            (click)="remove(3)"
-            [hidden]="cp == null"
-          >
-            Remove
-          </button>
-
-          <button
-            [hidden]="cp != null"
-            mat-button
-            color="warn"
-            (click)="add(2)"
-          >
-            Add
-          </button>
-          <button mat-button color="primary" (click)="step = 4">
-            Next
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-
-      <!-- Insurance-details -->
-
-      <mat-expansion-panel [expanded]="step === 4" (opened)="(step == 4)">
-        <mat-expansion-panel-header>
-          <mat-panel-title> Insurance PLan </mat-panel-title>
-        </mat-expansion-panel-header>
-        <div *ngIf="ip != null; else noInsurancePlan">
-          <mat-list>
-            <mat-list-item>Insurance details</mat-list-item>
-            <div style="padding: 20px;" class="filter">
-              <app-insurance-details
-                [insurance]="ip.insurance"
-                [view]="true"
-              ></app-insurance-details>
-            </div>
-          </mat-list>
-        </div>
-        <ng-template #noInsurancePlan>
-          <div>
-            <hr />
-            No Insurance Plan Found!
-          </div></ng-template
-        >
-        <mat-action-row>
-          <button mat-button color="accent" (click)="step = 3">
-            Previous
-          </button>
-
-          <button
-            mat-button
-            color="warn"
-            (click)="remove(4)"
-            [hidden]="cp == null"
-          >
-            Remove
-          </button>
-
-          <button
-            [hidden]="cp != null"
-            mat-button
-            color="warn"
-            (click)="add(3)"
-          >
-            Add
-          </button>
-          <button mat-button color="primary" (click)="onSubmit()">
-            Finish
-          </button>
-        </mat-action-row>
-      </mat-expansion-panel>
-    </mat-accordion>
-  </mat-card>
+              <button
+                [hidden]="cp != null || this.readonly"
+                mat-button
+                color="warn"
+                (click)="add(3)"
+              >
+                Add
+              </button>
+              <button
+                mat-button
+                color="primary"
+                (click)="onSubmit()"
+                [hidden]="this.readonly"
+              >
+                Finish
+              </button>
+            </mat-action-row>
+          </mat-expansion-panel>
+        </mat-accordion></mat-card
+      >
+    </div>
+  </div>
 </div>

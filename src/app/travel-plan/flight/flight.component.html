@@ -45,7 +45,7 @@
               <div class="col-md-12 col-lg-6">
                 <div class="row">
                   <div class="col-md-6">
-                    <mat-form-field style="width: 180px;">
+                    <mat-form-field>
                       <mat-label>Departure Date</mat-label>
                       <input
                         matInput
@@ -61,7 +61,7 @@
                     </mat-form-field>
                   </div>
                   <div class="col-md-6">
-                    <mat-form-field style="width: 180px;">
+                    <mat-form-field>
                       <mat-label>Return Date</mat-label>
                       <input
                         matInput
@@ -81,13 +81,14 @@
 
               <div class="col-md-6 col-lg-6">
                 <div class="row">
-                  <div class="col-md-6 col-lg-7">
+                  <div class="col-md-12 col-lg-5">
                     <mat-form-field>
                       <mat-label>Adults(12y+)</mat-label>
                       <input matInput formControlName="adults" />
                     </mat-form-field>
                   </div>
-                  <div class="col-md-6 col-lg-5">
+                  <div class="col-lg-2 col-md-0"></div>
+                  <div class="col-md-12 col-lg-5">
                     <mat-form-field>
                       <mat-label>Cheldern(2y-12y)</mat-label>
                       <input matInput formControlName="children" />
@@ -126,7 +127,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-12 col-lg-1">
+          <div class="col-md-12 col-lg-1" style="text-align: right;">
             <button
               mat-raised-button
               type="submit"
@@ -325,7 +326,7 @@
         </div>
       </div>
       <div class="col-md-9 col-lg-9">
-        <div *ngFor="let offer of filteredResponse" class="filter">
+        <div *ngFor="let offer of filteredResponse" class="box">
           <app-flight-itinerary
             [offerPack]="offer"
             [request]="request"

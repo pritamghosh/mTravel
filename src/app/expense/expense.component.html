@@ -1,1 +1,136 @@
-<p>expense works!</p>
+<div class="container">
+  <mat-card>
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="step === 1" (opened)="(step == 1)">
+        <mat-expansion-panel-header>
+          <mat-panel-title> Create Expense </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div>
+          <hr />
+          <form>
+            <div class="row" *ngIf="responseTP">
+              <div class="col md-4">
+                <mat-form-field style="width: 100%;">
+                  <mat-label>Select Travel PLan</mat-label>
+                  <mat-select
+                    *ngFor="let resp of responseTP; index as i"
+                    [(ngModel)]="tid"
+                    name="tidn"
+                  >
+                    <mat-option value="{{ i }}">
+                      {{ resp.id }}
+                    </mat-option>
+                  </mat-select></mat-form-field
+                >
+              </div>
+              <div class="col md-4" style="text-align: right">
+                <button
+                  mat-raised-button
+                  color="accent"
+                  [disabled]="!tid"
+                  (click)="viewTravelPlan()"
+                >
+                  View Travel Plan
+                </button>
+              </div>
+              <div class="col md-4" style="text-align: right">
+                <div class="col md-4">
+                  <button
+                    mat-raised-button
+                    color="accent"
+                    [disabled]="!tid"
+                    (click)="addToCalim()"
+                  >
+                    Claim Expense
+                  </button>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <hr />
+              </div>
+            </div>
+          </form>
+        </div>
+        <div *ngIf="expenses?.length > 0">
+          <div class="row box">
+            <div class="col-md-12">
+              <mat-label>Expense Draft</mat-label>
+            </div>
+            <div
+              class="col-md-6 col-lg-6 col-sm-12 box"
+              style="margin-top: 15px;"
+              *ngFor="let exp of expenses; index as i"
+            >
+              <span style="text-justify: auto;"
+                ><strong>Description:</strong>{{ exp.description }}</span
+              >
+              <div style="text-align: right;">
+                <button
+                  mat-raised-button
+                  type="button"
+                  color="warn"
+                  style="margin-top: 10px;"
+                  (click)="onRemove(i)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+            <div class="col-lg-12" style="text-align: right;margin-top: 15px;">
+              <button mat-raised-button color="primary" (click)="onSubmit()">
+                Submit Expense
+              </button>
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="fg" (ngSubmit)="addToExpense()">
+          <div class="row box">
+            <div class="col-md-6">
+              <mat-form-field style="width: 100%;">
+                <mat-label>Description</mat-label>
+                <input
+                  matInput
+                  formControlName="description"
+                  #description
+                  (input)="
+                    description.value = $event.target.value.toUpperCase()
+                  "
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-md-4">
+              <mat-form-field style="width: 100%;cursor: pointer;">
+                <mat-label>Upload Document</mat-label>
+                <input
+                  type="text"
+                  matInput
+                  [value]="filename"
+                  (click)="fileInput.click()"
+                  readonly
+                />
+              </mat-form-field>
+              <input
+                #fileInput
+                id="uploadFile"
+                type="file"
+                (change)="uploadFile($event)"
+                [hidden]="true"
+              />
+            </div>
+            <div class="col-md-2" style="text-align: right;">
+              <button
+                mat-raised-button
+                type="submit"
+                color="primary"
+                style="margin-top: 10px;"
+                [disabled]="!fg.valid"
+              >
+                Add Expense
+              </button>
+            </div>
+          </div>
+        </form>
+      </mat-expansion-panel>
+    </mat-accordion></mat-card
+  >
+</div>

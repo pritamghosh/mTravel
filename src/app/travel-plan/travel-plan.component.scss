@@ -1,31 +1,4 @@
 ::ng-deep {
-  .filter {
-    margin-top: 20px;
-    border: 1px;
-    border-style: groove;
-    border-radius: 10px;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-color: rgba(0, 0, 0, 0.1);
-  }
-
-  .box {
-    margin-top: 20px;
-    border: 1px;
-    border-style: groove;
-    border-radius: 10px;
-    padding: 10px;
-    border-top-right-radius: 10px;
-    border-color: rgba(0, 0, 0, 0.1);
-  }
-}
-::ng-deep {
-  .search {
-    background-color: white;
-  }
-}
-
-::ng-deep {
   .custom-slider .ng5-slider .ng5-slider-bar {
     background: #ffe4d1;
     height: 2px;
