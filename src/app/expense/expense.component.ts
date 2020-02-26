@@ -1,11 +1,11 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { TravelPlan } from "../models/travel.plan.model";
-import { TravelPlanResponse } from "../models/travel.pla.response";
 import { ExpenseService } from "../services/expense.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Expense } from "../models/expense.model";
 import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { ViewPlanComponent } from "./view-plan/view-plan.component";
+import { Booking } from "../models/booking.model";
 
 @Component({
   selector: "app-expense",
@@ -17,7 +17,7 @@ export class ExpenseComponent implements OnInit {
   step = 1;
   tid = "";
   filename: string = "";
-  responseTP: TravelPlanResponse[];
+  bookingResponse: Booking[];
   expenses: Expense[] = [];
   selcectedArray: [];
   fg = new FormGroup({
@@ -55,7 +55,8 @@ export class ExpenseComponent implements OnInit {
     console.log(this.tid);
 
     expense.travelId = this.tid;
-    expense.description = "Travel Expense : " + this.responseTP[this.tid].id;
+    expense.description =
+      "Travel Expense : " + this.bookingResponse[this.tid].id;
     this.expenses.push(expense);
   }
   onRemove(index: number) {
@@ -68,16 +69,15 @@ export class ExpenseComponent implements OnInit {
     dialogConfig.autoFocus = true;
 
     dialogConfig.data = {
-      tpr: this.responseTP[this.tid]
+      br: this.bookingResponse[this.tid]
     };
-    console.log(dialogConfig.data);
 
     const dialogRef = this.dialog.open(ViewPlanComponent, dialogConfig);
   }
   ngOnInit(): void {
     this.service.getTravelPlans();
     this.service.travelSubject.asObservable().subscribe(resp => {
-      this.responseTP = resp;
+      this.bookingResponse = resp;
     });
   }
 }

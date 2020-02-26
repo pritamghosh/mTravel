@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { Insurance } from "src/app/models/insurane.model";
 import { TravelService } from "src/app/services/travel.service";
 import { InsurancePlan } from "src/app/models/insurance.plan.model";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-insurance-details",
@@ -13,7 +14,7 @@ export class InsuranceDetailsComponent implements OnInit {
   @Input() insurance: Insurance;
   @Input("view") isView = false;
   showDetails = false;
-  currency = "₹";
+  currency = environment.currency;
   ngOnInit(): void {}
 
   get requestDetails() {

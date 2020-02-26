@@ -1,21 +1,21 @@
 import { Injectable } from "@angular/core";
-import { TravelPlanResponse } from "../models/travel.pla.response";
 import { Subject } from "rxjs";
 import { HttpClient } from "@angular/common/http";
 import { Expense } from "../models/expense.model";
+import { environment } from "src/environments/environment";
+import { Booking } from "../models/booking.model";
 
 @Injectable({
   providedIn: "root"
 })
 export class ExpenseService {
-  localUrl = "assets/trresp.json";
-  travelSubject = new Subject<TravelPlanResponse[]>();
+  travelSubject = new Subject<Booking[]>();
   constructor(private http: HttpClient) {}
 
   getTravelPlans() {
     return this.http
-      .get<TravelPlanResponse[]>(this.localUrl)
-      .subscribe((resp: TravelPlanResponse[]) => this.travelSubject.next(resp));
+      .get<Booking[]>(environment.getAllTravelUrl)
+      .subscribe((resp: Booking[]) => this.travelSubject.next(resp));
   }
 
   save(expense: Expense[]) {

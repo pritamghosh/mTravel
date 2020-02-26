@@ -8,12 +8,12 @@
         <div>
           <hr />
           <form>
-            <div class="row" *ngIf="responseTP">
+            <div class="row" *ngIf="bookingResponse">
               <div class="col md-4">
                 <mat-form-field style="width: 100%;">
                   <mat-label>Select Travel PLan</mat-label>
                   <mat-select
-                    *ngFor="let resp of responseTP; index as i"
+                    *ngFor="let resp of bookingResponse; index as i"
                     [(ngModel)]="tid"
                     name="tidn"
                   >

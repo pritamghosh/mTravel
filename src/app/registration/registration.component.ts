@@ -15,14 +15,6 @@ export class RegistrationComponent implements OnInit {
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
-      firstName: new FormControl(null, Validators.required),
-      lastName: new FormControl(null, Validators.required),
-      dateOfBirth: new FormControl(null, Validators.required),
-      issuingDate: new FormControl(null, Validators.required),
-      expiryDate: new FormControl(null, Validators.required),
-      passportNo: new FormControl(null, Validators.required),
-      gender: new FormControl(null, Validators.required),
-      issuingCountry: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.email, Validators.required]),
       contact: new FormControl(null, Validators.pattern("[0-9+]{8,15}")),
       password: new FormControl(null, [
@@ -33,10 +25,22 @@ export class RegistrationComponent implements OnInit {
         Validators.required,
         this.password.bind(this)
       ]),
-      faceId: new FormControl()
+      faceId: new FormControl(),
+      primaryUser: this.userFormControl()
     });
   }
-
+  userFormControl() {
+    return new FormGroup({
+      firstName: new FormControl(null, Validators.required),
+      lastName: new FormControl(null, Validators.required),
+      dateOfBirth: new FormControl(null, Validators.required),
+      issuingDate: new FormControl(null, Validators.required),
+      expiryDate: new FormControl(null, Validators.required),
+      passportNo: new FormControl(null, Validators.required),
+      gender: new FormControl(null, Validators.required),
+      issuingCountry: new FormControl(null, Validators.required)
+    });
+  }
   password(control: FormControl) {
     if (this.registrationForm != null) {
       if (

@@ -4,7 +4,8 @@
 "class": "Mini",
 "passengerCapacity": 4,
 "baggageCapacity": 2,
-"img": "assets/img/car/mini4.jpg"
+"img": "assets/img/car/mini4.jpg",
+"partner" : "Uber"
 
 },{
 "type": "4-5 Doors",
@@ -12,7 +13,8 @@
 "class": "Premimun",
 "passengerCapacity": 4,
 "baggageCapacity": 2,
-"img": "assets/img/car/premimum4.jpg"
+"img": "assets/img/car/premimum4.jpg",
+"partner" : "Uber"
 
 },{
 "type": "Truck",
@@ -20,7 +22,8 @@
 "class": "Compact",
 "passengerCapacity": 2,
 "baggageCapacity": 6,
-"img": "assets/img/car/compact2+6.jpg"
+"img": "assets/img/car/compact2+6.jpg",
+"partner" : "Uber"
 },
 {
 "type": "Van",
@@ -28,7 +31,8 @@
 "class": "Compact",
 "passengerCapacity": 4,
 "baggageCapacity": 4,
-"img": "assets/img/car/compact4.jpg"
+"img": "assets/img/car/compact4.jpg",
+"partner" : "Uber"
 }
 
 ]

@@ -5,4 +5,5 @@ export class Car {
   passengerCapacity: number;
   baggageCapacity: number;
   img: string;
+  partner: string;
 }

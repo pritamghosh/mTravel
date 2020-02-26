@@ -5,4 +5,5 @@ export class OfferPack {
   onwardFlightItinerary: FlightItinerary;
   returnFlightItinerary: FlightItinerary;
   fare: Fare;
+  partner: string = "Air India";
 }

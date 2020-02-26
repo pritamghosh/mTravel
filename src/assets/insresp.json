@@ -1,6 +1,7 @@
 [
 	{
 		"name": "Travel Insurance Platinum",
+		"vendor" : "Bajaj Allianz",
 		"type": "Premium",
 		"person": 1,
 		"startDate": "Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
@@ -34,6 +35,7 @@
 	},
 	{
 		"name": "Travel Insurance Silver",
+		"vendor" : "Bajaj Allianz",
 		"type": "Economy",
 		"person": 1,
 		"startDate": "Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
@@ -67,6 +69,7 @@
 	},
 	{
 		"name": "Travel Insurance Economy",
+		"vendor" : "Bajaj Allianz",
 		"type": "Economy",
 		"person": 1,
 		"startDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",

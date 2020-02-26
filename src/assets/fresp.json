@@ -40,12 +40,12 @@
 					"originCountry": "United Kingdom",
 					"originAirportName": "London Heathrow Airport",
 					"departureTime": "0900",
-					"departureDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+					"departureDate": "2020-02-25T00:00:00.000+0000",
 					"departureOffset": 0,
 					"destinationPoint": "DXB",
 					"destinationCountry": "United Arab Emirates",
 					"arrivalTime": "0300",
-					"arrivalDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+					"arrivalDate": "2020-02-25T00:00:00.000+0000",
 					"arrivalOffset": 1,
 					"flightDuration": 430,
 					"destinationAirportName": "Dubai International Airport"
@@ -64,8 +64,8 @@
 					"arrivalTime": "0700",
 					"arrivalOffset": 2,
 					"flightDuration": 170,
-					"arrivalDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
-					"departureDate": "Fri Feb 21 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+					"arrivalDate": "2020-02-25T00:00:00.000+0000",
+					"departureDate": "2020-02-25T00:00:00.000+0000",
 					"aircraft": "Airbus A380",
 					"destinationAirportName": "Netaji Subhash Chandra Bose International Airport"
 				}
@@ -75,7 +75,8 @@
 			"baseFare": 40000,
 			"taxes": 27000,
 			"total": 670000
-		}
+		},
+		"partner" : "Air India"
 	},
 	{
 		"onwardFlightItinerary": {
@@ -162,6 +163,7 @@
 			"baseFare": 35000,
 			"taxes": 17000,
 			"total": 520000
-		}
+		},
+		"partner" : "Air Asia"
 	}
 ]

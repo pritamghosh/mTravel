@@ -3,8 +3,9 @@ import { TravelService } from "src/app/services/travel.service";
 import { FlightRequest } from "src/app/models/flight.request.model";
 import { FlightPlan } from "src/app/models/flight.plan.model";
 import { Travellers } from "src/app/models/travellers.model";
-import { Traveller } from "src/app/models/traveller.model";
+import { environment } from "src/environments/environment";
 import { OfferPack } from "src/app/models/offer.pack.model";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-flight-itinerary",
@@ -16,13 +17,14 @@ export class FlightItineraryComponent implements OnInit {
   @Input("request") request: FlightRequest;
   imgSrc = "assets/img/ai.png";
   showFlightInfo = false;
-  currency = "₹";
+  currency = environment.currency;
   layovers = 0;
   returnLayovers = 0;
-  constructor(private service: TravelService) {}
+  constructor(
+    private service: TravelService,
+    private loginService: LoginService
+  ) {}
   ngOnInit(): void {
-    console.log(this.offerPack);
-
     this.layovers =
       this.offerPack.onwardFlightItinerary.layoverDurations != null
         ? this.offerPack.onwardFlightItinerary.layoverDurations.length
@@ -114,18 +116,17 @@ export class FlightItineraryComponent implements OnInit {
     return this.showFlightInfo ? "keyboard_arrow_up" : "keyboard_arrow_down";
   }
   addToTravelPlan() {
+    let user = this.loginService.getUser();
     let fp = new FlightPlan();
+    if (user != null) {
+      let tvs = new Travellers();
+      tvs.email = user.email;
+      tvs.contact = user.contact;
+      tvs.travellers.push(user.primaryUser);
+      fp.travellers = tvs;
+    }
     fp.offerPack = this.offerPack;
     fp.req = this.request;
-    let tvs = new Travellers();
-    tvs.email = "gh@hg.com";
-    tvs.contact = "9078766565";
-    tvs.travellers = [];
-    let tv1 = new Traveller();
-    tv1.firstName = "PGHOSH";
-    fp.travellers = tvs;
-    tvs.travellers.push(tv1);
-    tvs.travellers.push(tv1);
     this.service.pushFlight(fp);
   }
 }

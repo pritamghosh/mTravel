@@ -1,0 +1,15 @@
+{
+	"email": "19pritamghosh93@gmail.com",
+	"contact": "9078087343",
+	"primaryUser": {
+		"firstName": "Pritam",
+		"lastName": "Ghosh",
+		"dateOfBirth": "2020-02-22T00:00:00.000Z",
+		"issuingDate": "2020-02-04T00:00:00.000Z",
+		"expiryDate": "2020-02-25T00:00:00.000Z",
+		"passportNo": "DASD",
+		"gender": "Male",
+		"issuingCountry": "India"
+	}
+}
+

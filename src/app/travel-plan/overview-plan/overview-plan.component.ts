@@ -1,6 +1,5 @@
 import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import { TravelService } from "src/app/services/travel.service";
-import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { Subscription } from "rxjs";
 import { FlightPlan } from "src/app/models/flight.plan.model";
 import { CarPlan } from "src/app/models/car.plan.model";
@@ -9,7 +8,8 @@ import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { FaceComponent } from "src/app/face/face.component";
 import { TravelPlan } from "src/app/models/travel.plan.model";
 import { LoginService } from "src/app/services/login.service";
-import { TravelPlanResponse } from "src/app/models/travel.pla.response";
+import { Booking } from "src/app/models/booking.model";
+import { InsurancePlan } from "src/app/models/insurance.plan.model";
 
 @Component({
   selector: "app-overview-plan",
@@ -24,11 +24,11 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   flightSubs: Subscription;
   insuranceSubs: Subscription;
   readonly = false;
-  @Input() travelPlanResponse: TravelPlanResponse;
+  @Input() bookingResponse: Booking;
   fp: FlightPlan;
   cp: CarPlan;
   hp: HotelPlan;
-  ip: any;
+  ip: InsurancePlan;
   constructor(
     private service: TravelService,
     public dialog: MatDialog,
@@ -37,10 +37,10 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (
-      this.travelPlanResponse != null &&
-      this.travelPlanResponse.planString != null
+      this.bookingResponse != null &&
+      this.bookingResponse.travelInfo != null
     ) {
-      let tp = JSON.parse(this.travelPlanResponse.planString);
+      let tp = JSON.parse(this.bookingResponse.travelInfo);
 
       if (tp != null) {
         this.fp = tp.flight;
@@ -86,16 +86,43 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
 
     dialogRef.afterClosed().subscribe(result => {
       if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
+        let booking = new Booking();
+        if (this.loginService.getUser() != null) {
+          booking.email = this.loginService.getUser().email;
+        }
+        booking.faceId = dialogConfig.data.faceId;
+        booking.flight = this.fp;
         let tp = new TravelPlan();
-        tp.faceId = dialogConfig.data.faceId;
         tp.flight = this.fp;
         tp.car = this.cp;
         tp.hotel = this.hp;
-        tp.insurance = this.ip;
-        if (this.loginService.getUser() != null) {
-          tp.email = this.loginService.getUser().email;
+        booking.travelInfo = JSON.stringify(tp);
+        if (this.fp != null) {
+          booking.bookings.push({
+            partner: this.fp.offerPack.partner,
+            amount: this.fp.offerPack.fare.total
+          });
         }
-        console.log(JSON.stringify(tp));
+        if (this.hp != null) {
+          booking.bookings.push({
+            partner: this.hp.hotel.name,
+            amount: this.hp.hotel.price
+          });
+        }
+        if (this.ip != null && this.ip.insurance != null) {
+          tp.insurance = this.ip.insurance;
+          booking.bookings.push({
+            partner: this.ip.insurance.vendor,
+            amount: this.ip.insurance.price
+          });
+        }
+        if (this.cp != null) {
+          booking.bookings.push({
+            partner: this.cp.car.partner,
+            amount: this.cp.car.price
+          });
+        }
+        console.log(JSON.stringify(booking));
       }
     });
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material/dialog";
-import { TravelPlanResponse } from "src/app/models/travel.pla.response";
+import { Booking } from "src/app/models/booking.model";
 
 @Component({
   selector: "app-view-plan",
@@ -8,14 +8,14 @@ import { TravelPlanResponse } from "src/app/models/travel.pla.response";
   styleUrls: ["./view-plan.component.scss"]
 })
 export class ViewPlanComponent implements OnInit {
-  tpr: TravelPlanResponse;
+  br: Booking;
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<ViewPlanComponent>
   ) {}
 
   ngOnInit(): void {
-    this.tpr = this.data.tpr;
+    this.br = this.data.br;
   }
 
   onCancel() {

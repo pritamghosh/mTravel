@@ -3,7 +3,9 @@
     <span style="font-size: 20px;"
       ><strong>{{ insurance.name }}</strong></span
     ><br />
-    <span>{{ insurance.type }}</span
+    <span>Type: {{ insurance.type }}</span
+    ><br />
+    <span>Vendor: {{ insurance.vendor }}</span
     ><br />
     <span>Start Date : {{ insurance.startDate | date: "EEE, MMM d, y " }}</span
     ><br /><span>End Date : {{ insurance.endDate | date: "E, MMM d, y" }}</span>

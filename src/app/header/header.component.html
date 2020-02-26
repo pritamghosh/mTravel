@@ -7,17 +7,6 @@
     <h1>mTravel</h1>
     <span class="menu-spacer"></span>
     <div>
-      <!-- <mat-menu #flightsMenu="matMenu">
-        <button mat-menu-item [routerLink]="['flights/profile']">
-          Profile
-        </button>
-        <button mat-menu-item [routerLink]="['flights/aircraft']">
-          Aircraft
-        </button>
-        <button mat-menu-item [routerLink]="['flights/msm']">
-          Master Seat Map
-        </button>
-      </mat-menu> -->
       <button mat-button [routerLink]="['travelplan']">
         Travel Plan
       </button>
@@ -27,6 +16,13 @@
     </div>
     <div style="flex-grow:1"></div>
     <div>
+      <button
+        mat-icon-button
+        [hidden]="!isLoggedIn"
+        style="margin-right: 20px;"
+      >
+        <mat-icon>account_balance_wallet</mat-icon><span> 1000</span>
+      </button>
       <button mat-icon-button [matMenuTriggerFor]="userMenu">
         <mat-icon>person</mat-icon>
       </button>

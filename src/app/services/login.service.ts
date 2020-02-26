@@ -1,7 +1,9 @@
 const LOGIN_INFO_KEY = "loginInfo";
 import { Injectable } from "@angular/core";
-import { Subject } from "rxjs";
+import { Subject, from } from "rxjs";
 import { HttpClient } from "@angular/common/http";
+import { User } from "src/app/models/user.model";
+import { environment } from "src/environments/environment";
 
 @Injectable({
   providedIn: "root"
@@ -13,20 +15,16 @@ export class LoginService {
   login(login: any): Promise<any> {
     this.signOut();
     return new Promise((resolve, reject) => {
-      //this.http.post("http://localhost:9052/login", login).subscribe(
-      //   resp => {
-      //     this.savetoContext(resp);
-      //     resolve(true);
-      //   },
-      //   error => {
-      //     console.error(error);
-      //     reject();
-      //   }
-      // );
-      console.log(JSON.stringify(login));
-
-      this.savetoContext(login);
-      resolve(true);
+      this.http.get(environment.loginUrl, login).subscribe(
+        resp => {
+          this.savetoContext(resp);
+          resolve(true);
+        },
+        error => {
+          console.error(error);
+          reject();
+        }
+      );
     });
   }
   public savetoContext(resp: any) {
@@ -40,7 +38,7 @@ export class LoginService {
     return resp != null;
   }
 
-  getUser(): any {
+  getUser(): User {
     localStorage.getItem(LOGIN_INFO_KEY);
     let resp = localStorage.getItem(LOGIN_INFO_KEY);
     if (resp != null) {

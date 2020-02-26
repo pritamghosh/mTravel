@@ -5,6 +5,7 @@ export class Insurance {
   startDate: Date;
   endDate: Date;
   price: number;
+  vendor: string;
   coverage: string[];
   days: number;
   description: {
