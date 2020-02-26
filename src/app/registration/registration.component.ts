@@ -19,7 +19,7 @@ export class RegistrationComponent implements OnInit {
       lastName: new FormControl(null, Validators.required),
       dateOfBirth: new FormControl(null, Validators.required),
       issuingDate: new FormControl(null, Validators.required),
-      expiaryDate: new FormControl(null, Validators.required),
+      expiryDate: new FormControl(null, Validators.required),
       passportNo: new FormControl(null, Validators.required),
       gender: new FormControl(null, Validators.required),
       issuingCountry: new FormControl(null, Validators.required),

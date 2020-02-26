@@ -35,6 +35,9 @@ export class FaceComponent implements OnInit {
     public dialogRef: MatDialogRef<FaceComponent>
   ) {}
   public ngOnInit(): void {
+    this.show();
+  }
+  show() {
     this.cameraService
       .getMediaDevices()
       .getUserMedia({ video: true, audio: false })
@@ -48,7 +51,6 @@ export class FaceComponent implements OnInit {
         console.log("Something went wrong!");
       });
   }
-
   get submitButtonName() {
     return this.data.buttonName;
   }
@@ -86,8 +88,14 @@ export class FaceComponent implements OnInit {
         .scanImage(this.subscriptionKey, base64Image)
         .subscribe(
           resp => {
-            this.data.faceId = resp[0].faceId;
-            this.dialogRef.close();
+            if (resp != null && resp.length > 0) {
+              this.data.faceId = resp[0].faceId;
+              this.dialogRef.close();
+            } else {
+              console.log("empty resp");
+              this.imageString = null;
+              this.show();
+            }
           },
           err => {
             this.imageString = null;
