@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "mTravell": {
+    "mTravel": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/mTravell",
+            "outputPath": "dist/mTravel",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -65,18 +65,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "mTravell:build"
+            "browserTarget": "mTravel:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "mTravell:build:production"
+              "browserTarget": "mTravel:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "mTravell:build"
+            "browserTarget": "mTravel:build"
           }
         },
         "test": {
@@ -109,18 +109,18 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "mTravell:serve"
+            "devServerTarget": "mTravel:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "mTravell:serve:production"
+              "devServerTarget": "mTravel:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "mTravell",
+  "defaultProject": "mTravel",
   "cli": {
     "analytics": "c4792857-092c-463c-b94d-88fe1bf310e5"
   }
