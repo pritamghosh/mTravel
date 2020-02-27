@@ -67,8 +67,8 @@ import { FaceComponent } from "./face/face.component";
 import { LoginComponent } from "./login/login.component";
 import { InsuranceDetailsComponent } from "./travel-plan/insurance/insurance-details/insurance-details.component";
 import { DesktopCameraService } from "./services/desktop-camera.service";
-import { ViewPlanComponent } from './expense/view-plan/view-plan.component';
-import { ProfileComponent } from './profile/profile.component';
+import { ViewPlanComponent } from "./expense/view-plan/view-plan.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 @NgModule({
   declarations: [

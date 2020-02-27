@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject, Input } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { FaceRecognitionService } from "../services/face-recognition.service";
 import { Router } from "@angular/router";
@@ -15,6 +15,7 @@ export class FaceComponent implements OnInit {
   message: string;
   imageString = "";
   faceApiResponse: Observable<any>;
+  title: string = "Face Recognition";
   //subscriptionKey: string = 'b36a4edbc372433ea78d2786acb63dbe';
   //subscriptionKey: string = "f19864adc9dc421b999b28f03212170b";
   subscriptionKey = environment.subscriptionKey;
