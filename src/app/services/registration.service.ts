@@ -12,6 +12,6 @@ export class RegistrationService {
   rigister(req: any) {
     return this.http
       .post(environment.registrationUrl, req)
-      .subscribe((resp: string) => this.alertService.openDiaolog(resp));
+      .subscribe((resp: any) => this.alertService.openDiaolog(resp.result));
   }
 }
