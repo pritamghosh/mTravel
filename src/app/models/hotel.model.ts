@@ -1,6 +1,7 @@
 export class Hotel {
   id: number;
   name: string;
+  partner: string;
   city: string;
   location: string;
   img: string[];

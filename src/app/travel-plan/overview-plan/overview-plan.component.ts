@@ -108,7 +108,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         }
         if (this.hp != null) {
           booking.bookings.push({
-            partner: this.hp.hotel.name,
+            partner: this.hp.hotel.partner,
             amount: this.hp.hotel.price
           });
         }
