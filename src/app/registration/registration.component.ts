@@ -68,7 +68,7 @@ export class RegistrationComponent implements OnInit {
 
     dialogConfig.data = {
       faceId: "",
-      buttonName: "Registration"
+      buttonName: "Register"
     };
 
     const dialogRef = this.dialog.open(FaceComponent, dialogConfig);
