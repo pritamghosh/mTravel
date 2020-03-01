@@ -16,6 +16,7 @@ export class HotelDetailsComponent implements OnInit {
   @Input("hotel") hotel: Hotel;
   @Input("request") request: HotelRequet;
   @Input("view") isView = false;
+  icon = environment.currencyIcon;
   showHotelDetails = false;
   currency = environment.currency;
   constructor(

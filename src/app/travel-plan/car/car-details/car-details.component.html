@@ -28,7 +28,9 @@
     ><br />
     <span><strong>Price: </strong></span><br />
     <span style="font-size: 30px; font-weight: bold;"
-      >{{ currency }}{{ car.price }}</span
+      ><fa-icon [icon]="icon" style="font-size: 20px;"></fa-icon>&nbsp;&nbsp;{{
+        car.price
+      }}</span
     >
     <div *ngIf="!isView; else view">
       <button mat-raised-button color="primary" (click)="addToTravelPlan()">

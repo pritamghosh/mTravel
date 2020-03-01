@@ -20,6 +20,7 @@ export class CarDetailsComponent implements OnInit {
   @Input("view") isView = false;
   showDetails = false;
   currency = environment.currency;
+  icon = environment.currencyIcon;
   luggage = faSuitcase;
   passeneger = faUser;
   constructor(

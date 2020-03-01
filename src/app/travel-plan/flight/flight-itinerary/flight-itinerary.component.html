@@ -110,7 +110,9 @@
     <br /><br />
     <div *ngIf="offerPack.returnFlightItinerary"><br /><br /></div>
     <span style="font-weight: bold; font-size: 30px;"
-      >{{ currency }}{{ offerPack.fare.total }}</span
+      ><fa-icon [icon]="icon" style="font-size: 20px;"></fa-icon>&nbsp;&nbsp;{{
+        offerPack.fare.total
+      }}</span
     >
   </div>
   <div

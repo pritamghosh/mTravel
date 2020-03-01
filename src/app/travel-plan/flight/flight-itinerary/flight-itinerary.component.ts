@@ -18,6 +18,7 @@ export class FlightItineraryComponent implements OnInit {
   imgSrc = "assets/img/ai.png";
   showFlightInfo = false;
   currency = environment.currency;
+  icon = environment.currencyIcon;
   layovers = 0;
   returnLayovers = 0;
   constructor(
