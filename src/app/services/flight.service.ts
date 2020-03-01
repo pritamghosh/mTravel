@@ -13,12 +13,9 @@ export class FlightService {
   constructor(private http: HttpClient) {}
 
   search(flightReqfq: FlightRequest) {
-    return this.http.get<OfferPack[]>(environment.flightSearchUrl).subscribe(
-      resp => this.searchResponseSubject.next(resp),
-      err => {
-        console.log(err);
-      }
-    );
+    return this.http
+      .post<OfferPack[]>(environment.flightSearchUrl, flightReqfq)
+      .subscribe(resp => this.searchResponseSubject.next(resp));
   }
 
   getResponse(): Observable<OfferPack[]> {

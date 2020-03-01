@@ -35,7 +35,7 @@
                 [hidden]="fp == null || this.readonly"
                 mat-button
                 color="warn"
-                (click)="remove(1)"
+                (click)="fp = null"
               >
                 Remove
               </button>
@@ -92,7 +92,7 @@
               <button
                 mat-button
                 color="warn"
-                (click)="remove(2)"
+                (click)="hp = null"
                 [hidden]="hp == null || this.readonly"
               >
                 Remove
@@ -151,7 +151,7 @@
               <button
                 mat-button
                 color="warn"
-                (click)="remove(3)"
+                (click)="cp = null"
                 [hidden]="cp == null || this.readonly"
               >
                 Remove
@@ -202,14 +202,14 @@
               <button
                 mat-button
                 color="warn"
-                (click)="remove(4)"
-                [hidden]="cp == null || this.readonly"
+                (click)="ip = null"
+                [hidden]="ip == null || this.readonly"
               >
                 Remove
               </button>
 
               <button
-                [hidden]="cp != null || this.readonly"
+                [hidden]="ip != null || this.readonly"
                 mat-button
                 color="warn"
                 (click)="add(3)"
@@ -220,7 +220,10 @@
                 mat-button
                 color="primary"
                 (click)="onSubmit()"
-                [hidden]="this.readonly"
+                [hidden]="
+                  this.readonly ||
+                  (fp == null && cp == null && hp == null && ip == null)
+                "
               >
                 Finish
               </button>

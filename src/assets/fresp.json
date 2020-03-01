@@ -1,4 +1,81 @@
-[
+[{
+		"onwardFlightItinerary": {
+			"airlineCodes": [
+				"EI"
+			],
+			"airlineNames": [
+				"Aer Lingus"
+			],
+			"originPoint": "JFK",
+			"originCountry": "US",
+			"originCity": "New York",
+			"departureTime": "21:10",
+			"departureOffset": 0,
+			"destinationPoint": "LHR",
+			"destinationCountry": "GB",
+			"destinationCity": "London",
+			"arrivalTime": "08:35",
+			"arrivalOffset": 1,
+			"journeyDuration": 681,
+			"layoverPorts": [
+				"DUB"
+			],
+			"layoverDurations": [
+				75
+			],
+			"layoverAirportNames": [
+				"International"
+			],
+			"layoverCities": [
+				"Dubai"
+			],
+			"flightInfos": [
+				{
+					"airlineCode": "EI",
+					"aircraft": "Airbus Industrie A330",
+					"airlineName": "Aer Lingus",
+					"flightNo": null,
+					"originPoint": "JFK",
+					"originCountry": "US",
+					"originAirportName": "John F Kennedy Intl",
+					"departureDate": "2020-02-27T00:00:00.000+0000",
+					"departureTime": "21:10",
+					"departureOffset": 0,
+					"destinationPoint": "DUB",
+					"destinationCountry": "IE",
+					"destinationAirportName": "International",
+					"arrivalDate": "2020-02-28T00:00:00.000+0000",
+					"arrivalTime": "08:35",
+					"arrivalOffset": "1",
+					"flightDuration": 271
+				},
+				{
+					"airlineCode": "EI",
+					"aircraft": "Airbus A320",
+					"airlineName": "Aer Lingus",
+					"flightNo": null,
+					"originPoint": "DUB",
+					"originCountry": "IE",
+					"originAirportName": "International",
+					"departureDate": "2020-02-28T00:00:00.000+0000",
+					"departureTime": "09:50",
+					"departureOffset": 0,
+					"destinationPoint": "LHR",
+					"destinationCountry": "GB",
+					"destinationAirportName": "Heathrow",
+					"arrivalDate": "2020-02-28T00:00:00.000+0000",
+					"arrivalTime": "11:20",
+					"arrivalOffset": "0",
+					"flightDuration": 560
+				}
+			]
+		},
+		"fare": {
+			"baseFare": 1223,
+			"taxes": 75,
+			"total": 1298
+		}
+	},
 	{
 		"onwardFlightItinerary": {
 			"airlineCodes": [

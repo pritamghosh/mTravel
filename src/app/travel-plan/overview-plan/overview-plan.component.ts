@@ -11,6 +11,7 @@ import { LoginService } from "src/app/services/login.service";
 import { Booking } from "src/app/models/booking.model";
 import { InsurancePlan } from "src/app/models/insurance.plan.model";
 import { FormGroup } from "@angular/forms";
+import { BookingService } from "src/app/services/booking.service";
 
 @Component({
   selector: "app-overview-plan",
@@ -33,7 +34,8 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   constructor(
     private service: TravelService,
     public dialog: MatDialog,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private bookingService: BookingService
   ) {}
 
   ngOnInit(): void {
@@ -124,6 +126,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
           });
         }
         console.log(JSON.stringify(booking));
+        this.bookingService.book(booking);
       }
     });
   }

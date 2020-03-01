@@ -31,7 +31,6 @@ export class FaceComponent implements OnInit {
   constructor(
     private faceRecognitionService: FaceRecognitionService,
     private cameraService: DesktopCameraService,
-    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<FaceComponent>
   ) {}

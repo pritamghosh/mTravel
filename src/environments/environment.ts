@@ -12,8 +12,8 @@ export const environment = {
   insuranceSearchUrl: "assets/insresp.json",
   getAllTravelUrl: "assets/trresp.json",
   loginUrl: "assets/loginresp.json",
+  registrationUrl: "",
   saveExpenseUrl: "",
-  registerUrl: "",
-  addTravelPlanUrl: "",
+  bookingUrlUrl: "",
   currency: "£ "
 };

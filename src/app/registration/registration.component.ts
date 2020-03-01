@@ -73,8 +73,6 @@ export class RegistrationComponent implements OnInit {
       if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
         this.registrationForm.get("faceId").setValue(dialogConfig.data.faceId);
         console.log(JSON.stringify(this.registrationForm.value));
-
-        //this.onSubmit();
       }
     });
   }

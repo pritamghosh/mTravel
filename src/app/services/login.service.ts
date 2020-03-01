@@ -12,19 +12,12 @@ export class LoginService {
   isLoggedInSubject = new Subject<boolean>();
   constructor(private http: HttpClient) {}
 
-  login(login: any): Promise<any> {
+  login(login: any) {
     this.signOut();
     return new Promise((resolve, reject) => {
-      this.http.get(environment.loginUrl, login).subscribe(
-        resp => {
-          this.savetoContext(resp);
-          resolve(true);
-        },
-        error => {
-          console.error(error);
-          reject();
-        }
-      );
+      this.http
+        .get(environment.loginUrl, login)
+        .subscribe(resp => this.savetoContext(resp));
     });
   }
   public savetoContext(resp: any) {

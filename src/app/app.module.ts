@@ -2,7 +2,8 @@ import { BrowserModule } from "@angular/platform-browser";
 import {
   NgModule,
   CUSTOM_ELEMENTS_SCHEMA,
-  NO_ERRORS_SCHEMA
+  NO_ERRORS_SCHEMA,
+  ErrorHandler
 } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
@@ -33,7 +34,7 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatSliderModule } from "@angular/material/slider";
 import { MatChipsModule } from "@angular/material/chips";
 import { MatStepperModule } from "@angular/material/stepper";
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule, MatDialog } from "@angular/material/dialog";
 
 import { NgxMaterialTimepickerModule } from "ngx-material-timepicker";
 import { Ng5SliderModule } from "ng5-slider";
@@ -66,9 +67,10 @@ import { RegistrationComponent } from "./registration/registration.component";
 import { FaceComponent } from "./face/face.component";
 import { LoginComponent } from "./login/login.component";
 import { InsuranceDetailsComponent } from "./travel-plan/insurance/insurance-details/insurance-details.component";
-import { DesktopCameraService } from "./services/desktop-camera.service";
+import { ErrorService } from "./services/error.service";
 import { ViewPlanComponent } from "./expense/view-plan/view-plan.component";
 import { ProfileComponent } from "./profile/profile.component";
+import { AlertComponent } from "./alert/alert.component";
 
 @NgModule({
   declarations: [
@@ -97,7 +99,8 @@ import { ProfileComponent } from "./profile/profile.component";
     LoginComponent,
     InsuranceDetailsComponent,
     ViewPlanComponent,
-    ProfileComponent
+    ProfileComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -135,7 +138,7 @@ import { ProfileComponent } from "./profile/profile.component";
     Ng5SliderModule,
     FontAwesomeModule
   ],
-  providers: [FlightService, DesktopCameraService],
+  providers: [{ provide: ErrorHandler, useClass: ErrorService }],
   bootstrap: [AppComponent],
   entryComponents: [FaceComponent],
   exports: [

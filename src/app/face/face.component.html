@@ -14,27 +14,17 @@
       alt="imageString"
     />
   </div>
-  <div style="margin-top:10px;text-align: right;">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="onCancel()"
-      style="float: left;"
-    >
-      Cancel
-    </button>
-    <button
-      mat-raised-button
-      color="primary"
-      cdkFocusInitial
-      (click)="processImage()"
-    >
-      {{ this.data.buttonName }}
-    </button>
-    <!-- <button
-      *ngIf="faceApiResponse | async"
-      type="button"
-      [hidden]="true"
-    ></button> -->
-  </div>
+</div>
+<div style="margin-top:10px;text-align: right;">
+  <button mat-raised-button color="primary" matDialogClose style="float: left;">
+    Cancel
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    cdkFocusInitial
+    (click)="processImage()"
+  >
+    {{ this.data.buttonName }}
+  </button>
 </div>
