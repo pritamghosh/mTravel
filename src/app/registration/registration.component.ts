@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FaceComponent } from "../face/face.component";
 import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
+import { RegistrationService } from "../services/registration.service";
 
 @Component({
   selector: "app-registration",
@@ -11,7 +12,10 @@ import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 export class RegistrationComponent implements OnInit {
   maxDob = new Date();
   registrationForm: FormGroup;
-  constructor(public dialog: MatDialog) {}
+  constructor(
+    public dialog: MatDialog,
+    private registrationService: RegistrationService
+  ) {}
 
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
@@ -73,6 +77,7 @@ export class RegistrationComponent implements OnInit {
       if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
         this.registrationForm.get("faceId").setValue(dialogConfig.data.faceId);
         console.log(JSON.stringify(this.registrationForm.value));
+        this.registrationService.rigister(this.registrationForm.value);
       }
     });
   }
