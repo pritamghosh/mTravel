@@ -37,6 +37,7 @@ export class HotelDetailsComponent implements OnInit {
     hp.hotel = this.hotel;
     hp.req = this.request;
     this.service.pushHotel(hp);
+    this.service.tabIndex.next(2);
   }
   get getIcon() {
     return this.showHotelDetails ? "keyboard_arrow_up" : "keyboard_arrow_down";

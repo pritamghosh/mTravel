@@ -150,5 +150,6 @@ export class FlightItineraryComponent implements OnInit {
     fp.offerPack = this.offerPack;
     fp.req = this.request;
     this.service.pushFlight(fp);
+    this.service.tabIndex.next(1);
   }
 }

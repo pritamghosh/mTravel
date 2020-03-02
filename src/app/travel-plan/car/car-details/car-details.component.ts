@@ -43,5 +43,6 @@ export class CarDetailsComponent implements OnInit {
     cp.car = this.car;
     cp.req = this.request;
     this.service.pushCar(cp);
+    this.service.tabIndex.next(3);
   }
 }

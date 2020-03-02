@@ -60,7 +60,7 @@ export class ExpenseComponent implements OnInit {
     this.expenses.push(expense);
   }
   onRemove(index: number) {
-    this.expenses.slice(index, 1);
+    this.expenses.splice(index, 1);
   }
   viewTravelPlan() {
     const dialogConfig = new MatDialogConfig();

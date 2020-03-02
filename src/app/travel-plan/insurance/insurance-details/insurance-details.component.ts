@@ -34,6 +34,7 @@ export class InsuranceDetailsComponent implements OnInit {
     let ip = new InsurancePlan();
     ip.insurance = this.insurance;
     this.service.pushInsurance(ip);
+    this.service.tabIndex.next(4);
   }
   get getIcon() {
     return this.showDetails ? "keyboard_arrow_up" : "keyboard_arrow_down";
