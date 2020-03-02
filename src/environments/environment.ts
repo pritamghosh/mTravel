@@ -17,5 +17,10 @@ export const environment = {
   saveExpenseUrl: "",
   bookingUrlUrl: "",
   currency: "£ ",
-  currencyIcon: faCoins
+  currencyIcon: faCoins,
+  defaultDepPort: "JFK",
+  defaultArrivalPort: "LHR",
+  defaultHotelLocation: "London Central",
+  defaultPickUpLocation: "Heathrow Airport",
+  defaultDropOffLocation: "London Central"
 };

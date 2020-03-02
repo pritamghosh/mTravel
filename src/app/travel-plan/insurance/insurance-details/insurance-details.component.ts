@@ -3,6 +3,8 @@ import { Insurance } from "src/app/models/insurane.model";
 import { TravelService } from "src/app/services/travel.service";
 import { InsurancePlan } from "src/app/models/insurance.plan.model";
 import { environment } from "src/environments/environment";
+import { Travellers } from "src/app/models/travellers.model";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-insurance-details",
@@ -10,7 +12,10 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./insurance-details.component.scss"]
 })
 export class InsuranceDetailsComponent implements OnInit {
-  constructor(private service: TravelService) {}
+  constructor(
+    private service: TravelService,
+    private loginService: LoginService
+  ) {}
   @Input() insurance: Insurance;
   @Input("view") isView = false;
   showDetails = false;
@@ -32,6 +37,14 @@ export class InsuranceDetailsComponent implements OnInit {
 
   addToTravelPlan() {
     let ip = new InsurancePlan();
+    let user = this.loginService.getUser();
+    if (user != null) {
+      let tvs = new Travellers();
+      tvs.email = user.email;
+      tvs.contact = user.contact;
+      tvs.travellers.push(user.primaryUser);
+      ip.travellers = tvs;
+    }
     ip.insurance = this.insurance;
     this.service.pushInsurance(ip);
     this.service.tabIndex.next(4);

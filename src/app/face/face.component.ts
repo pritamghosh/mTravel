@@ -16,8 +16,6 @@ export class FaceComponent implements OnInit {
   imageString = "";
   faceApiResponse: Observable<any>;
   title: string = "Face Recognition";
-  //subscriptionKey: string = 'b36a4edbc372433ea78d2786acb63dbe';
-  //subscriptionKey: string = "f19864adc9dc421b999b28f03212170b";
   subscriptionKey = environment.subscriptionKey;
   isButtonVisible = true;
   model: any = {};
@@ -64,7 +62,6 @@ export class FaceComponent implements OnInit {
     var stream = video.srcObject;
     if (stream != null) {
       var tracks = stream.getTracks();
-
       for (var i = 0; i < tracks.length; i++) {
         var track = tracks[i];
         track.stop();
@@ -102,18 +99,5 @@ export class FaceComponent implements OnInit {
           }
         );
     });
-
-    // this.faceApiResponse = this.cameraService.getPhoto().pipe(
-    //   switchMap(base64Image => {
-    //     console.log("Inside getPhoto");
-    //     this.isButtonVisible = false;
-    //     this.imageString = base64Image;
-
-    //     return this.faceRecognitionService.scanImage(
-    //       this.subscriptionKey,
-    //       base64Image
-    //     );
-    //   })
-    // );
   }
 }

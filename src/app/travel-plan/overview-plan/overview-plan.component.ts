@@ -103,14 +103,14 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         if (this.fp != null) {
           booking.bookings.push({
             //partner: this.fp.offerPack.partner,
-			partner: "AIRLINE",
+            partner: "AIRLINE",
             amount: this.fp.offerPack.fare.total
           });
         }
         if (this.hp != null) {
           booking.bookings.push({
             //partner: this.hp.hotel.partner,
-			partner: "HOTEL",
+            partner: "HOTEL",
             amount: this.hp.hotel.price
           });
         }
@@ -118,14 +118,14 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
           tp.insurance = this.ip.insurance;
           booking.bookings.push({
             //partner: this.ip.insurance.vendor,
-			partner: "INSURANCE",
+            partner: "INSURANCE",
             amount: this.ip.insurance.price
           });
         }
         if (this.cp != null) {
           booking.bookings.push({
             //partner: this.cp.car.partner,
-			partner: "CAR",
+            partner: "CAR",
             amount: this.cp.car.price
           });
         }
@@ -136,6 +136,21 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   }
   onSubmit() {
     this.openFaceIdDialog();
+  }
+  get travellers() {
+    if (this.fp != null || this.hp != null) {
+      return this.fp.travellers;
+    }
+    if (this.hp != null) {
+      return this.hp.travellers;
+    }
+    if (this.cp != null) {
+      return this.cp.travellers;
+    }
+    if (this.ip != null) {
+      return this.ip.travellers;
+    }
+    return null;
   }
 
   add(index: number) {

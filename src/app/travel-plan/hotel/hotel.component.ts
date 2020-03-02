@@ -5,6 +5,7 @@ import { Options } from "ng5-slider";
 import { Subscription } from "rxjs";
 import { HotelRequet } from "src/app/models/hotel.request.model";
 import { HotelService } from "src/app/services/hotel.service";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-hotel",
@@ -29,13 +30,15 @@ export class HotelComponent implements OnInit, OnDestroy {
   minDuration = 0;
   maxPrice = 0;
 
-  currency = "₹";
   priceOptions: Options;
   constructor(private service: HotelService) {}
 
   ngOnInit(): void {
     this.searchHotelForm = new FormGroup({
-      key: new FormControl("", Validators.required),
+      key: new FormControl(
+        environment.defaultHotelLocation,
+        Validators.required
+      ),
       checkInDate: new FormControl(this.minCheckInDate, Validators.required),
       checkOutDate: new FormControl(this.minCheckOutDate, Validators.required),
       adults: new FormControl(1, Validators.required),
@@ -61,7 +64,7 @@ export class HotelComponent implements OnInit, OnDestroy {
       floor: 0,
       ceil: this.maxPrice,
       translate: (value: number, label: any): string => {
-        return this.currency + value;
+        return "" + value;
       }
     };
   }

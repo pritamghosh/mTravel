@@ -6,6 +6,7 @@ import { Subscription } from "rxjs";
 import { CarHire } from "src/app/models/car.hire.model";
 import { CarService } from "src/app/services/car.service";
 import { Car } from "src/app/models/car.model";
+import { environment } from "src/environments/environment";
 @Component({
   selector: "app-car",
   templateUrl: "./car.component.html",
@@ -24,7 +25,6 @@ export class CarComponent implements OnInit, OnDestroy {
   maxPassenger = 10;
   minLuggage = 0;
   maxLuggage = 10;
-  currency = "₹";
   priceOptions: Options;
   PassengerOptions: Options;
   luggageOptions: Options;
@@ -45,8 +45,14 @@ export class CarComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchCarForm = new FormGroup({
-      pickUpLocation: new FormControl("", Validators.required),
-      dropOffLocation: new FormControl("", Validators.required),
+      pickUpLocation: new FormControl(
+        environment.defaultPickUpLocation,
+        Validators.required
+      ),
+      dropOffLocation: new FormControl(
+        environment.defaultDropOffLocation,
+        Validators.required
+      ),
       pickUpDate: new FormControl(this.minCheckInDate, Validators.required),
       pickUpTime: new FormControl("10:00 AM", Validators.required),
       numberOfPassengers: new FormControl(1, Validators.pattern("[0-9]{1}")),
@@ -68,7 +74,7 @@ export class CarComponent implements OnInit, OnDestroy {
       floor: 0,
       ceil: this.maxPrice,
       translate: (value: number, label: any): string => {
-        return this.currency + value;
+        return "" + value;
       }
     };
 

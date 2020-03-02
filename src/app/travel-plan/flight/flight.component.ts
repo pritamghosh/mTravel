@@ -5,6 +5,7 @@ import { FlightService } from "src/app/services/flight.service";
 import { Subscription } from "rxjs";
 import { FlightRequest } from "src/app/models/flight.request.model";
 import { OfferPack } from "src/app/models/offer.pack.model";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-flight",
@@ -39,7 +40,6 @@ export class FlightComponent implements OnInit {
   ceilDuration = 400;
   maxDuration = 72;
   ceilprice = 1000;
-  currency = "₹";
   priceOptions: Options;
 
   durationOptions: Options;
@@ -47,8 +47,8 @@ export class FlightComponent implements OnInit {
 
   ngOnInit(): void {
     this.searchFlightForm = new FormGroup({
-      from: new FormControl(null, Validators.required),
-      to: new FormControl(null, Validators.required),
+      from: new FormControl(environment.defaultDepPort, Validators.required),
+      to: new FormControl(environment.defaultArrivalPort, Validators.required),
       depDate: new FormControl(new Date(), Validators.required),
       returnDate: new FormControl(),
       adults: new FormControl(1, Validators.pattern("[0-9]{1}")),
@@ -56,10 +56,10 @@ export class FlightComponent implements OnInit {
       infants: new FormControl(0, Validators.pattern("[0-9]{1}")),
       class_: new FormControl("E", Validators.required)
     });
+    this.updateFilter();
     this.subscription = this.flightService.getResponse().subscribe(resp => {
       this.flightSearchResp = resp;
       this.filteredResponse = resp;
-      this.updateFilter();
     });
   }
 
@@ -70,7 +70,7 @@ export class FlightComponent implements OnInit {
       floor: 0,
       ceil: this.maxPrice,
       translate: (value: number, label: LabelType): string => {
-        return this.currency + value;
+        return "" + value;
       }
     };
     this.durationOptions = {

@@ -138,8 +138,8 @@ export class FlightItineraryComponent implements OnInit {
     return this.showFlightInfo ? "keyboard_arrow_up" : "keyboard_arrow_down";
   }
   addToTravelPlan() {
-    let user = this.loginService.getUser();
     let fp = new FlightPlan();
+    let user = this.loginService.getUser();
     if (user != null) {
       let tvs = new Travellers();
       tvs.email = user.email;
