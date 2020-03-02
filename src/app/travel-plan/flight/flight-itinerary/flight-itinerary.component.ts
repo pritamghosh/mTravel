@@ -38,7 +38,7 @@ export class FlightItineraryComponent implements OnInit {
         : 0;
   }
   get imgSrc() {
-    let src = "assets/img/ai.png";
+    let src = "assets/img/";
     let airline = this.offerPack.onwardFlightItinerary.airlineNames[0];
     src += "ai";
     return src + ".png";
