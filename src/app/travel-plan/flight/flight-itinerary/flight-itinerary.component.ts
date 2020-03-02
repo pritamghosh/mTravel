@@ -46,7 +46,7 @@ export class FlightItineraryComponent implements OnInit {
         break;
       }
       case "BA": {
-        imgCode = "ba,jpeg";
+        imgCode = "ba.jpeg";
         break;
       }
       case "AI": {
