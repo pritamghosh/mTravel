@@ -42,22 +42,22 @@ export class FlightItineraryComponent implements OnInit {
     let imgCode = "";
     switch (code) {
       case "AA": {
-        imgCode = "aa";
+        imgCode = "aa.jpeg";
         break;
       }
       case "BA": {
-        imgCode = "ba";
+        imgCode = "ba,jpeg";
         break;
       }
       case "AI": {
-        imgCode = "aa";
+        imgCode = "ai.png";
         break;
       }
       default: {
-        imgCode = "default";
+        imgCode = "default.jpeg";
       }
     }
-    return src + imgCode + ".png";
+    return src + imgCode;
   }
   get originInfo() {
     let str = "";
