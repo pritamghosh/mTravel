@@ -38,9 +38,26 @@ export class FlightItineraryComponent implements OnInit {
   }
   get imgSrc() {
     let src = "assets/img/";
-    let airline = this.offerPack.onwardFlightItinerary.airlineNames[0];
-    src += "ai";
-    return src + ".png";
+    let code = this.offerPack.onwardFlightItinerary.airlineCodes[0];
+    let imgCode = "";
+    switch (code) {
+      case "AA": {
+        imgCode = "aa";
+        break;
+      }
+      case "BA": {
+        imgCode = "ba";
+        break;
+      }
+      case "AI": {
+        imgCode = "aa";
+        break;
+      }
+      default: {
+        imgCode = "default";
+      }
+    }
+    return src + imgCode + ".png";
   }
   get originInfo() {
     let str = "";
