@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-md-12 col-lg-12">
     <img
-      [src]="imgSrc"
+      [src]="imgSrc()"
       [alt]="offerPack.onwardFlightItinerary.airlineNames[0]"
     />
     <span>{{ offerPack.onwardFlightItinerary.airlineNames[0] }}</span>
@@ -80,7 +80,7 @@
         <br />
         <br />
         <span style="font-weight: bold; font-size: 20px;">{{
-          offerPack.returnFlightItinerary.journeyDuration
+          offerPack.returnFlightItinerary.journeyDuration | duration: true
         }}</span>
       </div>
       <div

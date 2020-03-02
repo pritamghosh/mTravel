@@ -4,9 +4,13 @@ import { Pipe, PipeTransform } from "@angular/core";
   name: "duration"
 })
 export class DurationPipe implements PipeTransform {
-  transform(value: number): string {
-    let hr = Math.floor(value / 60);
+  transform(value: any, text: boolean = false): string {
     let str = "";
+    if (text) {
+      str = value;
+      return str.toLowerCase().replace("h", "h ");
+    }
+    let hr = Math.floor(value / 60);
     if (hr > 0) {
       str + hr + "h ";
     }

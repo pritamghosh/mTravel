@@ -15,7 +15,7 @@ import { LoginService } from "src/app/services/login.service";
 export class FlightItineraryComponent implements OnInit {
   @Input("offerPack") offerPack: OfferPack;
   @Input("request") request: FlightRequest;
-  imgSrc = "assets/img/ai.png";
+  "assets/img/ai.png";
   showFlightInfo = false;
   currency = environment.currency;
   icon = environment.currencyIcon;
@@ -37,7 +37,12 @@ export class FlightItineraryComponent implements OnInit {
         ? this.offerPack.returnFlightItinerary.layoverDurations.length
         : 0;
   }
-
+  get imgSrc() {
+    let src = "assets/img/ai.png";
+    let airline = this.offerPack.onwardFlightItinerary.airlineNames[0];
+    src += "ai";
+    return src + ".png";
+  }
   get originInfo() {
     let str = "";
     if (this.offerPack.onwardFlightItinerary.originCity) {
