@@ -1,38 +1,38 @@
-[{
-"type": "2-3 Doors",
-"price": 2000,
-"class": "Mini",
-"passengerCapacity": 4,
-"baggageCapacity": 2,
-"img": "assets/img/car/mini4.jpg",
-"partner" : "Uber"
-
-},{
-"type": "4-5 Doors",
-"price": 4000,
-"class": "Premimun",
-"passengerCapacity": 4,
-"baggageCapacity": 2,
-"img": "assets/img/car/premimum4.jpg",
-"partner" : "Uber"
-
-},{
-"type": "Truck",
-"price": 5000,
-"class": "Compact",
-"passengerCapacity": 2,
-"baggageCapacity": 6,
-"img": "assets/img/car/compact2+6.jpg",
-"partner" : "Uber"
-},
-{
-"type": "Van",
-"price": 5000,
-"class": "Compact",
-"passengerCapacity": 4,
-"baggageCapacity": 4,
-"img": "assets/img/car/compact4.jpg",
-"partner" : "Uber"
-}
-
+[
+  {
+    "type": "2-3 Doors",
+    "price": 30,
+    "class": "Mini",
+    "passengerCapacity": 4,
+    "baggageCapacity": 2,
+    "img": "assets/img/car/mini4.jpg",
+    "partner": "Uber"
+  },
+  {
+    "type": "4-5 Doors",
+    "price": 60,
+    "class": "Premimun",
+    "passengerCapacity": 4,
+    "baggageCapacity": 2,
+    "img": "assets/img/car/premimum4.jpg",
+    "partner": "Uber"
+  },
+  {
+    "type": "Truck",
+    "price": 50,
+    "class": "Compact",
+    "passengerCapacity": 2,
+    "baggageCapacity": 6,
+    "img": "assets/img/car/compact2+6.jpg",
+    "partner": "Uber"
+  },
+  {
+    "type": "Van",
+    "price": 50,
+    "class": "Compact",
+    "passengerCapacity": 4,
+    "baggageCapacity": 4,
+    "img": "assets/img/car/compact4.jpg",
+    "partner": "Uber"
+  }
 ]

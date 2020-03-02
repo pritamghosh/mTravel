@@ -17,7 +17,7 @@
     "extraBed": "Max. 1 extra bed and 1 extra crib per room. Children 2 years old and under can use extra beds for free, breakfast not included. Children from 3 to 18 years old can use extra beds with additional £25.0 charge per person per night",
     "description": "Property Location With a stay at Vintry &amp; Mercer Hotel in London (London City Centre), you'll be minutes from Globe Theatre and Royal Exchange.\nThis 4-star hotel is close to St. Paul's Cathedral and London Bridge. Rooms Make yourself at home in one of the 92 individually decorated guestrooms, featuring espresso makers and LED televisions.\nComplimentary wireless Internet access is available to keep you connected. Private bathrooms have complimentary toiletries and hair dryers.\nConveniences include phones, as well as laptop-compatible safes and desks. Amenities Take advantage of recreation opportunities such as a health club, or other amenities including complimentary wireless Internet access and concierge services.\nDining Grab a bite at one of the hotel's 2 restaurants, or stay in and take advantage of the room service (during limited hours).\nWrap up your day with a drink at the bar/lounge. Continental breakfasts are available daily from 7:00 AM to 9:30 AM for a fee.\nBusiness, Other Amenities Featured amenities include a computer station, complimentary newspapers in the lobby, and dry cleaning/laundry services.",
     "checkInFrom": "1200",
-    "checkOutBefore": "1000",
+    "checkOutBefore": "90",
     "Remarks": ""
   },
 
@@ -33,7 +33,7 @@
     "address": "26-42 Bond Street",
     "raiting": 4.5,
     "amenties": ["Food & Drink", "Wifi", "Gym"],
-    "price": 5467,
+    "price": 100,
     "brekfast": "Breakfast is not provided",
     "children": "Children are welcome at this hotel",
     "extraBed": "Max. 1 extra bed and 1 extra crib per room. Children 2 years old and under can use extra beds for free, breakfast not included. Children from 3 to 18 years old can use extra beds with additional £25.0 charge per person per night",

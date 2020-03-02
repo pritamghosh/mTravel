@@ -102,26 +102,30 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         booking.travelInfo = JSON.stringify(tp);
         if (this.fp != null) {
           booking.bookings.push({
-            partner: this.fp.offerPack.partner,
+            //partner: this.fp.offerPack.partner,
+			partner: "AIRLINE",
             amount: this.fp.offerPack.fare.total
           });
         }
         if (this.hp != null) {
           booking.bookings.push({
-            partner: this.hp.hotel.partner,
+            //partner: this.hp.hotel.partner,
+			partner: "HOTEL",
             amount: this.hp.hotel.price
           });
         }
         if (this.ip != null && this.ip.insurance != null) {
           tp.insurance = this.ip.insurance;
           booking.bookings.push({
-            partner: this.ip.insurance.vendor,
+            //partner: this.ip.insurance.vendor,
+			partner: "INSURANCE",
             amount: this.ip.insurance.price
           });
         }
         if (this.cp != null) {
           booking.bookings.push({
-            partner: this.cp.car.partner,
+            //partner: this.cp.car.partner,
+			partner: "CAR",
             amount: this.cp.car.price
           });
         }

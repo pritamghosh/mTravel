@@ -39,19 +39,19 @@ export class FlightItineraryComponent implements OnInit {
   }
 
   get originInfo() {
-    return (
-      this.offerPack.onwardFlightItinerary.originCity +
-      ", " +
-      this.offerPack.onwardFlightItinerary.originCountry
-    );
+    let str = "";
+    if (this.offerPack.onwardFlightItinerary.originCity) {
+      str = str + this.offerPack.onwardFlightItinerary.originCity + ", ";
+    }
+    return str + this.offerPack.onwardFlightItinerary.originCountry;
   }
 
   get destinationInfo() {
-    return (
-      this.offerPack.onwardFlightItinerary.destinationCity +
-      ", " +
-      this.offerPack.onwardFlightItinerary.destinationCountry
-    );
+    let str = "";
+    if (this.offerPack.onwardFlightItinerary.destinationCity) {
+      str = str + this.offerPack.onwardFlightItinerary.destinationCity + ", ";
+    }
+    return str + this.offerPack.onwardFlightItinerary.destinationCountry;
   }
 
   get layoverPorts() {
