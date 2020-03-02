@@ -15,7 +15,6 @@ import { LoginService } from "src/app/services/login.service";
 export class FlightItineraryComponent implements OnInit {
   @Input("offerPack") offerPack: OfferPack;
   @Input("request") request: FlightRequest;
-  "assets/img/ai.png";
   showFlightInfo = false;
   currency = environment.currency;
   icon = environment.currencyIcon;
