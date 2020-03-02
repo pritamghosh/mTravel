@@ -8,6 +8,9 @@ export class DurationPipe implements PipeTransform {
     let str = "";
     if (text) {
       str = value;
+      if (str.charAt(0) == "0") {
+        str = str.substring(1);
+      }
       return str.toLowerCase().replace("h", "h ");
     }
     let hr = Math.floor(value / 60);
