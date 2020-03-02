@@ -71,6 +71,7 @@ import { ErrorService } from "./services/error.service";
 import { ViewPlanComponent } from "./expense/view-plan/view-plan.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { AlertComponent } from "./alert/alert.component";
+import { FlightLoadingComponent } from './travel-plan/flight/flight-loading/flight-loading.component';
 
 @NgModule({
   declarations: [
@@ -100,7 +101,8 @@ import { AlertComponent } from "./alert/alert.component";
     InsuranceDetailsComponent,
     ViewPlanComponent,
     ProfileComponent,
-    AlertComponent
+    AlertComponent,
+    FlightLoadingComponent
   ],
   imports: [
     BrowserModule,

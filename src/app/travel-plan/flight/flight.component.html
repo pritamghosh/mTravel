@@ -326,6 +326,14 @@
         </div>
       </div>
       <div class="col-md-9 col-lg-9">
+        <div *ngIf="filteredResponse == null || filteredResponse.length == 0">
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+          <div class="box"><app-flight-loading></app-flight-loading></div>
+        </div>
         <div *ngFor="let offer of filteredResponse" class="box">
           <app-flight-itinerary
             [offerPack]="offer"

@@ -19,6 +19,7 @@ export class FlightComponent implements OnInit {
   filteredResponse: OfferPack[];
   subscription: Subscription;
   isSearched = false;
+  emplyResponseNumber = 5;
   request: FlightRequest;
   stop0 = true;
   stop1 = true;
@@ -59,7 +60,6 @@ export class FlightComponent implements OnInit {
       this.flightSearchResp = resp;
       this.filteredResponse = resp;
       this.updateFilter();
-      this.isSearched = true;
     });
   }
 
@@ -87,6 +87,8 @@ export class FlightComponent implements OnInit {
   }
 
   onSubmit() {
+    this.isSearched = true;
+    this.filteredResponse = null;
     this.request = this.searchFlightForm.value;
     console.log(JSON.stringify(this.request));
 
