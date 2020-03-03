@@ -10,6 +10,7 @@ import { environment } from "src/environments/environment";
 })
 export class LoginService {
   isLoggedInSubject = new Subject<boolean>();
+  balanceSubject = new Subject<number>();
   constructor(private http: HttpClient) {}
 
   login(login: any): Promise<any> {
@@ -20,6 +21,15 @@ export class LoginService {
         resolve(true);
       });
     });
+  }
+
+  getBalance() {
+    if (this.getUser() != null) {
+      let url = `${environment.getBalanceApi}/${this.getUser().email}`;
+      this.http
+        .get(url)
+        .subscribe((resp: any) => this.balanceSubject.next(resp.balance));
+    }
   }
   public savetoContext(resp: any) {
     if (resp != null) {

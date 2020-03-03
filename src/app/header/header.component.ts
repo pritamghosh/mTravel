@@ -12,6 +12,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private loginService: LoginService, private router: Router) {}
   isLoggedIn = false;
   subs: Subscription;
+  balSubs: Subscription;
+  balance = 0;
   ngOnInit(): void {
     this.isLoggedIn = this.loginService.isLoggedIn();
     this.subs = this.loginService.isLoggedInSubject
@@ -25,5 +27,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+    this.balSubs.unsubscribe();
   }
 }

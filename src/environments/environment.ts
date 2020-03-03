@@ -22,5 +22,6 @@ export const environment = {
   defaultArrivalPort: "LHR",
   defaultHotelLocation: "London Central",
   defaultPickUpLocation: "Heathrow Airport",
-  defaultDropOffLocation: "London Central"
+  defaultDropOffLocation: "London Central",
+  getBalanceApi: ""
 };
