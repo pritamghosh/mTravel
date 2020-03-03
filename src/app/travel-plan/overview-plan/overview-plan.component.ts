@@ -12,6 +12,7 @@ import { Booking } from "src/app/models/booking.model";
 import { InsurancePlan } from "src/app/models/insurance.plan.model";
 import { FormGroup } from "@angular/forms";
 import { BookingService } from "src/app/services/booking.service";
+import { BusyDisplayService } from "src/app/services/busy-display.service";
 
 @Component({
   selector: "app-overview-plan",
@@ -35,7 +36,8 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
     private service: TravelService,
     public dialog: MatDialog,
     private loginService: LoginService,
-    private bookingService: BookingService
+    private bookingService: BookingService,
+    private busyDisplayService: BusyDisplayService
   ) {}
 
   ngOnInit(): void {
@@ -130,6 +132,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
           });
         }
         console.log(JSON.stringify(booking));
+        this.busyDisplayService.showBusyDisplay(true);
         this.bookingService.book(booking);
       }
     });
@@ -156,5 +159,4 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
   add(index: number) {
     this.service.tabIndex.next(index);
   }
-  remove(index: number) {}
 }

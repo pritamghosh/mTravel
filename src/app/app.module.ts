@@ -71,7 +71,9 @@ import { ErrorService } from "./services/error.service";
 import { ViewPlanComponent } from "./expense/view-plan/view-plan.component";
 import { ProfileComponent } from "./profile/profile.component";
 import { AlertComponent } from "./alert/alert.component";
-import { FlightLoadingComponent } from './travel-plan/flight/flight-loading/flight-loading.component';
+import { FlightLoadingComponent } from "./travel-plan/flight/flight-loading/flight-loading.component";
+import { BusyDisplayComponent } from "./busy-display/busy-display.component";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -102,7 +104,8 @@ import { FlightLoadingComponent } from './travel-plan/flight/flight-loading/flig
     ViewPlanComponent,
     ProfileComponent,
     AlertComponent,
-    FlightLoadingComponent
+    FlightLoadingComponent,
+    BusyDisplayComponent
   ],
   imports: [
     BrowserModule,
@@ -136,6 +139,7 @@ import { FlightLoadingComponent } from './travel-plan/flight/flight-loading/flig
     MatStepperModule,
     MatChipsModule,
     MatDialogModule,
+    MatProgressSpinnerModule,
     NgxMaterialTimepickerModule,
     Ng5SliderModule,
     FontAwesomeModule
@@ -169,7 +173,8 @@ import { FlightLoadingComponent } from './travel-plan/flight/flight-loading/flig
     MatSliderModule,
     MatChipsModule,
     MatStepperModule,
-    MatDialogModule
+    MatDialogModule,
+    MatProgressSpinnerModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

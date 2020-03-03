@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { FaceComponent } from "../face/face.component";
 import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { RegistrationService } from "../services/registration.service";
+import { BusyDisplayService } from "../services/busy-display.service";
 
 @Component({
   selector: "app-registration",
@@ -14,7 +15,8 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
   constructor(
     public dialog: MatDialog,
-    private registrationService: RegistrationService
+    private registrationService: RegistrationService,
+    private busyDisplayService: BusyDisplayService
   ) {}
 
   ngOnInit(): void {
@@ -77,6 +79,7 @@ export class RegistrationComponent implements OnInit {
       if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
         this.registrationForm.get("faceId").setValue(dialogConfig.data.faceId);
         console.log(JSON.stringify(this.registrationForm.value));
+        this.busyDisplayService.showBusyDisplay(true);
         this.registrationService.rigister(this.registrationForm.value);
       }
     });
