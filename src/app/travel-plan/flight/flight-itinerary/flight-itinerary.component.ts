@@ -53,6 +53,10 @@ export class FlightItineraryComponent implements OnInit {
         imgCode = "ai.png";
         break;
       }
+      case "LH": {
+        imgCode = "lh.png";
+        break;
+      }
       default: {
         imgCode = "default.jpeg";
       }
