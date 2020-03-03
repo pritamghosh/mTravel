@@ -19,6 +19,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.subs = this.loginService.isLoggedInSubject
       .asObservable()
       .subscribe(resp => (this.isLoggedIn = resp));
+    this.balSubs = this.loginService.balanceSubject
+      .asObservable()
+      .subscribe(resp => (this.balance = resp));
+    this.loginService.getBalance();
   }
 
   signOut() {
