@@ -11,7 +11,7 @@ export const environment = {
   carSearchUrl: "assets/carresp.json",
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
-  getAllTravelUrl: "assets/trresp.json",
+  getAllTravelApi: "assets/trresp.json",
   loginUrl: "assets/loginresp.json",
   registrationUrl: "",
   saveExpenseUrl: "",
