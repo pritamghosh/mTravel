@@ -101,6 +101,8 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         tp.flight = this.fp;
         tp.car = this.cp;
         tp.hotel = this.hp;
+        tp.insurance = this.ip;
+
         booking.travelInfo = JSON.stringify(tp);
         if (this.fp != null) {
           booking.bookings.push({
@@ -117,7 +119,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
           });
         }
         if (this.ip != null && this.ip.insurance != null) {
-          tp.insurance = this.ip.insurance;
+          tp.insurance = this.ip;
           booking.bookings.push({
             //partner: this.ip.insurance.vendor,
             partner: "INSURANCE",
