@@ -14,7 +14,6 @@ import { environment } from "src/environments/environment";
 })
 export class FlightComponent implements OnInit {
   minDepDate = new Date();
-  minRetDate = new Date();
   searchFlightForm: FormGroup;
   flightSearchResp: OfferPack[];
   filteredResponse: OfferPack[];
@@ -104,6 +103,9 @@ export class FlightComponent implements OnInit {
     this.searchFlightForm
       .get("to")
       .setValue(from != null ? from.toUpperCase() : null);
+  }
+  get minRetDate() {
+    return this.searchFlightForm.get("depDate").value;
   }
 
   filterStops() {}

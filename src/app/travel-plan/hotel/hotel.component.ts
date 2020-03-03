@@ -40,7 +40,7 @@ export class HotelComponent implements OnInit, OnDestroy {
         Validators.required
       ),
       checkInDate: new FormControl(this.minCheckInDate, Validators.required),
-      checkOutDate: new FormControl(this.minCheckOutDate, Validators.required),
+      checkOutDate: new FormControl(this.minCheckInDate, Validators.required),
       adults: new FormControl(1, Validators.required),
       children: new FormControl(0),
       rooms: new FormControl(1, Validators.required),
@@ -74,11 +74,8 @@ export class HotelComponent implements OnInit, OnDestroy {
     this.request = this.searchHotelForm.value;
   }
 
-  get maxCheckOutDate() {
-    return this.minCheckInDate;
-  }
   get minCheckOutDate() {
-    return this.minCheckInDate;
+    return this.searchHotelForm.get("checkInDate").value;
   }
 
   resetFilter() {
