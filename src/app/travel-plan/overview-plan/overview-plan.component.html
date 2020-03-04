@@ -6,7 +6,7 @@
           <!-- flight details -->
           <mat-expansion-panel [expanded]="step === 1" (opened)="(step == 1)">
             <mat-expansion-panel-header>
-              <mat-panel-title> Flight PLan </mat-panel-title>
+              <mat-panel-title> Flight Plan </mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngIf="fp != null; else noFlightPlan">
               <mat-list>
@@ -51,7 +51,7 @@
           <!-- hotel details -->
           <mat-expansion-panel [expanded]="step === 2" (opened)="(step == 2)">
             <mat-expansion-panel-header>
-              <mat-panel-title> Hotel PLan </mat-panel-title>
+              <mat-panel-title> Hotel Plan </mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngIf="hp != null; else noHotelPlan">
               <mat-list>
@@ -103,7 +103,7 @@
 
           <mat-expansion-panel [expanded]="step === 3" (opened)="(step == 3)">
             <mat-expansion-panel-header>
-              <mat-panel-title> Car PLan </mat-panel-title>
+              <mat-panel-title> Car Plan </mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngIf="cp != null; else noCarPlan">
               <mat-list>
@@ -155,7 +155,7 @@
 
           <mat-expansion-panel [expanded]="step === 4" (opened)="(step == 4)">
             <mat-expansion-panel-header>
-              <mat-panel-title> Insurance PLan </mat-panel-title>
+              <mat-panel-title> Insurance Plan </mat-panel-title>
             </mat-expansion-panel-header>
             <div *ngIf="ip != null; else noInsurancePlan">
               <mat-list>

@@ -12,12 +12,11 @@
               <div class="col md-4">
                 <mat-form-field style="width: 100%;">
                   <mat-label>Select Travel PLan</mat-label>
-                  <mat-select
-                    *ngFor="let resp of bookingResponse; index as i"
-                    [(ngModel)]="tid"
-                    name="tidn"
-                  >
-                    <mat-option value="{{ i }}">
+                  <mat-select [(ngModel)]="tid" name="tidn">
+                    <mat-option
+                      value="{{ i }}"
+                      *ngFor="let resp of bookingResponse; index as i"
+                    >
                       {{ resp.id }}
                     </mat-option>
                   </mat-select></mat-form-field
