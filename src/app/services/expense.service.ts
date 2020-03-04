@@ -5,13 +5,18 @@ import { Expense } from "../models/expense.model";
 import { environment } from "src/environments/environment";
 import { Booking } from "../models/booking.model";
 import { LoginService } from "./login.service";
+import { AlertService } from "./alert.service";
 
 @Injectable({
   providedIn: "root"
 })
 export class ExpenseService {
   travelSubject = new Subject<Booking[]>();
-  constructor(private http: HttpClient, private loginService: LoginService) {}
+  constructor(
+    private http: HttpClient,
+    private loginService: LoginService,
+    private alertService: AlertService
+  ) {}
 
   getTravelPlans() {
     let user = this.loginService.getUser();
@@ -21,6 +26,7 @@ export class ExpenseService {
   }
 
   save(expense: Expense[]) {
+    this.alertService.openDiaolog("Expense has been submitted!");
     console.log(expense);
   }
 }
