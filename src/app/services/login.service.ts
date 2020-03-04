@@ -16,7 +16,7 @@ export class LoginService {
   login(login: any): Promise<any> {
     this.signOut();
     return new Promise(resolve => {
-      this.http.get(environment.loginUrl, login).subscribe(resp => {
+      this.http.post(environment.loginUrl, login).subscribe(resp => {
         this.savetoContext(resp);
         resolve(true);
       });
