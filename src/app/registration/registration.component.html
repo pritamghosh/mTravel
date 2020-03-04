@@ -9,12 +9,7 @@
           <div class="col-md-6 col-lg-6 col-sm-6">
             <mat-form-field style="width: 100%;">
               <mat-label>Email</mat-label>
-              <input
-                matInput
-                formControlName="email"
-                #email
-                (input)="email.value = $event.target.value.toUpperCase()"
-              />
+              <input matInput formControlName="email" />
             </mat-form-field>
           </div>
           <div class="col-md-6 col-lg-6 col-sm-6">

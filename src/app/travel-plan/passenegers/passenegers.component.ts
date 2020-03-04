@@ -47,7 +47,7 @@ export class PassenegersComponent implements OnInit {
       lastName: new FormControl(pax.lastName),
       dateOfBirth: new FormControl(pax.dateOfBirth),
       issuingDate: new FormControl(pax.issuingDate),
-      expiaryDate: new FormControl(pax.expiaryDate),
+      expiryDate: new FormControl(pax.expiryDate),
       passportNo: new FormControl(pax.passportNo),
       gender: new FormControl(pax.gender),
       issuingCountry: new FormControl(pax.issuingCountry)

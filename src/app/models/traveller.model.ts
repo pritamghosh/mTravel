@@ -7,7 +7,7 @@ export class Traveller {
   passportNo: string;
   issuingCountry: string;
   dateOfBirth: Date;
-  expiaryDate: Date;
+  expiryDate: Date;
   issuingDate: Date;
   gender: string;
 }

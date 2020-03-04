@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { LoginService } from "../services/login.service";
 
 @Component({
   selector: "app-profile",
@@ -9,24 +10,56 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 export class ProfileComponent implements OnInit {
   updateForm: FormGroup;
   maxDob = new Date();
-  constructor() {}
+  constructor(private loginService: LoginService) {}
 
   ngOnInit(): void {
-    this.updateForm = new FormGroup({
-      email: new FormControl(null, [Validators.email, Validators.required]),
-      firstName: new FormControl(null, Validators.required),
-      contact: new FormControl(null, Validators.pattern("[0-9+]{8,15}")),
-      lastName: new FormControl(null, Validators.required),
-      dateOfBirth: new FormControl(null, Validators.required),
-      issuingDate: new FormControl(null, Validators.required),
-      expiaryDate: new FormControl(null, Validators.required),
-      passportNo: new FormControl(null, Validators.required),
-      gender: new FormControl(null, Validators.required),
-      issuingCountry: new FormControl(null, Validators.required),
-      faceId: new FormControl()
+    this.updateForm = this.baseForm;
+  }
+
+  get baseForm() {
+    let user = this.loginService.getUser();
+    console.log(user.primaryUser.expiryDate);
+
+    return new FormGroup({
+      email: new FormControl(user.email, [
+        Validators.email,
+        Validators.required
+      ]),
+      firstName: new FormControl(
+        user.primaryUser.firstName,
+        Validators.required
+      ),
+      contact: new FormControl(
+        user.contact,
+        Validators.pattern("[0-9+]{8,15}")
+      ),
+      lastName: new FormControl(user.primaryUser.lastName, Validators.required),
+      dateOfBirth: new FormControl(
+        user.primaryUser.dateOfBirth,
+        Validators.required
+      ),
+      issuingDate: new FormControl(
+        user.primaryUser.issuingDate,
+        Validators.required
+      ),
+      expiryDate: new FormControl(
+        user.primaryUser.expiryDate,
+        Validators.required
+      ),
+      passportNo: new FormControl(
+        user.primaryUser.passportNo,
+        Validators.required
+      ),
+      gender: new FormControl(user.primaryUser.gender, Validators.required),
+      issuingCountry: new FormControl(
+        user.primaryUser.issuingCountry,
+        Validators.required
+      )
     });
   }
 
   onSubmit() {}
-  onReset() {}
+  onReset() {
+    this.updateForm = this.baseForm;
+  }
 }
