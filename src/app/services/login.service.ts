@@ -18,6 +18,7 @@ export class LoginService {
     return new Promise(resolve => {
       this.http.post(environment.loginUrl, login).subscribe(resp => {
         this.savetoContext(resp);
+        this.getBalance();
         resolve(true);
       });
     });
