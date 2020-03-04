@@ -143,7 +143,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
     this.openFaceIdDialog();
   }
   get travellers() {
-    if (this.fp != null || this.hp != null) {
+    if (this.fp != null) {
       return this.fp.travellers;
     }
     if (this.hp != null) {
