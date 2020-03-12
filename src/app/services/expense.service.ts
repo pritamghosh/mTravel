@@ -21,12 +21,30 @@ export class ExpenseService {
   getTravelPlans() {
     let user = this.loginService.getUser();
     return this.http
-      .get<Booking[]>(`${environment.getAllTravelApi}/${user.email}`)
+      .get<Booking[]>(`${environment.getAllTravelApi}`)
       .subscribe((resp: Booking[]) => this.travelSubject.next(resp));
   }
 
   save(expense: Expense[]) {
     this.alertService.openDiaolog("Expense has been submitted!");
     console.log(expense);
+  }
+
+  getInvoiceInfo(file: File): Promise<any> {
+    return new Promise((resolve, reject) => {
+      let formData = new FormData();
+      formData.append("file", file);
+      this.http.post<any>(environment.getInvoiceInfoApi, formData).subscribe(
+        resp => {
+          console.log(resp);
+          resolve(resp);
+        },
+        err => {
+          console.error(err);
+
+          //reject(err);
+        }
+      );
+    });
   }
 }

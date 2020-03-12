@@ -30,6 +30,7 @@
     "ng5-slider": "^1.2.4",
     "ngx-material-timepicker": "^5.3.0",
     "ngx-webcam": "^0.2.6",
+    "pdfmake": "^0.1.65",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

@@ -34,7 +34,7 @@ export class ExpenseComponent implements OnInit {
 
   uploadFile(event: any) {
     let files = event.target.files;
-
+    this.service.getInvoiceInfo(files[0]);
     let str = this.fg.get("document");
     this.filename = files[0].name;
     const reader = new FileReader();

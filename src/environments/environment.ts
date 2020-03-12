@@ -7,19 +7,15 @@ export const environment = {
   production: false,
   endpoint: "https://uksouth.api.cognitive.microsoft.com/face/v1.0/detect",
   subscriptionKey: "f97a67b2085a44299d2d3a8c721cc92c",
-  flightSearchUrl:
-    "https://treavelswift.azurewebsites.net/flights/duffelsearch",
+  flightSearchUrl: "assets/fresp.json",
   carSearchUrl: "assets/carresp.json",
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
-  getAllTravelApi:
-    "https://treavelswift.azurewebsites.net/minto-app/api/getTravleInfo",
-  loginUrl: "https://treavelswift.azurewebsites.net/minto-app/api/login",
-  registrationUrl:
-    "https://treavelswift.azurewebsites.net/minto-app/api/registerUser",
+  getAllTravelApi: "assets/trresp.json",
+  loginUrl: "assets/loginresp.json",
+  registrationUrl: "",
   saveExpenseUrl: "",
-  bookingUrlUrl:
-    "https://treavelswift.azurewebsites.net/minto-app/api/bookPackage",
+  bookingUrlUrl: "",
   currency: "£ ",
   currencyIcon: faCoins,
   defaultDepPort: "JFK",
@@ -27,6 +23,7 @@ export const environment = {
   defaultHotelLocation: "London Central",
   defaultPickUpLocation: "Heathrow Airport",
   defaultDropOffLocation: "London Central",
-  getBalanceApi:
-    "https://treavelswift.azurewebsites.net/minto-app/api/getUserBalance"
+  getBalanceApi: "",
+  getInvoiceInfoApi:
+    "https://treavelswift.azurewebsites.net/imageprocessor/info"
 };

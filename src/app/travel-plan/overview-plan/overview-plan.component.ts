@@ -84,7 +84,7 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
 
     dialogConfig.data = {
       faceId: "",
-      buttonName: "Pay & Flinish"
+      buttonName: "Pay & Finish"
     };
 
     const dialogRef = this.dialog.open(FaceComponent, dialogConfig);
