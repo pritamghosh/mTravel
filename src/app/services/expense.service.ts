@@ -21,12 +21,22 @@ export class ExpenseService {
   getTravelPlans() {
     let user = this.loginService.getUser();
     return this.http
-      .get<Booking[]>(`${environment.getAllTravelApi}`)
+      .get<Booking[]>(`${environment.getAllTravelApi}/expense`)
       .subscribe((resp: Booking[]) => this.travelSubject.next(resp));
   }
 
   save(expense: Expense[]) {
-    this.alertService.openDiaolog("Expense has been submitted!");
+    this.http
+      .post<any>(`${environment.coporateBookingApi}/expense`, expense)
+      .subscribe(
+        resp => {
+          console.log(resp);
+          this.alertService.openDiaolog("Expense has been submitted!");
+        },
+        err => {
+          console.error(err);
+        }
+      );
     console.log(expense);
   }
 
@@ -34,17 +44,20 @@ export class ExpenseService {
     return new Promise((resolve, reject) => {
       let formData = new FormData();
       formData.append("file", file);
-      this.http.post<any>(environment.getInvoiceInfoApi, formData).subscribe(
-        resp => {
-          console.log(resp);
-          resolve(resp);
-        },
-        err => {
-          console.error(err);
+      formData.append("expense", file);
+      this.http
+        .post<any>(`${environment.coporateBookingApi}/expense`, formData)
+        .subscribe(
+          resp => {
+            console.log(resp);
+            resolve(resp);
+          },
+          err => {
+            console.error(err);
 
-          //reject(err);
-        }
-      );
+            //reject(err);
+          }
+        );
     });
   }
 }

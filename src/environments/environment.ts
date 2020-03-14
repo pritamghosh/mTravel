@@ -25,5 +25,6 @@ export const environment = {
   defaultDropOffLocation: "London Central",
   getBalanceApi: "",
   getInvoiceInfoApi:
-    "https://treavelswift.azurewebsites.net/imageprocessor/info"
+    "https://treavelswift.azurewebsites.net/imageprocessor/info",
+  coporateBookingApi: ""
 };
