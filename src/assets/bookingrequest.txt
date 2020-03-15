@@ -1,0 +1,172 @@
+{
+	"bookings": [
+		{
+			"partner": "HOTEL",
+			"amount": 70
+		},
+		{
+			"partner": "INSURANCE",
+			"amount": 50
+		},
+		{
+			"partner": "CAR",
+			"amount": 30
+		}
+	],
+	"email": "satya@mpay.com",
+	"faceId": "d1146dd2-bd6f-44f0-a43e-9df4c4101747",
+	"travelInfo": "{\"car\":{\"travellers\":{\"travellers\":[{\"travellerId\":7,\"firstName\":\"SATYA\",\"lastName\":\"KANTI\",\"dateOfBirth\":\"1991-06-11\",\"contact\":\"9014329845\",\"issuingDate\":\"2020-02-26\",\"expiryDate\":\"2020-04-30\",\"passportNo\":\"LK7890\",\"gender\":\"Male\",\"issuingCountry\":\"INDIA\"}],\"email\":\"satya@mpay.com\",\"contact\":\"9014329845\"},\"car\":{\"type\":\"2-3 Doors\",\"price\":30,\"class\":\"Mini\",\"passengerCapacity\":4,\"baggageCapacity\":2,\"img\":\"assets/img/car/mini4.jpg\",\"partner\":\"Uber\"},\"req\":{\"pickUpLocation\":\"Heathrow Airport\",\"dropOffLocation\":\"London Central\",\"pickUpDate\":\"2020-03-15T02:21:44.593Z\",\"pickUpTime\":\"10:00 AM\",\"numberOfPassengers\":1,\"numberOfLuggages\":0,\"carType\":\"\",\"carClass\":\"\"}},\"hotel\":{\"travellers\":{\"travellers\":[{\"travellerId\":7,\"firstName\":\"SATYA\",\"lastName\":\"KANTI\",\"dateOfBirth\":\"1991-06-11\",\"contact\":\"9014329845\",\"issuingDate\":\"2020-02-26\",\"expiryDate\":\"2020-04-30\",\"passportNo\":\"LK7890\",\"gender\":\"Male\",\"issuingCountry\":\"INDIA\"}],\"email\":\"satya@mpay.com\",\"contact\":\"9014329845\"},\"hotel\":{\"id\":1,\"name\":\"Vintry & Mercer Hotel\",\"city\":\"London\",\"partner\":\"Marriot\",\"location\":\"\",\"img\":[\"https://d2xf5gjipzd8cd.cloudfront.net/available/161636579/161636579_300x252.jpg\"],\"address\":\"19 - 20 Garlick Hill, London, EC4V 2AU, United Kingdom\",\"raiting\":3.5,\"amenties\":[\"Food & Drink\",\"Wifi\",\"Gym\"],\"price\":70,\"brekfast\":\"Breakfast is not provided\",\"children\":\"Children are welcome at this hotel\",\"extraBed\":\"Max. 1 extra bed and 1 extra crib per room. Children 2 years old and under can use extra beds for free, breakfast not included. Children from 3 to 18 years old can use extra beds with additional £25.0 charge per person per night\",\"description\":\"Property Location With a stay at Vintry &amp; Mercer Hotel in London (London City Centre), you'll be minutes from Globe Theatre and Royal Exchange.\\nThis 4-star hotel is close to St. Paul's Cathedral and London Bridge. Rooms Make yourself at home in one of the 92 individually decorated guestrooms, featuring espresso makers and LED televisions.\\nComplimentary wireless Internet access is available to keep you connected. Private bathrooms have complimentary toiletries and hair dryers.\\nConveniences include phones, as well as laptop-compatible safes and desks. Amenities Take advantage of recreation opportunities such as a health club, or other amenities including complimentary wireless Internet access and concierge services.\\nDining Grab a bite at one of the hotel's 2 restaurants, or stay in and take advantage of the room service (during limited hours).\\nWrap up your day with a drink at the bar/lounge. Continental breakfasts are available daily from 7:00 AM to 9:30 AM for a fee.\\nBusiness, Other Amenities Featured amenities include a computer station, complimentary newspapers in the lobby, and dry cleaning/laundry services.\",\"checkInFrom\":\"1200\",\"checkOutBefore\":\"90\",\"Remarks\":\"\"},\"req\":{\"key\":\"London Central\",\"checkInDate\":\"2020-03-15T02:21:44.591Z\",\"checkOutDate\":\"2020-03-15T02:21:44.591Z\",\"adults\":1,\"children\":0,\"rooms\":1,\"type\":\"\"}},\"insurance\":{\"travellers\":{\"travellers\":[{\"travellerId\":7,\"firstName\":\"SATYA\",\"lastName\":\"KANTI\",\"dateOfBirth\":\"1991-06-11\",\"contact\":\"9014329845\",\"issuingDate\":\"2020-02-26\",\"expiryDate\":\"2020-04-30\",\"passportNo\":\"LK7890\",\"gender\":\"Male\",\"issuingCountry\":\"INDIA\"}],\"email\":\"satya@mpay.com\",\"contact\":\"9014329845\"},\"insurance\":{\"name\":\"Travel Insurance Platinum\",\"vendor\":\"Bajaj Allianz\",\"type\":\"Premium\",\"person\":1,\"startDate\":\"Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)\",\"endDate\":\"Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)\",\"days\":12,\"price\":50,\"coverage\":[\"Flight Travel\",\"Medical\",\"Personal\",\"Family\"],\"description\":[{\"title\":\"Flight Travel\",\"details\":\"Included cancellation or delay of flight and loss-of baggage or delayed baggage deliver. Up to $1000 \"},{\"title\":\"Medical\",\"details\":\"Medical coverage up to $30000\"},{\"title\":\"Personal\",\"details\":\"Theft cover for valuables , money and other personal belongings included road accident. Up to $20000\"},{\"title\":\"Family\",\"details\":\"Family protection back to Home.Up to $20000\"}]}}}",
+	"hotel": {
+		"travellers": {
+			"travellers": [
+				{
+					"travellerId": 7,
+					"firstName": "SATYA",
+					"lastName": "KANTI",
+					"dateOfBirth": "1991-06-11",
+					"contact": "9014329845",
+					"issuingDate": "2020-02-26",
+					"expiryDate": "2020-04-30",
+					"passportNo": "LK7890",
+					"gender": "Male",
+					"issuingCountry": "INDIA"
+				}
+			],
+			"email": "satya@mpay.com",
+			"contact": "9014329845"
+		},
+		"hotel": {
+			"id": 1,
+			"name": "Vintry & Mercer Hotel",
+			"city": "London",
+			"partner": "Marriot",
+			"basePrice": 56,
+			"tax": 14,
+			"location": "",
+			"img": [
+				"https://d2xf5gjipzd8cd.cloudfront.net/available/161636579/161636579_300x252.jpg"
+			],
+			"address": "19 - 20 Garlick Hill, London, EC4V 2AU, United Kingdom",
+			"raiting": 3.5,
+			"amenties": [
+				"Food & Drink",
+				"Wifi",
+				"Gym"
+			],
+			"price": 70,
+			"brekfast": "Breakfast is not provided",
+			"children": "Children are welcome at this hotel",
+			"extraBed": "Max. 1 extra bed and 1 extra crib per room. Children 2 years old and under can use extra beds for free, breakfast not included. Children from 3 to 18 years old can use extra beds with additional £25.0 charge per person per night",
+			"description": "Property Location With a stay at Vintry &amp; Mercer Hotel in London (London City Centre), you'll be minutes from Globe Theatre and Royal Exchange.\nThis 4-star hotel is close to St. Paul's Cathedral and London Bridge. Rooms Make yourself at home in one of the 92 individually decorated guestrooms, featuring espresso makers and LED televisions.\nComplimentary wireless Internet access is available to keep you connected. Private bathrooms have complimentary toiletries and hair dryers.\nConveniences include phones, as well as laptop-compatible safes and desks. Amenities Take advantage of recreation opportunities such as a health club, or other amenities including complimentary wireless Internet access and concierge services.\nDining Grab a bite at one of the hotel's 2 restaurants, or stay in and take advantage of the room service (during limited hours).\nWrap up your day with a drink at the bar/lounge. Continental breakfasts are available daily from 7:00 AM to 9:30 AM for a fee.\nBusiness, Other Amenities Featured amenities include a computer station, complimentary newspapers in the lobby, and dry cleaning/laundry services.",
+			"checkInFrom": "1200",
+			"checkOutBefore": "90",
+			"Remarks": ""
+		},
+		"req": {
+			"key": "London Central",
+			"checkInDate": "2020-03-15T02:21:44.591Z",
+			"checkOutDate": "2020-03-15T02:21:44.591Z",
+			"adults": 1,
+			"children": 0,
+			"rooms": 1,
+			"type": ""
+		}
+	},
+	"car": {
+		"travellers": {
+			"travellers": [
+				{
+					"travellerId": 7,
+					"firstName": "SATYA",
+					"lastName": "KANTI",
+					"dateOfBirth": "1991-06-11",
+					"contact": "9014329845",
+					"issuingDate": "2020-02-26",
+					"expiryDate": "2020-04-30",
+					"passportNo": "LK7890",
+					"gender": "Male",
+					"issuingCountry": "INDIA"
+				}
+			],
+			"email": "satya@mpay.com",
+			"contact": "9014329845"
+		},
+		"car": {
+			"type": "2-3 Doors",
+			"basePrice": 25,
+			"tax": 5,
+			"price": 30,
+			"class": "Mini",
+			"passengerCapacity": 4,
+			"baggageCapacity": 2,
+			"img": "assets/img/car/mini4.jpg",
+			"partner": "Uber"
+		},
+		"req": {
+			"pickUpLocation": "Heathrow Airport",
+			"dropOffLocation": "London Central",
+			"pickUpDate": "2020-03-15T02:21:44.593Z",
+			"pickUpTime": "10:00 AM",
+			"numberOfPassengers": 1,
+			"numberOfLuggages": 0,
+			"carType": "",
+			"carClass": ""
+		}
+	},
+	"insurance": {
+		"travellers": {
+			"travellers": [
+				{
+					"travellerId": 7,
+					"firstName": "SATYA",
+					"lastName": "KANTI",
+					"dateOfBirth": "1991-06-11",
+					"contact": "9014329845",
+					"issuingDate": "2020-02-26",
+					"expiryDate": "2020-04-30",
+					"passportNo": "LK7890",
+					"gender": "Male",
+					"issuingCountry": "INDIA"
+				}
+			],
+			"email": "satya@mpay.com",
+			"contact": "9014329845"
+		},
+		"insurance": {
+			"name": "Travel Insurance Platinum",
+			"vendor": "Bajaj Allianz",
+			"type": "Premium",
+			"person": 1,
+			"startDate": "Fri Feb 11 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
+			"days": 12,
+			"basePrice": 40,
+			"tax": 10,
+			"price": 50,
+			"coverage": [
+				"Flight Travel",
+				"Medical",
+				"Personal",
+				"Family"
+			],
+			"description": [
+				{
+					"title": "Flight Travel",
+					"details": "Included cancellation or delay of flight and loss-of baggage or delayed baggage deliver. Up to $1000 "
+				},
+				{
+					"title": "Medical",
+					"details": "Medical coverage up to $30000"
+				},
+				{
+					"title": "Personal",
+					"details": "Theft cover for valuables , money and other personal belongings included road accident. Up to $20000"
+				},
+				{
+					"title": "Family",
+					"details": "Family protection back to Home.Up to $20000"
+				}
+			]
+		}
+	}
+}

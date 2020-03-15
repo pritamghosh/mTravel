@@ -1,5 +1,8 @@
 export class Insurance {
   name: string;
+
+  tax: number;
+  basePrice: number;
   type: string;
   person: number;
   startDate: Date;

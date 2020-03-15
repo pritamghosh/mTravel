@@ -12,7 +12,11 @@
               <div class="col md-4">
                 <mat-form-field style="width: 100%;">
                   <mat-label>Select Travel PLan</mat-label>
-                  <mat-select [(ngModel)]="tid" name="tidn">
+                  <mat-select
+                    [(ngModel)]="tid"
+                    name="tidn"
+                    (ngModelChange)="onchange()"
+                  >
                     <mat-option
                       value="{{ i }}"
                       *ngFor="let resp of bookingResponse; index as i"
@@ -77,7 +81,12 @@
               </div>
             </div>
             <div class="col-lg-12" style="text-align: right;margin-top: 15px;">
-              <button mat-raised-button color="primary" (click)="onSubmit()">
+              <button
+                mat-raised-button
+                color="primary"
+                (click)="onSubmit()"
+                [disabled]="!tid"
+              >
                 Submit Expense
               </button>
             </div>
@@ -123,7 +132,7 @@
                 type="submit"
                 color="primary"
                 style="margin-top: 10px;"
-                [disabled]="!fg.valid"
+                [disabled]="!fg.valid || !tid"
               >
                 Add Expense
               </button>

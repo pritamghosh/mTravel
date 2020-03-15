@@ -4,4 +4,5 @@ export class Expense {
   document: string;
   description: string;
   travelId: string;
+  fileName: string;
 }

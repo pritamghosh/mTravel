@@ -21,7 +21,7 @@ export class ExpenseService {
   getTravelPlans() {
     let user = this.loginService.getUser();
     return this.http
-      .get<Booking[]>(`${environment.getAllTravelApi}/expense`)
+      .get<Booking[]>(`${environment.getAllTravelApi}`)
       .subscribe((resp: Booking[]) => this.travelSubject.next(resp));
   }
 

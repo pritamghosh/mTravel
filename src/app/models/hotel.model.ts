@@ -8,6 +8,8 @@ export class Hotel {
   address: string;
   raiting: number;
   amenties: string[];
+  tax: number;
+  basePrice: number;
   price: number;
   brekfast: string;
   children: string;

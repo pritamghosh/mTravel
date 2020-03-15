@@ -26,7 +26,11 @@ export class ExpenseComponent implements OnInit {
   });
   constructor(private service: ExpenseService, public dialog: MatDialog) {}
   addToExpense() {
-    this.expenses.push(this.fg.value);
+    let expense: Expense = this.fg.value;
+    expense.travelId = this.tid;
+    expense.fileName = this.filename;
+    expense.type = "OTHER";
+    this.expenses.push(expense);
     this.fg.reset();
     this.filename = "";
     this.fg.get("description").setErrors(null);
@@ -49,10 +53,12 @@ export class ExpenseComponent implements OnInit {
   onSubmit() {
     this.service.save(this.expenses);
   }
+  onchange() {
+    this.expenses = [];
+  }
   addToCalim() {
     let expense = new Expense();
-    console.log(this.tid);
-
+    expense.type = "TRAVEL";
     expense.travelId = this.tid;
     expense.description =
       "Travel Expense : " + this.bookingResponse[this.tid].id;
