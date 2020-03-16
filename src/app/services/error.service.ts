@@ -6,7 +6,7 @@ import { BusyDisplayService } from "./busy-display.service";
 @Injectable()
 export class ErrorService implements ErrorHandler {
   handleError(error: HttpErrorResponse) {
-    console.log(error);
+    console.error(error);
     this.busyDisplayService.showBusyDisplay(false);
     if (error.error != null && error.error.message != null) {
       this.ngzone.run(() => {

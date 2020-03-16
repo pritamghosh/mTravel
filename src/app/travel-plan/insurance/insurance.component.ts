@@ -41,7 +41,6 @@ export class InsuranceComponent implements OnInit, OnDestroy {
   }
   getQuote() {
     this.isSearched = true;
-    console.log(JSON.stringify(this.searchInsuranceForm.value));
     this.service.search(this.searchInsuranceForm.value);
   }
 

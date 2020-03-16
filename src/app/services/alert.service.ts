@@ -19,6 +19,6 @@ export class AlertService {
       buttonName: "Ok"
     };
 
-    this.dialog.open(AlertComponent, dialogConfig);
+    return this.dialog.open(AlertComponent, dialogConfig);
   }
 }

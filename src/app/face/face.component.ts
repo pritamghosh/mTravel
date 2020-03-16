@@ -44,9 +44,9 @@ export class FaceComponent implements OnInit {
         video.srcObject = stream;
       })
       .catch(function(error) {
-        console.log(error);
+        console.error(error);
 
-        console.log("Something went wrong!");
+        alert("Need Camera Permission!!");
       });
   }
   get submitButtonName() {
@@ -72,7 +72,7 @@ export class FaceComponent implements OnInit {
   }
   processImage() {
     if (!this.subscriptionKey) {
-      console.log("subscriptionKey Invalid");
+      console.error("subscriptionKey Invalid");
       return;
     }
 
@@ -89,7 +89,7 @@ export class FaceComponent implements OnInit {
               this.data.faceId = resp[0].faceId;
               this.dialogRef.close();
             } else {
-              console.log("empty resp");
+              console.error("empty resp");
               this.imageString = null;
               this.show();
             }

@@ -78,7 +78,6 @@ export class RegistrationComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (!dialogConfig.data.cancelled && dialogConfig.data.faceId != null) {
         this.registrationForm.get("faceId").setValue(dialogConfig.data.faceId);
-        console.log(JSON.stringify(this.registrationForm.value));
         this.busyDisplayService.showBusyDisplay(true);
         this.registrationService.rigister(this.registrationForm.value);
       }

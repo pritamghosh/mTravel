@@ -89,8 +89,6 @@ export class FlightComponent implements OnInit {
     this.isSearched = true;
     this.filteredResponse = null;
     this.request = this.searchFlightForm.value;
-    console.log(JSON.stringify(this.request));
-
     this.flightService.search(this.request);
   }
 

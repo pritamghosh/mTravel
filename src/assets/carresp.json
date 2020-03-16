@@ -1,7 +1,9 @@
 [
   {
     "type": "2-3 Doors",
-    "price": 30,
+    "price": 30,,
+    "basePrice": 25,
+    "tax": 5,
     "_class": "Mini",
     "passengerCapacity": 4,
     "baggageCapacity": 2,
@@ -10,7 +12,9 @@
   },
   {
     "type": "4-5 Doors",
-    "price": 60,
+    "price": 60,,
+    "basePrice": 50,
+    "tax": 10,
     "_class": "Premimun",
     "passengerCapacity": 4,
     "baggageCapacity": 2,
@@ -20,6 +24,8 @@
   {
     "type": "Truck",
     "price": 50,
+    "basePrice": 42,
+    "tax": 8,
     "_class": "Compact",
     "passengerCapacity": 2,
     "baggageCapacity": 6,
@@ -29,6 +35,8 @@
   {
     "type": "Van",
     "price": 50,
+    "basePrice": 42,
+    "tax": 8,
     "_class": "Compact",
     "passengerCapacity": 4,
     "baggageCapacity": 4,

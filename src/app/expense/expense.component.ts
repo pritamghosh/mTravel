@@ -46,7 +46,7 @@ export class ExpenseComponent implements OnInit {
       str.setValue(reader.result);
     };
     reader.onerror = function(error) {
-      console.log("Error: ", error);
+      console.error("Error: ", error);
     };
   }
 

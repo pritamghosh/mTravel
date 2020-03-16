@@ -136,7 +136,6 @@ export class OverviewPlanComponent implements OnInit, OnDestroy {
         booking.hotel = tp.hotel;
         booking.car = tp.car;
         booking.insurance = tp.insurance;
-        console.log(JSON.stringify(booking));
         this.busyDisplayService.showBusyDisplay(true);
         this.bookingService.book(booking);
       }

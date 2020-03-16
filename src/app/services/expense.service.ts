@@ -21,7 +21,7 @@ export class ExpenseService {
   getTravelPlans() {
     let user = this.loginService.getUser();
     return this.http
-      .get<Booking[]>(`${environment.getAllTravelApi}`)
+      .get<Booking[]>(`${environment.getAllTravelApi}/${user.email}`)
       .subscribe((resp: Booking[]) => this.travelSubject.next(resp));
   }
 
@@ -33,26 +33,5 @@ export class ExpenseService {
       .subscribe(resp => {
         this.alertService.openDiaolog("Expense has been submitted!");
       });
-  }
-
-  getInvoiceInfo(file: File): Promise<any> {
-    return new Promise((resolve, reject) => {
-      let formData = new FormData();
-      formData.append("file", file);
-      formData.append("expense", file);
-      this.http
-        .post<any>(`${environment.coporateBookingApi}/expense`, formData)
-        .subscribe(
-          resp => {
-            console.log(resp);
-            resolve(resp);
-          },
-          err => {
-            console.error(err);
-
-            //reject(err);
-          }
-        );
-    });
   }
 }
