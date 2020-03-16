@@ -4,7 +4,7 @@ export class Car {
   tax: number;
   basePrice: number;
   price: number;
-  class: string;
+  _class: string;
   passengerCapacity: number;
   baggageCapacity: number;
   img: string;

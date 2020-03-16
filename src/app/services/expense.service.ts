@@ -27,17 +27,12 @@ export class ExpenseService {
 
   save(expense: Expense[]) {
     this.http
-      .post<any>(`${environment.coporateBookingApi}/expense`, expense)
-      .subscribe(
-        resp => {
-          console.log(resp);
-          this.alertService.openDiaolog("Expense has been submitted!");
-        },
-        err => {
-          console.error(err);
-        }
-      );
-    console.log(expense);
+      .post(`${environment.coporateBookingApi}/expense`, expense, {
+        responseType: "text"
+      })
+      .subscribe(resp => {
+        this.alertService.openDiaolog("Expense has been submitted!");
+      });
   }
 
   getInvoiceInfo(file: File): Promise<any> {

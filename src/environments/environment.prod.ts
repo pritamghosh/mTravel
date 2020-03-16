@@ -5,21 +5,20 @@
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 export const environment = {
   production: false,
-    endpoint: "https://minto.cognitiveservices.azure.com/face/v1.0/detect",
+  endpoint: "https://minto.cognitiveservices.azure.com/face/v1.0/detect",
   subscriptionKey: "f1c0008a30ae4156a4d80152fde1d58f",
-  flightSearchUrl:
-    "https://treavelswift.azurewebsites.net/flights/duffelsearch",
+  flightSearchUrl: "https://travelswift.azurewebsites.net/flights/duffelsearch",
   carSearchUrl: "assets/carresp.json",
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
   getAllTravelApi:
-    "https://treavelswift.azurewebsites.net/minto-app/api/getTravleInfo",
-  loginUrl: "https://treavelswift.azurewebsites.net/minto-app/api/login",
+    "https://travelswift.azurewebsites.net/minto-app/api/getTravleInfo",
+  loginUrl: "https://travelswift.azurewebsites.net/minto-app/api/login",
   registrationUrl:
-    "https://treavelswift.azurewebsites.net/minto-app/api/registerUser",
+    "https://travelswift.azurewebsites.net/minto-app/api/registerUser",
   saveExpenseUrl: "",
   bookingUrlUrl:
-    "https://treavelswift.azurewebsites.net/minto-app/api/bookPackage",
+    "https://travelswift.azurewebsites.net/minto-app/api/bookPackage",
   currency: "£ ",
   currencyIcon: faCoins,
   defaultDepPort: "JFK",
@@ -28,5 +27,6 @@ export const environment = {
   defaultPickUpLocation: "Heathrow Airport",
   defaultDropOffLocation: "London Central",
   getBalanceApi:
-    "https://treavelswift.azurewebsites.net/minto-app/api/getUserBalance"
+    "https://travelswift.azurewebsites.net/minto-app/api/getUserBalance",
+  coporateBookingApi: "https://travelswift.azurewebsites.net/minto-app/api"
 };
