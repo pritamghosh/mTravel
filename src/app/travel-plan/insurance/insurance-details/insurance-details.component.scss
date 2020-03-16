@@ -1,0 +1,19 @@
+@media (max-width: 380px) {
+  .custom-button {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+@media (min-width: 380px) {
+  .custom-button {
+    margin-top: 10px;
+    text-align: left;
+    .add {
+      float: right;
+    }
+    .details {
+      margin-left: -20px;
+    }
+  }
+}

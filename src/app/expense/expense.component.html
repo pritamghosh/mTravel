@@ -9,7 +9,7 @@
           <hr />
           <form>
             <div class="row" *ngIf="bookingResponse">
-              <div class="col md-4">
+              <div class="col-md-4 col-sm-12">
                 <mat-form-field style="width: 100%;">
                   <mat-label>Select Travel PLan</mat-label>
                   <mat-select
@@ -26,7 +26,7 @@
                   </mat-select></mat-form-field
                 >
               </div>
-              <div class="col md-4" style="text-align: right">
+              <div class="col-md-4 col-sm-6  m10 m10-left">
                 <button
                   mat-raised-button
                   color="accent"
@@ -36,17 +36,15 @@
                   View Travel Plan
                 </button>
               </div>
-              <div class="col md-4" style="text-align: right">
-                <div class="col md-4">
-                  <button
-                    mat-raised-button
-                    color="accent"
-                    [disabled]="!tid"
-                    (click)="addToCalim()"
-                  >
-                    Claim Expense
-                  </button>
-                </div>
+              <div class="col-md-4 col-sm-6  m10 ">
+                <button
+                  mat-raised-button
+                  color="accent"
+                  [disabled]="!tid"
+                  (click)="addToCalim()"
+                >
+                  Claim Expense
+                </button>
               </div>
               <div class="col-md-12">
                 <hr />
@@ -97,14 +95,7 @@
             <div class="col-md-6">
               <mat-form-field style="width: 100%;">
                 <mat-label>Description</mat-label>
-                <input
-                  matInput
-                  formControlName="description"
-                  #description
-                  (input)="
-                    description.value = $event.target.value.toUpperCase()
-                  "
-                />
+                <input matInput formControlName="description" />
               </mat-form-field>
             </div>
             <div class="col-md-4">

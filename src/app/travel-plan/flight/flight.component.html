@@ -22,7 +22,7 @@
                       />
                     </mat-form-field>
                   </div>
-                  <div class="col-md-2" style="width: 60px; text-align: center">
+                  <div class="col-md-2" style="text-align: center">
                     <button
                       mat-icon-button
                       (click)="swtchSourceDest()"
@@ -83,16 +83,16 @@
                 </div>
               </div>
 
-              <div class="col-md-6 col-lg-6">
+              <div class="col-md-12 col-lg-6">
                 <div class="row">
-                  <div class="col-md-12 col-lg-5">
+                  <div class="col-md-6 col-lg-5">
                     <mat-form-field>
                       <mat-label>Adults(12y+)</mat-label>
                       <input matInput formControlName="adults" type="number" />
                     </mat-form-field>
                   </div>
-                  <div class="col-lg-2 col-md-0"></div>
-                  <div class="col-md-12 col-lg-5">
+                  <div class="col-lg-2 col-md-0 "></div>
+                  <div class="col-md-6 col-lg-5">
                     <mat-form-field>
                       <mat-label>Children(2y-12y)</mat-label>
                       <input
@@ -153,8 +153,12 @@
   <hr />
   <div *ngIf="isSearched" class="container">
     <div class="row" style="padding: 10px;">
-      <div class="col-md-3 col-lg-3">
-        <div class="filter">
+      <label class="toggle-label" for="toggle"
+        ><mat-icon>filter_list</mat-icon></label
+      >
+      <input type="checkbox" id="toggle" />
+      <div class="col-lg-3 col-md-12 filter">
+        <div class="box">
           <div>
             <div>
               <a style="float: right;" mat-flat-button (click)="resetFilter()"
@@ -333,7 +337,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9">
+      <div class="col-md-12 col-lg-9">
         <div *ngIf="filteredResponse == null || filteredResponse.length == 0">
           <div class="box"><app-flight-loading></app-flight-loading></div>
           <div class="box"><app-flight-loading></app-flight-loading></div>

@@ -25,34 +25,34 @@
     >
     <br />
     <span>{{ requestDetails }}</span>
-    <div class="row" style="margin-top: 10px;">
-      <div class="col-sm-12 col-md-6" [hidden]="isView">
-        <button mat-button color="primary" (click)="showDetails = !showDetails">
-          Show Details
-          <i class="material-icons">
-            {{ getIcon }}
-          </i>
-        </button>
-      </div>
-      <div class="col-sm-12 col-md-6" [hidden]="isView">
-        <button
-          mat-raised-button
-          color="primary"
-          (click)="addToTravelPlan()"
-          [hidden]="isView"
-        >
-          Add To Plan
-        </button>
-      </div>
-      <div class="col-md-12" [hidden]="!isView">
-        <button mat-button color="primary" (click)="showDetails = !showDetails">
-          Show Details
-          <i class="material-icons">
-            {{ getIcon }}
-          </i>
-        </button>
-      </div>
+  </div>
+  <div class="col-sm-12 col-md-12 custom-button" [hidden]="isView">
+    <div class="add">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="addToTravelPlan()"
+        [hidden]="isView"
+      >
+        Add To Plan
+      </button>
     </div>
+    <div class="details">
+      <button mat-button color="primary" (click)="showDetails = !showDetails">
+        Show Details
+        <i class="material-icons">
+          {{ getIcon }}
+        </i>
+      </button>
+    </div>
+  </div>
+  <div class="col-md-12" [hidden]="!isView">
+    <button mat-button color="primary" (click)="showDetails = !showDetails">
+      Show Details
+      <i class="material-icons">
+        {{ getIcon }}
+      </i>
+    </button>
   </div>
   <div class="col-md-12" [hidden]="!showDetails">
     <mat-list>

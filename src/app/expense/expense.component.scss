@@ -1,0 +1,21 @@
+.m10 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+@media (max-width: 768px) and (min-width: 400px) {
+  .m10 {
+    width: 50%;
+  }
+  .m10-left {
+    text-align: left;
+  }
+}
+
+@media (max-width: 399px) {
+  .m10 {
+    width: 100%;
+    text-align: right;
+  }
+}

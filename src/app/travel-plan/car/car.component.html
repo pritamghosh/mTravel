@@ -142,7 +142,11 @@
   <hr />
   <div *ngIf="isSearched" class="container">
     <div class="row" style="padding: 10px;">
-      <div class="col-md-3 col-lg-3">
+      <label class="toggle-label" for="toggle"
+        ><mat-icon>filter_list</mat-icon></label
+      >
+      <input type="checkbox" id="toggle" />
+      <div class="filter col-lg-3">
         <div class="box">
           <div>
             <div>
@@ -278,7 +282,7 @@
           </mat-accordion>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9">
+      <div class="col-md-12 col-lg-9">
         <div *ngFor="let car of filteredResponse" class="box">
           <app-car-details [car]="car" [request]="request"></app-car-details>
         </div>

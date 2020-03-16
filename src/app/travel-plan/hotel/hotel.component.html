@@ -127,7 +127,11 @@
   <hr />
   <div *ngIf="isSearched" class="container">
     <div class="row" style="padding: 10px;">
-      <div class="col-md-3 col-lg-3">
+      <label class="toggle-label" for="toggle"
+        ><mat-icon>filter_list</mat-icon></label
+      >
+      <input type="checkbox" id="toggle" />
+      <div class=" col-lg-3 filter">
         <div class="box">
           <div>
             <div>
@@ -190,7 +194,7 @@
           </div>
         </div>
       </div>
-      <div class="col-md-9 col-lg-9">
+      <div class="col-md-12 col-lg-9">
         <div *ngFor="let hotel of filteredResponse" class="box">
           <app-hotel-details
             [hotel]="hotel"

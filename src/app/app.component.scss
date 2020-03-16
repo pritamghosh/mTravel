@@ -15,4 +15,41 @@
   mat-card {
     margin: 15px;
   }
+
+  @media (max-width: 1260px) {
+    .container {
+      max-width: 1260px;
+    }
+  }
+
+  #toggle,
+  .toggle-label {
+    display: none;
+    float: right;
+  }
+
+  @media (max-width: 991px) {
+    #toggle {
+      display: none;
+    }
+    .toggle-label {
+      margin-left: 20px;
+      font-size: 26px;
+      width: 26px;
+      display: block;
+      cursor: pointer;
+      float: right;
+    }
+    #toggle:checked + .filter {
+      display: block;
+    }
+
+    .filter {
+      text-align: left;
+      width: 100%;
+      display: none;
+      z-index: 300;
+      background-color: white;
+    }
+  }
 }

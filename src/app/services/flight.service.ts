@@ -14,7 +14,7 @@ export class FlightService {
 
   search(flightReqfq: FlightRequest) {
     return this.http
-      .post<OfferPack[]>(environment.flightSearchUrl, flightReqfq)
+      .get<OfferPack[]>(environment.flightSearchUrl)
       .subscribe(resp => this.searchResponseSubject.next(resp));
   }
 
