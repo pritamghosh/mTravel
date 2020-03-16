@@ -220,7 +220,7 @@
               </div>
               <div class="col-md-3 col-sm-3 col-12  col-lg-3">
                 <span><i class="material-icons"> flight_land</i></span
-                ><span class="font-bold-20"
+                ><span class="font-bold-15"
                   >.. {{ info.flightDuration | duration: true }} ..</span
                 >
                 <span><i class="material-icons"> flight_takeoff</i></span>
@@ -254,7 +254,7 @@
               >
                 <hr />
                 <div style="text-align: center;display: block">
-                  <mat-chip-list>
+                  <mat-chip-list style="    display: block;">
                     <mat-chip color="primary" selected
                       >{{
                         offerPack.onwardFlightItinerary.layoverDurations[index]
@@ -312,7 +312,7 @@
             </div>
             <div class="col-md-3 col-sm-3 col-12  col-lg-3">
               <span><i class="material-icons"> flight_land</i></span
-              ><span class="font-bold-20"
+              ><span class="font-bold-15"
                 >.. {{ info.flightDuration | duration: true }} ..</span
               >
               <span><i class="material-icons"> flight_takeoff</i></span>
@@ -340,10 +340,13 @@
               }}</span
               ><span><br /><br class="xs-hide"/></span>
             </div>
-            <div *ngIf="index < layovers" class="col-md-12 col-sm-12 col-lg-12">
+            <div
+              *ngIf="index < returnLayovers"
+              class="col-md-12 col-sm-12 col-lg-12"
+            >
               <hr />
               <div style="text-align: center;display: block">
-                <mat-chip-list>
+                <mat-chip-list style="    display: block;">
                   <mat-chip color="primary" selected
                     >{{
                       offerPack.returnFlightItinerary.layoverDurations[index]

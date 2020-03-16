@@ -34,16 +34,23 @@ div {
   font-weight: bold;
   font-size: 15px;
 }
-
+mat-chip-list {
+  display: block;
+}
 @media (max-width: 575px) {
   .xs-hide {
     display: none;
   }
 }
-
+.mat-chip-list-wrapper {
+  display: block;
+}
+i {
+  font-size: 20px;
+}
 @media (max-width: 800px) {
   i {
-    font-size: 12px;
+    font-size: 10px;
   }
   .font-15 {
     font-size: 10px;

@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   endpoint: "https://minto.cognitiveservices.azure.com/face/v1.0/detect",
   subscriptionKey: "f1c0008a30ae4156a4d80152fde1d58f",
-  flightSearchUrl: "assets/fresp.json",
+  flightSearchUrl: "https://travelswift.azurewebsites.net/flights/duffelsearch",
   carSearchUrl: "assets/carresp.json",
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
