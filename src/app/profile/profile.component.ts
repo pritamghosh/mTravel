@@ -18,7 +18,6 @@ export class ProfileComponent implements OnInit {
 
   get baseForm() {
     let user = this.loginService.getUser();
-    console.log(user.primaryUser.expiryDate);
 
     return new FormGroup({
       email: new FormControl(user.email, [

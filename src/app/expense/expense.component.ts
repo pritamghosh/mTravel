@@ -27,7 +27,8 @@ export class ExpenseComponent implements OnInit {
   constructor(private service: ExpenseService, public dialog: MatDialog) {}
   addToExpense() {
     let expense: Expense = this.fg.value;
-    expense.travelId = this.tid;
+
+    expense.travelId = this.bookingResponse[this.tid].id;
     expense.fileName = this.filename;
     expense.type = "OTHER";
     this.expenses.push(expense);
@@ -59,7 +60,7 @@ export class ExpenseComponent implements OnInit {
   addToCalim() {
     let expense = new Expense();
     expense.type = "TRAVEL";
-    expense.travelId = this.tid;
+    expense.travelId = this.bookingResponse[this.tid].id;
     expense.description =
       "Travel Expense : " + this.bookingResponse[this.tid].id;
     this.expenses.push(expense);
