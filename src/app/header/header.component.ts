@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from "@angular/core";
 import { LoginService } from "../services/login.service";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: "app-header",
@@ -24,7 +25,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(resp => (this.balance = resp));
     this.loginService.getBalance();
   }
+  get bagHistoryApi() {
+    return environment.bagHistoryUrl;
+  }
 
+  refreshBalance() {
+    this.loginService.getBalance();
+  }
   signOut() {
     this.loginService.signOut();
     this.router.navigateByUrl("/login");

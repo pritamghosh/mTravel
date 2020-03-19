@@ -28,5 +28,6 @@ export const environment = {
   defaultDropOffLocation: "London Central",
   getBalanceApi:
     "https://travelswift.azurewebsites.net/minto-app/api/getUserBalance",
-  coporateBookingApi: "https://travelswift.azurewebsites.net/minto-app/api"
+  coporateBookingApi: "https://travelswift.azurewebsites.net/minto-app/api",
+  bagHistoryUrl: "http://www.facebook.com"
 };
