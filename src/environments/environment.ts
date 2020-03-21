@@ -12,13 +12,13 @@ export const environment = {
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
   getAllTravelApi:
-    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/getTravleInfo",
-  loginUrl: "http://swiftvm.centralus.cloudapp.azure.com:9000/api/login",
+    "https://swiftvm.centralus.cloudapp.azure.com:9000/api/getTravleInfo",
+  loginUrl: "https://swiftvm.centralus.cloudapp.azure.com:9000/api/login",
   registrationUrl:
-    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/registerUser",
+    "https://swiftvm.centralus.cloudapp.azure.com:9000/api/registerUser",
   saveExpenseUrl: "",
   bookingUrlUrl:
-    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/bookPackage",
+    "https://swiftvm.centralus.cloudapp.azure.com:9000/api/bookPackage",
   currency: "£ ",
   currencyIcon: faCoins,
   defaultDepPort: "JFK",
@@ -28,6 +28,6 @@ export const environment = {
   defaultDropOffLocation: "London Central",
   getBalanceApi:
     "http://swiftvm.centralus.cloudapp.azure.com:9000/api/getUserBalance",
-  coporateBookingApi: "http://swiftvm.centralus.cloudapp.azure.com:9000/api",
+  coporateBookingApi: "https://swiftvm.centralus.cloudapp.azure.com:9000/api",
   bagHistoryUrl: "http://www.google.com"
 };
