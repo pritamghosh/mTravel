@@ -12,13 +12,13 @@ export const environment = {
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
   getAllTravelApi:
-    "https://travelswift.azurewebsites.net/minto-app/api/getTravleInfo",
-  loginUrl: "https://travelswift.azurewebsites.net/minto-app/api/login",
+    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/getTravleInfo",
+  loginUrl: "http://swiftvm.centralus.cloudapp.azure.com:9000/api/login",
   registrationUrl:
-    "https://travelswift.azurewebsites.net/minto-app/api/registerUser",
+    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/registerUser",
   saveExpenseUrl: "",
   bookingUrlUrl:
-    "https://travelswift.azurewebsites.net/minto-app/api/bookPackage",
+    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/bookPackage",
   currency: "£ ",
   currencyIcon: faCoins,
   defaultDepPort: "JFK",
@@ -27,7 +27,7 @@ export const environment = {
   defaultPickUpLocation: "Heathrow Airport",
   defaultDropOffLocation: "London Central",
   getBalanceApi:
-    "https://travelswift.azurewebsites.net/minto-app/api/getUserBalance",
-  coporateBookingApi: "https://travelswift.azurewebsites.net/minto-app/api",
+    "http://swiftvm.centralus.cloudapp.azure.com:9000/api/getUserBalance",
+  coporateBookingApi: "http://swiftvm.centralus.cloudapp.azure.com:9000/api",
   bagHistoryUrl: "http://www.google.com"
 };
