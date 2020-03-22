@@ -7,7 +7,9 @@ import { BusyDisplayService } from "./busy-display.service";
 export class ErrorService implements ErrorHandler {
   handleError(error: HttpErrorResponse) {
     console.error(error);
-    this.busyDisplayService.showBusyDisplay(false);
+    this.ngzone.run(() => {
+      this.busyDisplayService.showBusyDisplay(false);
+    });
     if (error.error != null && error.error.message != null) {
       this.ngzone.run(() => {
         this.openDialog(error.error);

@@ -2,3 +2,14 @@ a:hover {
   color: white;
   text-decoration: none;
 }
+.sm-hide {
+  @media (max-width: 600px) {
+    display: none;
+  }
+}
+
+.sm-show {
+  @media (min-width: 601px) {
+    display: none;
+  }
+}

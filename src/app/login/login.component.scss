@@ -1,0 +1,10 @@
+.center {
+  @media (min-width: 400px) {
+    position: fixed;
+    top: 50%;
+    bottom: 50%;
+    right: 50%;
+    left: 50%;
+    margin: -200px -200px -150px -200px;
+  }
+}

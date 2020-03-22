@@ -27,12 +27,16 @@ export class FaceRecognitionService {
     const parts = dataURL.split(BASE64_MARKER);
     const contentType = parts[0].split(":")[1];
     const raw = window.atob(parts[1]);
+    console.log(raw);
+
     const rawLength = raw.length;
     const uInt8Array = new Uint8Array(rawLength);
 
     for (let i = 0; i < rawLength; ++i) {
       uInt8Array[i] = raw.charCodeAt(i);
     }
+
+    console.log(uInt8Array);
 
     return new Blob([uInt8Array], { type: contentType });
   }

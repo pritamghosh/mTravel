@@ -5,7 +5,7 @@
     </div>
     <!-- <h1><a routerLink="/" style="color: white;">mTravel</a></h1> -->
     <span class="menu-spacer"></span>
-    <div>
+    <div class="sm-hide">
       <button mat-button [routerLink]="['travelplan']">
         Travel Plan
       </button>
@@ -32,6 +32,22 @@
       <button mat-icon-button [matMenuTriggerFor]="userMenu">
         <mat-icon>person</mat-icon>
       </button>
+      <button mat-icon-button [matMenuTriggerFor]="mainMenu" class="sm-show">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <mat-menu #mainMenu="matMenu" class="primary">
+        <button class="primary" mat-menu-item [routerLink]="['travelplan']">
+          Travel Plan
+        </button>
+        <button class="primary" mat-menu-item [routerLink]="['expense']">
+          Expense
+        </button>
+        <a href="{{ bagHistoryApi }}" target="_blank"
+          ><button mat-menu-item class="primary">
+            Bag History
+          </button></a
+        >
+      </mat-menu>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item [routerLink]="['login']" [hidden]="isLoggedIn">
           Login

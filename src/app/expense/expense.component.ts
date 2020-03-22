@@ -1,30 +1,64 @@
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, OnDestroy } from "@angular/core";
 import { TravelPlan } from "../models/travel.plan.model";
 import { ExpenseService } from "../services/expense.service";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
-import { Expense } from "../models/expense.model";
+import { Expense, ExpenseReport } from "../models/expense.model";
 import { MatDialogConfig, MatDialog } from "@angular/material/dialog";
 import { ViewPlanComponent } from "./view-plan/view-plan.component";
 import { Booking } from "../models/booking.model";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-expense",
   templateUrl: "./expense.component.html",
   styleUrls: ["./expense.component.scss"]
 })
-export class ExpenseComponent implements OnInit {
+export class ExpenseComponent implements OnInit, OnDestroy {
   @ViewChild("uploadFile") uploadElement: HTMLElement;
   step = 1;
   tid = "";
+  rtid = "";
   filename: string = "";
   bookingResponse: Booking[];
   expenses: Expense[] = [];
   selcectedArray: [];
+  report: ExpenseReport[];
+  sub1: Subscription;
+  sub2: Subscription;
+
+  displayedColumns: string[] = [
+    "merchant",
+    "date",
+    "amount",
+    "expense_claimed",
+    "transaction"
+  ];
   fg = new FormGroup({
     document: new FormControl(null, Validators.required),
     description: new FormControl(null, Validators.required)
   });
-  constructor(private service: ExpenseService, public dialog: MatDialog) {}
+  constructor(private service: ExpenseService, public dialog: MatDialog) {
+    // let exp = new ExpenseReport();
+    // exp.amount = 400;
+    // exp.date = new Date();
+    // exp.merchant = "Swift Corporation";
+    // exp.txnFound = true;
+    // exp.expenseFound = false;
+    // this.report.push(exp);
+    // let exp1 = new ExpenseReport();
+    // exp1.amount = 40;
+    // exp1.date = new Date();
+    // exp1.merchant = "Resturant";
+    // exp1.txnFound = false;
+    // exp1.expenseFound = true;
+    // this.report.push(exp1);
+    // this.report.push(exp);
+    // this.report.push(exp1);
+    // this.report.push(exp);
+    // this.report.push(exp1);
+    // this.report.push(exp);
+    // this.report.push(exp1);
+  }
   addToExpense() {
     let expense: Expense = this.fg.value;
 
@@ -82,8 +116,22 @@ export class ExpenseComponent implements OnInit {
   }
   ngOnInit(): void {
     this.service.getTravelPlans();
-    this.service.travelSubject.asObservable().subscribe(resp => {
+    this.sub1 = this.service.travelSubject.asObservable().subscribe(resp => {
       this.bookingResponse = resp;
     });
+    this.sub2 = this.service.expenseReportSubject
+      .asObservable()
+      .subscribe(resp => {
+        this.report = resp;
+      });
+  }
+
+  ngOnDestroy() {
+    this.sub1.unsubscribe();
+    this.sub2.unsubscribe();
+  }
+  viewReport() {
+    let travelId = this.bookingResponse[this.rtid].id;
+    this.service.getExpenseReport(travelId);
   }
 }
