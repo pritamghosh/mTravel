@@ -4,7 +4,7 @@
 
 import { faCoins } from "@fortawesome/free-solid-svg-icons";
 export const environment = {
-  production: false,
+  production: true,
   endpoint: "https://minto.cognitiveservices.azure.com/face/v1.0/detect",
   subscriptionKey: "f1c0008a30ae4156a4d80152fde1d58f",
   flightSearchUrl: "https://travelswift.azurewebsites.net/flights/duffelsearch",
