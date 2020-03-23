@@ -7,4 +7,12 @@
     left: 50%;
     margin: -200px -200px -150px -200px;
   }
+
+  @media (min-height: 500px) {
+    position: relative;
+
+    right: 50%;
+    left: 50%;
+    margin: 0px -200px 0px -200px;
+  }
 }
