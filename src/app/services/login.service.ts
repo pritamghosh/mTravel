@@ -1,4 +1,4 @@
-const LOGIN_INFO_KEY = "loginInfo";
+const LOGIN_INFO_KEY = "loginInfo-swift-corporate-booking";
 import { Injectable } from "@angular/core";
 import { Subject, from } from "rxjs";
 import { HttpClient } from "@angular/common/http";
