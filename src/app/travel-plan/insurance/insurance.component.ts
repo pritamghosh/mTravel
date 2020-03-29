@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { InsuranceService } from "src/app/services/insurance.service";
 import { Insurance } from "src/app/models/insurane.model";
 import { Subscription } from "rxjs";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-insurance",
@@ -10,12 +11,15 @@ import { Subscription } from "rxjs";
   styleUrls: ["./insurance.component.scss"]
 })
 export class InsuranceComponent implements OnInit, OnDestroy {
-  constructor(private service: InsuranceService) {}
+  constructor(
+    private service: InsuranceService,
+    private loginService: LoginService
+  ) {}
   minDate = new Date();
   searchInsuranceForm: FormGroup;
   isSearched = false;
   searchResp: Insurance[];
-  filteredResponse: Insurance[];
+  filteredResponse: Insurance[] = [];
   subscription: Subscription;
   ngOnInit(): void {
     this.searchInsuranceForm = new FormGroup({
@@ -31,7 +35,11 @@ export class InsuranceComponent implements OnInit, OnDestroy {
 
     this.subscription = this.service.getResponse().subscribe(resp => {
       this.searchResp = resp;
-      this.filteredResponse = resp;
+      this.searchResp.forEach(element => {
+        if (element.price <= this.loginService.insurancePrice) {
+          this.filteredResponse.push(element);
+        }
+      });
       this.isSearched = true;
     });
   }

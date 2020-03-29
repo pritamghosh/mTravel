@@ -11,6 +11,7 @@ export const environment = {
   carSearchUrl: "assets/carresp.json",
   hotelSearchUrl: "assets/htresp.json",
   insuranceSearchUrl: "assets/insresp.json",
+  capUrl: "assets/cap.json",
   getAllTravelApi:
     "https://travelswift.azurewebsites.net/minto-app/api/getTravleInfo",
   loginUrl: "https://travelswift.azurewebsites.net/minto-app/api/login",

@@ -12,6 +12,11 @@ import { BusyDisplayService } from "./busy-display.service";
 export class LoginService {
   isLoggedInSubject = new Subject<boolean>();
   balanceSubject = new Subject<number>();
+  balance = 0;
+  flightFare = 0;
+  carFare = 0;
+  hotelPrice = 0;
+  insurancePrice = 0;
   constructor(
     private http: HttpClient,
     private busyDisplayService: BusyDisplayService
@@ -31,12 +36,32 @@ export class LoginService {
   }
 
   getBalance() {
-    if (this.getUser() != null) {
-      let url = `${environment.getBalanceApi}/${this.getUser().email}`;
-      this.http
-        .get(url)
-        .subscribe((resp: any) => this.balanceSubject.next(resp.balance));
-    }
+    return new Promise(resolve => {
+      this.getCap().then(() => {
+        if (this.getUser() != null) {
+          let url = `${environment.getBalanceApi}/${this.getUser().email}`;
+          this.http.get(url).subscribe((resp: any) => {
+            this.balanceSubject.next(resp.balance);
+            this.balance = resp.balance;
+            resolve();
+          });
+        }
+      });
+    });
+  }
+  getCap() {
+    return new Promise(resolve => {
+      if (this.getUser() != null) {
+        let url = `${environment.capUrl}`;
+        this.http.get(url).subscribe((resp: any) => {
+          this.flightFare = resp.flight;
+          this.hotelPrice = resp.hotel;
+          this.carFare = resp.car;
+          this.insurancePrice = resp.insurance;
+          resolve();
+        });
+      }
+    });
   }
   public savetoContext(resp: any) {
     if (resp != null) {

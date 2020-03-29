@@ -24,7 +24,7 @@
         mat-icon-button
         [hidden]="!isLoggedIn"
         style="margin-right: 20px;"
-        (click)="refreshBalance()"
+        (click)="showWalletDetails()"
       >
         <mat-icon>account_balance_wallet</mat-icon
         ><span>&nbsp;&nbsp;{{ balance }}</span>

@@ -7,6 +7,7 @@ import { CarHire } from "src/app/models/car.hire.model";
 import { CarService } from "src/app/services/car.service";
 import { Car } from "src/app/models/car.model";
 import { environment } from "src/environments/environment";
+import { LoginService } from "src/app/services/login.service";
 @Component({
   selector: "app-car",
   templateUrl: "./car.component.html",
@@ -16,7 +17,7 @@ export class CarComponent implements OnInit, OnDestroy {
   minCheckInDate = new Date();
   searchCarForm: FormGroup;
   carSearchResp: Car[];
-  filteredResponse: Car[];
+  filteredResponse: Car[] = [];
   subscription: Subscription;
   isSearched = false;
   minPrice = 0;
@@ -41,7 +42,10 @@ export class CarComponent implements OnInit, OnDestroy {
   typeTruck = true;
 
   request: CarHire;
-  constructor(private service: CarService) {}
+  constructor(
+    private service: CarService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.searchCarForm = new FormGroup({
@@ -62,7 +66,11 @@ export class CarComponent implements OnInit, OnDestroy {
     });
     this.subscription = this.service.getResponse().subscribe(resp => {
       this.carSearchResp = resp;
-      this.filteredResponse = resp;
+      this.carSearchResp.forEach(element => {
+        if (element.price <= this.loginService.carFare) {
+          this.filteredResponse.push(element);
+        }
+      });
       this.updateFilters();
       this.isSearched = true;
     });

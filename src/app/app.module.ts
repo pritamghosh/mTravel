@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
+import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
@@ -74,6 +75,7 @@ import { AlertComponent } from "./alert/alert.component";
 import { FlightLoadingComponent } from "./travel-plan/flight/flight-loading/flight-loading.component";
 import { BusyDisplayComponent } from "./busy-display/busy-display.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { WalletComponent } from './header/wallet/wallet.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     ProfileComponent,
     AlertComponent,
     FlightLoadingComponent,
-    BusyDisplayComponent
+    BusyDisplayComponent,
+    WalletComponent
   ],
   imports: [
     BrowserModule,
@@ -141,6 +144,7 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatDialogModule,
     MatProgressSpinnerModule,
     NgxMaterialTimepickerModule,
+    MatBottomSheetModule,
     Ng5SliderModule,
     FontAwesomeModule
   ],
@@ -174,7 +178,8 @@ import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
     MatChipsModule,
     MatStepperModule,
     MatDialogModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatBottomSheetModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })

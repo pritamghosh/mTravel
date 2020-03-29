@@ -6,6 +6,7 @@ import { Subscription } from "rxjs";
 import { HotelRequet } from "src/app/models/hotel.request.model";
 import { HotelService } from "src/app/services/hotel.service";
 import { environment } from "src/environments/environment";
+import { LoginService } from "src/app/services/login.service";
 
 @Component({
   selector: "app-hotel",
@@ -16,7 +17,7 @@ export class HotelComponent implements OnInit, OnDestroy {
   minCheckInDate = new Date();
   searchHotelForm: FormGroup;
   hotelSearchResp: Hotel[];
-  filteredResponse: Hotel[];
+  filteredResponse: Hotel[] = [];
   subscription: Subscription;
 
   request: HotelRequet;
@@ -31,7 +32,10 @@ export class HotelComponent implements OnInit, OnDestroy {
   maxPrice = 0;
 
   priceOptions: Options;
-  constructor(private service: HotelService) {}
+  constructor(
+    private service: HotelService,
+    private loginService: LoginService
+  ) {}
 
   ngOnInit(): void {
     this.searchHotelForm = new FormGroup({
@@ -49,7 +53,11 @@ export class HotelComponent implements OnInit, OnDestroy {
 
     this.subscription = this.service.getResponse().subscribe(resp => {
       this.hotelSearchResp = resp;
-      this.filteredResponse = resp;
+      this.hotelSearchResp.forEach(element => {
+        if (element.price <= this.loginService.hotelPrice) {
+          this.filteredResponse.push(element);
+        }
+      });
       this.updateFilter();
       this.isSearched = true;
     });

@@ -3,6 +3,11 @@ import { LoginService } from "../services/login.service";
 import { Subscription } from "rxjs";
 import { Router } from "@angular/router";
 import { environment } from "src/environments/environment";
+import {
+  MatBottomSheet,
+  MatBottomSheetRef
+} from "@angular/material/bottom-sheet";
+import { WalletComponent } from "./wallet/wallet.component";
 
 @Component({
   selector: "app-header",
@@ -10,7 +15,11 @@ import { environment } from "src/environments/environment";
   styleUrls: ["./header.component.scss"]
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-  constructor(private loginService: LoginService, private router: Router) {}
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+    private _bottomSheet: MatBottomSheet
+  ) {}
   isLoggedIn = false;
   subs: Subscription;
   balSubs: Subscription;
@@ -29,6 +38,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
     return environment.bagHistoryUrl;
   }
 
+  showWalletDetails() {
+    this.loginService
+      .getBalance()
+      .then(() => this._bottomSheet.open(WalletComponent));
+  }
   refreshBalance() {
     this.loginService.getBalance();
   }
