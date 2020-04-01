@@ -8,7 +8,7 @@
     margin: -200px -200px -150px -200px;
   }
 
-  @media (min-height: 500px) {
+  @media (max-height: 500px) {
     position: relative;
 
     right: 50%;

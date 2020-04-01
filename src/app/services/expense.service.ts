@@ -27,13 +27,22 @@ export class ExpenseService {
   }
 
   save(expense: Expense[]) {
-    this.http
-      .post(`${environment.coporateBookingApi}/expense`, expense, {
-        responseType: "text"
-      })
-      .subscribe(resp => {
-        this.alertService.openDiaolog("Expense has been submitted!");
-      });
+    return new Promise(resolve => {
+      this.http
+        .post(`${environment.coporateBookingApi}/expense`, expense, {
+          responseType: "text"
+        })
+        .subscribe(resp => {
+          const dialog = this.alertService.openDiaolog(
+            "Expense has been submitted!"
+          );
+          dialog.afterClosed().subscribe(() => resolve());
+        });
+    });
+  }
+
+  private getTime(date?: Date) {
+    return date != null ? date.getTime() : 0;
   }
 
   getExpenseReport(travelId: number) {
@@ -41,6 +50,9 @@ export class ExpenseService {
       .get<ExpenseReport[]>(
         `${environment.coporateBookingApi}/expense/${travelId}`
       )
-      .subscribe(resp => this.expenseReportSubject.next(resp));
+      .subscribe(resp => {
+        //resp.sort((o1, o2) => this.getTime(o1.date) - this.getTime(o2.date));
+        this.expenseReportSubject.next(resp);
+      });
   }
 }

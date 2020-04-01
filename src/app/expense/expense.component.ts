@@ -86,7 +86,7 @@ export class ExpenseComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    this.service.save(this.expenses);
+    this.service.save(this.expenses).then(() => (this.expenses = []));
   }
   onchange() {
     this.expenses = [];
