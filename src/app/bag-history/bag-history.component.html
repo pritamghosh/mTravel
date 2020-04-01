@@ -1,0 +1,133 @@
+<div class="container">
+  <div>
+    <form [formGroup]="fg" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-12">
+          <h3 style="margin-top: 20px;">Bag History</h3>
+          <hr />
+        </div>
+        <div class="col-md-4 com-sm-6">
+          <mat-form-field>
+            <mat-label>Bag Tag Id</mat-label>
+            <input matInput formControlName="bagTagID" />
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 com-sm-6">
+          <mat-form-field>
+            <input
+              matInput
+              [matDatepicker]="ddpicker"
+              formControlName="travelDate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="ddpicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #ddpicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+        <div class="col-md-4 com-sm-12" style="text-align: right;">
+          <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            [disabled]="fg.invalid"
+          >
+            Serach History
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="history">
+    <div class="row">
+      <div>
+        <strong style="margin-left: 10px; margin-top: 20px;">Bag Tag : </strong>
+        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;">{{
+          bagResMainPanel.bagTagID
+        }}</strong>
+
+        <strong style="margin-top: 20px;">Name : </strong>
+        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;"
+          >{{ bagResMainPanel.firstName }}/{{
+            bagResMainPanel.lastName
+          }}</strong
+        >
+
+        <strong style="margin-top: 20px;">Checked Bags : </strong>
+        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;">{{
+          bagResMainPanel.numberOfCheckedInBags
+        }}</strong>
+      </div>
+      <div class="com-md-12">
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="beforePanelOpened(airport)"
+            *ngFor="let airport of airportsPanel"
+          ></mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <b>{{ airport }}</b>
+            </mat-panel-title>
+            <table
+              mat-table
+              [dataSource]="dataSourceBagResponse"
+              class="mat-elevation-z8"
+            >
+              <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef>Bag Event</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.status }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="timestamp">
+                <th mat-header-cell *matHeaderCellDef>Event Date</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.timestamp }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="from">
+                <th mat-header-cell *matHeaderCellDef>User</th>
+                <td mat-cell *matCellDef="let bagResponse" style="width:100px">
+                  {{ bagResponse.from }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="arrivalFlight">
+                <th mat-header-cell *matHeaderCellDef>Arrival Flight</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.arrivalFlight }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="departureFlight">
+                <th mat-header-cell *matHeaderCellDef>Departure Flight</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.departureFlight }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="connectionFlight">
+                <th mat-header-cell *matHeaderCellDef>Connection Flight</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.connectionFlight }}
+                </td>
+              </ng-container>
+              <ng-container matColumnDef="loadFlight">
+                <th mat-header-cell *matHeaderCellDef>Load Flight</th>
+                <td mat-cell *matCellDef="let bagResponse">
+                  {{ bagResponse.loadFlight }}
+                </td>
+                <tr
+                  mat-header-row
+                  *matHeaderRowDef="dataSourceBagResponseColumn"
+                ></tr>
+                <tr
+                  mat-row
+                  *matRowDef="let row; columns: dataSourceBagResponseColumn"
+                ></tr>
+              </ng-container>
+            </table>
+          </mat-expansion-panel-header>
+        </mat-accordion>
+      </div>
+    </div>
+  </div>
+</div>

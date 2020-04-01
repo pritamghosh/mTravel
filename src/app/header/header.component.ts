@@ -34,9 +34,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .subscribe(resp => (this.balance = resp));
     this.loginService.getBalance();
   }
-  get bagHistoryApi() {
-    return environment.bagHistoryUrl;
-  }
 
   showWalletDetails() {
     this.loginService

@@ -12,11 +12,9 @@
       <button mat-button [routerLink]="['expense']">
         Expense
       </button>
-      <a href="{{ bagHistoryApi }}" target="_blank"
-        ><button mat-button style="color: white;">
-          Bag History
-        </button></a
-      >
+      <button mat-button [routerLink]="['bagHistory']">
+        Bag History
+      </button>
     </div>
     <div style="flex-grow:1"></div>
     <div>
@@ -42,11 +40,9 @@
         <button class="primary" mat-menu-item [routerLink]="['expense']">
           Expense
         </button>
-        <a href="{{ bagHistoryApi }}" target="_blank"
-          ><button mat-menu-item class="primary">
-            Bag History
-          </button></a
-        >
+        <button mat-button [routerLink]="['bagHistory']">
+          Bag History
+        </button>
       </mat-menu>
       <mat-menu #userMenu="matMenu">
         <button mat-menu-item [routerLink]="['login']" [hidden]="isLoggedIn">

@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
 
-import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatMenuModule } from "@angular/material/menu";
 import { MatIconModule } from "@angular/material/icon";
@@ -75,7 +75,9 @@ import { AlertComponent } from "./alert/alert.component";
 import { FlightLoadingComponent } from "./travel-plan/flight/flight-loading/flight-loading.component";
 import { BusyDisplayComponent } from "./busy-display/busy-display.component";
 import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
-import { WalletComponent } from './header/wallet/wallet.component';
+import { WalletComponent } from "./header/wallet/wallet.component";
+import { BagHistoryComponent } from "./bag-history/bag-history.component";
+import { DatePipe } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -108,7 +110,8 @@ import { WalletComponent } from './header/wallet/wallet.component';
     AlertComponent,
     FlightLoadingComponent,
     BusyDisplayComponent,
-    WalletComponent
+    WalletComponent,
+    BagHistoryComponent
   ],
   imports: [
     BrowserModule,
@@ -148,7 +151,7 @@ import { WalletComponent } from './header/wallet/wallet.component';
     Ng5SliderModule,
     FontAwesomeModule
   ],
-  providers: [{ provide: ErrorHandler, useClass: ErrorService }],
+  providers: [{ provide: ErrorHandler, useClass: ErrorService }, DatePipe],
   bootstrap: [AppComponent],
   entryComponents: [FaceComponent],
   exports: [

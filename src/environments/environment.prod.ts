@@ -30,5 +30,5 @@ export const environment = {
   getBalanceApi:
     "https://travelswift.azurewebsites.net/minto-app/api/getUserBalance",
   coporateBookingApi: "https://travelswift.azurewebsites.net/minto-app/api",
-  bagHistoryUrl: "http://www.google.com"
+  bagServiceApi: "https://airlinemindtree.azurewebsites.net/airline-app"
 };
