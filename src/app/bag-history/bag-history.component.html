@@ -40,35 +40,45 @@
     </form>
   </div>
   <div *ngIf="history">
+    <hr />
     <div class="row">
-      <div>
-        <strong style="margin-left: 10px; margin-top: 20px;">Bag Tag : </strong>
-        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;">{{
-          bagResMainPanel.bagTagID
-        }}</strong>
-
-        <strong style="margin-top: 20px;">Name : </strong>
-        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;"
-          >{{ bagResMainPanel.firstName }}/{{
-            bagResMainPanel.lastName
-          }}</strong
+      <div class="col-sm-4 col-12 head">
+        <strong
+          >Bag Tag :
+          <span class="title">{{ bagResMainPanel.bagTagID }}</span></strong
         >
-
-        <strong style="margin-top: 20px;">Checked Bags : </strong>
-        <strong style="color:magenta; margin-right: 20px; margin-top: 20px;">{{
-          bagResMainPanel.numberOfCheckedInBags
-        }}</strong>
       </div>
-      <div class="com-md-12">
+      <div class="col-sm-4 col-12 head">
+        <strong
+          >Name :
+          <span class="title"
+            >{{ bagResMainPanel.firstName }}/{{
+              bagResMainPanel.lastName
+            }}</span
+          ></strong
+        >
+      </div>
+      <div class="col-sm-4 col-12 head">
+        <strong
+          >Checked-in Bags :
+          <span class="title">
+            {{ bagResMainPanel.numberOfCheckedInBags }}</span
+          ></strong
+        >
+      </div>
+      <br />
+      <div class="col-md-12 head">
         <mat-accordion>
           <mat-expansion-panel
-            (opened)="beforePanelOpened(airport)"
+            (opened)="openPanel(airport)"
             *ngFor="let airport of airportsPanel"
-          ></mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              <b>{{ airport }}</b>
-            </mat-panel-title>
+            calss="body"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                {{ airport }}
+              </mat-panel-title></mat-expansion-panel-header
+            >
             <table
               mat-table
               [dataSource]="dataSourceBagResponse"
@@ -86,12 +96,12 @@
                   {{ bagResponse.timestamp }}
                 </td>
               </ng-container>
-              <ng-container matColumnDef="from">
+              <!-- <ng-container matColumnDef="from">
                 <th mat-header-cell *matHeaderCellDef>User</th>
-                <td mat-cell *matCellDef="let bagResponse" style="width:100px">
+                <td mat-cell *matCellDef="let bagResponse">
                   {{ bagResponse.from }}
                 </td>
-              </ng-container>
+              </ng-container> -->
               <ng-container matColumnDef="arrivalFlight">
                 <th mat-header-cell *matHeaderCellDef>Arrival Flight</th>
                 <td mat-cell *matCellDef="let bagResponse">
@@ -125,7 +135,7 @@
                 ></tr>
               </ng-container>
             </table>
-          </mat-expansion-panel-header>
+          </mat-expansion-panel>
         </mat-accordion>
       </div>
     </div>

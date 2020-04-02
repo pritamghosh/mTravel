@@ -25,11 +25,12 @@ export class BagHistoryComponent implements OnInit, OnDestroy {
   confirmBagHistoryResponse: any = [];
   bagResMainPanel: BagResponse;
   airportsPanel: any = [];
-  dataSourceBagResponse: MatTableDataSource<BagResponse>;
+  dataSourceBagResponse: MatTableDataSource<
+    BagResponse
+  > = new MatTableDataSource();
   dataSourceBagResponseColumn: string[] = [
     "status",
     "timestamp",
-    "from",
     "arrivalFlight",
     "departureFlight",
     "connectionFlight",
@@ -48,14 +49,16 @@ export class BagHistoryComponent implements OnInit, OnDestroy {
       .subscribe(resp => this.populateResp(resp));
   }
 
-  beforePanelOpened(airportCodePanel) {
+  openPanel(airport: string) {
     this.confirmBagHistoryResponse.forEach((confirmBagHistory: any) => {
-      if (confirmBagHistory.airportCode === airportCodePanel) {
+      if (confirmBagHistory.airportCode === airport) {
         this.dataSourceBagResponse.data = confirmBagHistory.bagResponses;
       }
     });
   }
   populateResp(response: any) {
+    this.bagResMainPanel = new BagResponse();
+    this.airportsPanel = [];
     for (var airport in response) {
       this.airportsPanel.push(airport);
 
@@ -88,11 +91,7 @@ export class BagHistoryComponent implements OnInit, OnDestroy {
       this.bagResMainPanel.departureFlight =
         response[airport][0].departureFlight;
     }
-    if (response != null && response.length > 0) {
-      this.history = true;
-    } else {
-      this.alertService.openDiaolog("No History Found!");
-    }
+    this.history = true;
   }
 
   onSubmit() {

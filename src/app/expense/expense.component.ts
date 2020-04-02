@@ -37,28 +37,7 @@ export class ExpenseComponent implements OnInit, OnDestroy {
     document: new FormControl(null, Validators.required),
     description: new FormControl(null, Validators.required)
   });
-  constructor(private service: ExpenseService, public dialog: MatDialog) {
-    // let exp = new ExpenseReport();
-    // exp.amount = 400;
-    // exp.date = new Date();
-    // exp.merchant = "Swift Corporation";
-    // exp.txnFound = true;
-    // exp.expenseFound = false;
-    // this.report.push(exp);
-    // let exp1 = new ExpenseReport();
-    // exp1.amount = 40;
-    // exp1.date = new Date();
-    // exp1.merchant = "Resturant";
-    // exp1.txnFound = false;
-    // exp1.expenseFound = true;
-    // this.report.push(exp1);
-    // this.report.push(exp);
-    // this.report.push(exp1);
-    // this.report.push(exp);
-    // this.report.push(exp1);
-    // this.report.push(exp);
-    // this.report.push(exp1);
-  }
+  constructor(private service: ExpenseService, public dialog: MatDialog) {}
   addToExpense() {
     let expense: Expense = this.fg.value;
 
