@@ -26,17 +26,12 @@ export class LoginService {
     this.signOut();
     this.busyDisplayService.showBusyDisplay(true);
     return new Promise(resolve => {
-      this.http
-        .post(
-          "https://airlinemindtree.azurewebsites.net/bag-tracker/api/bagtracker/login",
-          login
-        )
-        .subscribe(resp => {
-          this.savetoContext(resp);
-          this.getBalance();
-          resolve(true);
-          this.busyDisplayService.showBusyDisplay(false);
-        });
+      this.http.post("environment.loginUrl", login).subscribe(resp => {
+        this.savetoContext(resp);
+        this.getBalance();
+        resolve(true);
+        this.busyDisplayService.showBusyDisplay(false);
+      });
     });
   }
 
