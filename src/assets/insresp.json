@@ -8,6 +8,8 @@
     "endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
     "days": 12,
     "price": 50,
+    "basePrice": 40,
+    "tax": 10,
     "coverage": ["Flight Travel", "Medical", "Personal", "Family"],
     "description": [
       {
@@ -37,6 +39,8 @@
     "endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
     "days": 12,
     "price": 70,
+    "basePrice": 56,
+    "tax": 14,
     "coverage": ["Flight Travel", "Medical", "Personal", "Family"],
     "description": [
       {
@@ -66,6 +70,8 @@
     "endDate": "Fri Feb 23 2020 00:00:00 GMT+0000 (Greenwich Mean Time)",
     "days": 2,
     "price": 20,
+    "basePrice": 15,
+    "tax": 5,
     "coverage": ["Flight Travel", "Medical", "Personal"],
     "description": [
       {

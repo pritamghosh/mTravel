@@ -22,7 +22,7 @@ export class RegistrationComponent implements OnInit {
   ngOnInit(): void {
     this.registrationForm = new FormGroup({
       email: new FormControl(null, [Validators.email, Validators.required]),
-      contact: new FormControl(null, Validators.pattern("[0-9+]{8,15}")),
+      contact: new FormControl(null),
       password: new FormControl(null, [
         Validators.required,
         this.password.bind(this)
@@ -37,14 +37,14 @@ export class RegistrationComponent implements OnInit {
   }
   userFormControl() {
     return new FormGroup({
-      firstName: new FormControl(null, Validators.required),
+      firstName: new FormControl(null),
       lastName: new FormControl(null, Validators.required),
-      dateOfBirth: new FormControl(null, Validators.required),
-      issuingDate: new FormControl(null, Validators.required),
-      expiryDate: new FormControl(null, Validators.required),
-      passportNo: new FormControl(null, Validators.required),
-      gender: new FormControl(null, Validators.required),
-      issuingCountry: new FormControl(null, Validators.required)
+      dateOfBirth: new FormControl(null),
+      issuingDate: new FormControl(null),
+      expiryDate: new FormControl(null),
+      passportNo: new FormControl(null),
+      gender: new FormControl(null),
+      issuingCountry: new FormControl(null)
     });
   }
   password(control: FormControl) {

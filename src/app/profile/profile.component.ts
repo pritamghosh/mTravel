@@ -25,34 +25,27 @@ export class ProfileComponent implements OnInit {
         Validators.required
       ]),
       firstName: new FormControl(
-        user.primaryUser.firstName,
-        Validators.required
+        user.primaryUser.firstName
       ),
       contact: new FormControl(
-        user.contact,
-        Validators.pattern("[0-9+]{8,15}")
+        user.contact
       ),
       lastName: new FormControl(user.primaryUser.lastName, Validators.required),
       dateOfBirth: new FormControl(
-        user.primaryUser.dateOfBirth,
-        Validators.required
+        user.primaryUser.dateOfBirth
       ),
       issuingDate: new FormControl(
-        user.primaryUser.issuingDate,
-        Validators.required
+        user.primaryUser.issuingDate
       ),
       expiryDate: new FormControl(
-        user.primaryUser.expiryDate,
-        Validators.required
+        user.primaryUser.expiryDate
       ),
       passportNo: new FormControl(
-        user.primaryUser.passportNo,
-        Validators.required
+        user.primaryUser.passportNo
       ),
-      gender: new FormControl(user.primaryUser.gender, Validators.required),
+      gender: new FormControl(user.primaryUser.gender),
       issuingCountry: new FormControl(
-        user.primaryUser.issuingCountry,
-        Validators.required
+        user.primaryUser.issuingCountry
       )
     });
   }
